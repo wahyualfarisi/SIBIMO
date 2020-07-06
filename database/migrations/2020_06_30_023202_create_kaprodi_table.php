@@ -14,7 +14,23 @@ class CreateKaprodiTable extends Migration
     public function up()
     {
         Schema::create('kaprodi', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_kaprodi');
+
+            //foreign on acccont
+            $table->integer('id_account')->unsigned();
+            $table->foreign('id_account')
+                  ->references('id_account')
+                  ->on('account')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            
+            $table->integer('id_jurusan')->unsigned();
+            $table->foreign('id_jurusan')
+                  ->references('id_jurusan')
+                  ->on('jurusan')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

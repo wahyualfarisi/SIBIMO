@@ -14,7 +14,18 @@ class CreateDospemTable extends Migration
     public function up()
     {
         Schema::create('dospem', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_dospem');
+
+            //foreign key on account
+            $table->integer('id_account')->unsigned();
+            $table->foreign('id_account')
+                  ->references('id_account')
+                  ->on('account')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
+            $table->enum('pembimbing', [1, 2]);
+            
             $table->timestamps();
         });
     }

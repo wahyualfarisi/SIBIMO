@@ -14,7 +14,16 @@ class CreateJurusanTable extends Migration
     public function up()
     {
         Schema::create('jurusan', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_jurusan');
+
+            $table->integer('id_fakultas')->unsigned();
+            $table->foreign('id_fakultas')
+                  ->references('id_fakultas')
+                  ->on('fakultas')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
+            $table->string('nama_fakultas', 15);
             $table->timestamps();
         });
     }
