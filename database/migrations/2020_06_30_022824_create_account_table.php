@@ -20,9 +20,9 @@ class CreateAccountTable extends Migration
             $table->string('email', 15)->unique();
             $table->string('nama_lengkap', 20);
             $table->string('password', 150);
-            $table->string('no_telp', 15);
-            $table->text('alamat');
-            $table->text('foto');
+            $table->string('no_telp', 15)->nullable();
+            $table->text('alamat')->nullable();
+            $table->text('foto')->nullable();
             $table->enum('level', ['TU','KAPRODI','DOSEN']);
             
             $table->timestamps();
