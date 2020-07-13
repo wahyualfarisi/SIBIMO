@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             DospemSeeder::class,
             FakultasSeeder::class,
             JurusanSeeder::class,
-            KaprodiSeeder::class
+            KaprodiSeeder::class,
+            MahasiswaSeeder::class
         ]);
     }
 }

@@ -50,6 +50,45 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        // return parent::render($request, $exception);
+        $debug = config('app.debug');
+
+        if ($exception instanceof ModelNotFoundException) {
+            $message = 'Data is not found';
+            $status_code = 404;
+        } elseif ($exception instanceof NotFoundHttpException) {
+            $message = 'Endpoint is not found';
+            $status_code = 404;
+        } elseif ($exception instanceof MethodNotAllowedHttpException) {
+            $message = 'Method is not allowed';
+            $status_code = 405;
+        }else if ($exception instanceof ValidationException) {
+            $validationErrors = $exception->validator->errors()->getMessages();
+            $validationErrors = array_map(function($error) {
+                return array_map(function($message) {
+                    return $message;
+                }, $error);
+            }, $validationErrors);
+            $message = $validationErrors;
+            $status_code = 405;
+        } else if ($exception instanceof QueryException) {
+            if ($debug) {
+                $message = $exception->getMessage();
+            } else {
+                $message = 'Query failed to execute';
+            }
+            $status_code = 500;
+        }
+
+        $rendered = parent::render($request, $exception);
+        $status_code = $rendered->getStatusCode();
+        if ( empty($message) ) {
+            $message = $exception->getMessage();
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => $message
+        ], $status_code);
     }
 }
