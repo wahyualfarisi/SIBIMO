@@ -17,7 +17,7 @@ class CreateAccountTable extends Migration
             $table->increments('id_account');
 
             $table->string('nip', 20)->unique();
-            $table->string('email', 15)->unique();
+            $table->string('email', 25)->unique();
             $table->string('nama_lengkap', 20);
             $table->string('password', 150);
             $table->string('no_telp', 15)->nullable();

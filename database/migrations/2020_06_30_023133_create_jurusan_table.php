@@ -23,7 +23,7 @@ class CreateJurusanTable extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            $table->string('nama_fakultas', 15);
+            $table->string('nama_jurusan', 25);
             $table->timestamps();
         });
     }
