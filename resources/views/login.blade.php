@@ -40,30 +40,35 @@
                             
                             <div class="row margin">
                                     <div class="col s12">
-                                    <p>
-                                        <label>
-                                        <input name="level" value="KAPRODI" type="radio" required/>
-                                        <span>Kaprodi</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                    <label>
-                                        <input name="level" value="DOSEN" type="radio" required/>
-                                        <span>Dosen</span>
-                                    </label>
-                                    </p>
-                                    <p>
-                                    <label>
-                                        <input name="level" value="MAHASISWA" type="radio" required/>
-                                        <span>Mahasiswa</span>
-                                    </label>
-                                    </p>
-                                    <p>
-                                        <label>
-                                            <input name="level" value="TU" type="radio" required/>
-                                            <span>TU</span>
-                                        </label>
-                                        </p>
+                                        <div class="col s6">
+                                                <p>
+                                                        <label>
+                                                        <input name="level" value="KAPRODI" type="radio" required/>
+                                                        <span>Kaprodi</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                    <label>
+                                                        <input name="level" value="DOSEN" type="radio" required/>
+                                                        <span>Dosen</span>
+                                                    </label>
+                                                </p>
+                                        </div>
+                                        <div  class="col s6">
+                                                <p>
+                                                <label>
+                                                    <input name="level" value="MAHASISWA" type="radio" required/>
+                                                    <span>Mahasiswa</span>
+                                                </label>
+                                                </p>
+                                                <p>
+                                                    <label>
+                                                        <input name="level" value="TU" type="radio" required/>
+                                                        <span>TU</span>
+                                                    </label>
+                                                </p>
+                                        </div>
+                                    
                                 </div>
                             </div>
 
