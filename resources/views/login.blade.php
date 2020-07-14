@@ -139,7 +139,7 @@
                     null ,
                     res => {
                         console.log(res);
-                        location.href = '/main';
+                        location.href = 'main/';
                     },
                     err => {
                         console.log(err);

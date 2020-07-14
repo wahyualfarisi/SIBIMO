@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pagination.css')}}">
     
     <script>
-
+        
     </script>
 
   </head>
@@ -71,7 +71,7 @@
                         <li class="divider"></li>
                         <li><a class="grey-text text-darken-1" href="#/me"><i class="material-icons green-text">verified_user</i> My Profile </a></li>
                         <li><a class="grey-text text-darken-1" href="#/setting"><i class="material-icons blue-text">settings</i> Setting </a></li>
-                        <li><a class="grey-text text-darken-1" href="javascript:void(0)" id="logout"><i class="material-icons red-text">keyboard_tab</i> Logout</a></li>
+                        <li><a class="grey-text text-darken-1" href="/authorization_clear" id="logout"><i class="material-icons red-text">keyboard_tab</i> Logout</a></li>
                     </ul>
 
                     <ul class="dropdown-content" id="notifications-dropdown">
@@ -114,9 +114,6 @@
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons indigo-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/notifications"><i class="material-icons orange-text">notifications_active</i><span class="menu-title menu-notifications" data-i18n="">Notifications</span></a>
-            </li>
            
             
             <li class="navigation-header">
@@ -124,80 +121,26 @@
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/user"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Crew</span></a>
+                <a class="waves-effect waves-cyan " href="#/user"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Fakultas</span></a>
             </li>
 
-            <li class="bold open"><a class="collapsible-header waves-effect waves-cyan " href="javascript:void(0)" tabindex="0"><i class="material-icons">account_balance_wallet</i><span class="menu-title" data-i18n="">Data Client</span></a>
-                <div class="collapsible-body" style="">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li>
-                            <a class="collapsible-body" href="#/data/client" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Client</span></a>
-                        </li>
-                        <li>
-                            <a class="collapsible-body" href="#/area" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Area</span></a>
-                        </li>
-                        <li>
-                            <a class="collapsible-body" href="#/data/schedule" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Schedule Area</span></a>
-                        </li>
-                    </ul>
-                </div>
+            <li class="bold">
+                    <a class="waves-effect waves-cyan " href="#/user"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Jurusan</span></a>
             </li>
+
 
 
 
             <li class="navigation-header">
-                <a class="navigation-header-text">TRANSACTION </a><i class="navigation-header-icon material-icons">more_horiz</i>
+                <a class="navigation-header-text">USER </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/ticket"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Ticket</span></a>
-            </li>
-
-            <li class="bold open"><a class="collapsible-header waves-effect waves-cyan " href="javascript:void(0)" tabindex="0"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Issue Category</span></a>
-                <div class="collapsible-body" style="">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li>
-                        <a class="collapsible-body" href="#/issue/?type=all" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>All</span></a>
-                    </li>
-                    <li>
-                        <a class="collapsible-body" href="#/issue/?type=finding" data-i18n=""><i class="material-icons yellow-text">label</i><span>Finding</span></a>
-                    </li>
-                    <li>
-                        <a class="collapsible-body" href="#/issue/?type=request" data-i18n=""><i class="material-icons blue-text">label</i><span>Request</span></a>
-                    </li>
-                    <li>
-                        <a class="collapsible-body" href="#/issue/?type=complain" data-i18n=""><i class="material-icons pink-text">label</i><span>Complain</span></a>
-                    </li>
-                    </ul>
-                </div>
-            </li>
-
-
-            <li class="navigation-header">
-                <a class="navigation-header-text">HISTORY </a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
-            
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/schedule/history"><i class="material-icons green-text">grain</i><span class="menu-title" data-i18n="">Routine History</span></a>
+                <a class="waves-effect waves-cyan " href="#/ticket"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n=""> Kaprodi & Dosen Pembimbing </span></a>
             </li>
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/corrective"><i class="material-icons green-text">grain</i><span class="menu-title" data-i18n="">Corrective History</span></a>
+                    <a class="waves-effect waves-cyan " href="#/ticket"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa</span></a>
             </li>
-
-          
-   
-             <li class="navigation-header">
-                <a class="navigation-header-text">ACTIVITY </a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
-
-          
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/working/list"><i class="material-icons red-text">work</i><span class="menu-title" data-i18n="">On Going</span></a>
-            </li>
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/log/crew"><i class="material-icons blue-text">gavel</i><span class="menu-title" data-i18n="">Crew Log</span></a>
-            </li>
-          
 
 
             <li class="navigation-header">
@@ -297,10 +240,13 @@
     <script src="{{asset('assets/js/printArea.js')}}"></script>
     <script src="{{asset('assets/js/pagination.js')}}" ></script>
     <script src="{{asset('assets/js/moment.js')}}" ></script>
-    
-    
+    <script src="{{asset('src/app-library.js')}}"></script>
+    <script src="{{asset('src/app-ui.js')}}"></script>
+    <script src="{{asset('src/app-controller.js')}}"></script>
     <script>
-
+        $(function() {
+            MainController.init();
+        })
     </script>
 
   </body>

@@ -3,14 +3,26 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+
+
+//-----------------------------------------------------------------------------------------
 //Login 
 // your routes here
 Route::redirect('/', '/login');
 Route::get('/login', 'AuthController@login');
 Route::post('/authorization_process', 'AuthController@authorizationProcess');
 Route::get('/authorization_clear', 'AuthController@authorizationClear');
+//-----------------------------------------------------------------------------------------
 
-Route::get('/main', 'MainController@index');
+//------------------------------MAIN-------------------------------------------------------
+Route::group([
+    'prefix' => 'main'
+], function() {
+    Route::get('/', 'MainController@index');
+    Route::get('/dashboard', 'DashboardController@index');
+});
+//------------------------------END MAIN---------------------------------------------------
+
 
 
 //testing session
