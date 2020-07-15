@@ -30,7 +30,6 @@ class AuthController extends Controller
     public function authorizationProcess(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'level' => 'required|in:MAHASISWA,DOSEN,TU,KAPRODI',
             'id'    => 'required',
             'password' => 'required'
         ]);
@@ -42,14 +41,34 @@ class AuthController extends Controller
                  'errors'   => $validator->errors()
              ], 422);
         }
+
+         //check the IDs'
+         $decide;
+            $from_account = Account::where([
+                ['nip', '=', $request->id]
+            ])->first();
+    
+            $from_mahasiswa = Mahasiswa::where([
+                ['nim', '=', $request->id]
+            ])->first();
+    
+            if($from_account){
+                $decide  = strtoupper($from_account->level);
+            }else if($from_mahasiswa){
+                $decide = 'MAHASISWA';
+                
+            }else{
+                $decide = null;
+            }
+         //--------------
  
-        switch ($request->level) {
+        switch ($decide) {
             case 'DOSEN':
                  case 'TU':
                      case 'KAPRODI':
                          $user = Account::where([
                              ['nip', '=', $request->id],
-                             ['level', '=', $request->level]
+                             ['level', '=', $from_account->level]
                          ])->first();
                          
  
@@ -91,7 +110,7 @@ class AuthController extends Controller
                          ]);
                 break;
             
-            default:
+            case 'MAHASISWA':
                        $user = Mahasiswa::where([
                            ['nim', '=', $request->id],
                        ])->first();
@@ -130,6 +149,13 @@ class AuthController extends Controller
                          'token'    => $token,
                          'results'  => auth('mahasiswa')->user()
                      ]);
+                break;
+
+                default:
+                    return response()->json([
+                        'status'   => false,
+                        'message'  => 'Account not found'
+                    ]);
                 break;
         }
 

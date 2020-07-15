@@ -40,7 +40,7 @@
                             
                             <div class="row margin">
                                     <div class="col s12">
-                                        <div class="col s6">
+                                        {{-- <div class="col s6">
                                                 <p>
                                                         <label>
                                                         <input name="level" value="KAPRODI" type="radio" required/>
@@ -53,8 +53,8 @@
                                                         <span>Dosen</span>
                                                     </label>
                                                 </p>
-                                        </div>
-                                        <div  class="col s6">
+                                        </div> --}}
+                                        {{-- <div  class="col s6">
                                                 <p>
                                                 <label>
                                                     <input name="level" value="MAHASISWA" type="radio" required/>
@@ -67,7 +67,7 @@
                                                         <span>TU</span>
                                                     </label>
                                                 </p>
-                                        </div>
+                                        </div> --}}
                                     
                                 </div>
                             </div>
@@ -132,6 +132,7 @@
 
             $('.login-form').on('submit', function(e) {
                 e.preventDefault();
+
                 //process
                 ajaxSetting.postFree(
                     `/authorization_process`,
