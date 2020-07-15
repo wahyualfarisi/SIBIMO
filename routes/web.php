@@ -20,6 +20,11 @@ Route::group([
 ], function() {
     Route::get('/', 'MainController@index');
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/fakultas', 'FakultasController@index');
+    Route::get('/jurusan', 'JurusanController@index');
+    Route::get('/account', 'AccountController@index');
+    Route::get('/mahasiswa','MahasiswaController@index');
+    Route::get('/laporan','LaporanController@index');
 });
 //------------------------------END MAIN---------------------------------------------------
 

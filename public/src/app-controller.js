@@ -6,7 +6,7 @@ const MainController = ( () => {
         if (location.hash) {
             path = location.hash.substr(2);
             loadContent(path, '#main');
-            activeNav('#/dashboard');
+            // activeNav('#/dashboard');
         
         } else {
             location.hash = '#/dashboard';
@@ -50,10 +50,34 @@ const MainController = ( () => {
         })
     }
 
+    const runningTime = () => {
+        let today, h, m , s , t;
+
+        today = new Date();
+        h     = today.getHours();
+        m     = today.getMinutes();
+        s     = today.getSeconds();
+        m     = checkTime(m);
+        s     = checkTime(s);
+
+        $('.current-time').text(`${h} : ${m} : ${s}`);
+        $('.current-date').text(moment().format('LL'));
+
+        t     = setTimeout(runningTime, 500);
+    }
+
+    const checkTime = ( i ) => {
+        if( i < 10 ) { 
+            i = "0" + i
+         }
+         return i
+    }
+
     return {
         init: () => {
             console.log('init main controller');
             setRoute();
+            runningTime();
         }
     }
 })()

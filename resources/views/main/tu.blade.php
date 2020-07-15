@@ -54,7 +54,7 @@
             <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-light">
                 <div class="nav-wrapper">
                     <div class="header-search-wrapper hide-on-med-and-down">
-                        <h5 style="font-weight: 700" class="menu_name"></h5>
+                        <h5 style="font-weight: 700" class="menu_name"><span class="current-time">00:00:00</span></h5>
                     </div>
                     <ul class="navbar-list right">
                         <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons grey-text">settings_overscan</i></a></li>
@@ -96,8 +96,8 @@
         <div class="brand-sidebar" style="background: #562525 !important;">
         <h1 class="logo-wrapper">
             <a class="brand-logo darken-1" href="#/dashboard">
-                {{-- <img src="{{ asset('images/logo2.png') }}" alt=""/> --}}
-                <span class="logo-text hide-on-med-and-down">SIBIMO</span>
+                <img src="{{ asset('images/logo2.png') }}" alt=""/>
+                <span class="logo-text hide-on-med-and-down">TU</span>
             </a>
             <a class="navbar-toggler" href="javascript:void(0)">
                 <i class="material-icons">radio_button_checked</i>
@@ -106,11 +106,6 @@
         </div>
        
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
-            {{-- <li class="bold" style="text-align: center;">
-                <a style="font-size: 25px;" >
-                    <span class="current-time">00:00:00</span>
-                </a>
-            </li> --}}
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons indigo-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
@@ -121,25 +116,25 @@
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/user"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Fakultas</span></a>
+                <a class="waves-effect waves-cyan " href="#/fakultas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Fakultas</span></a>
             </li>
 
             <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/user"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Jurusan</span></a>
+                    <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Jurusan</span></a>
             </li>
 
 
 
 
             <li class="navigation-header">
-                <a class="navigation-header-text">USER </a><i class="navigation-header-icon material-icons">more_horiz</i>
+                <a class="navigation-header-text">ACCOUNT </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/ticket"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n=""> Kaprodi & Dosen Pembimbing </span></a>
+                <a class="waves-effect waves-cyan " href="#/account"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n=""> Kaprodi & Dosen Pembimbing </span></a>
             </li>
             <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/ticket"><i class="material-icons blue-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa</span></a>
+                    <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa</span></a>
             </li>
 
 
@@ -148,7 +143,7 @@
             </li>
           
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/print/reports"><i class="material-icons brown-text">content_paste</i><span class="menu-title" data-i18n="">Reports</span></a>
+                <a class="waves-effect waves-cyan " href="#/laporan"><i class="material-icons white-text">content_paste</i><span class="menu-title" data-i18n="">Reports</span></a>
             </li>
             <li class="bold" style="margin-bottom: 40px;">
                 

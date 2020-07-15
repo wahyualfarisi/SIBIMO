@@ -9,8 +9,6 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $level = $request->session()->get('level');
-
-        
         return view('dashboard.'.$level);   
     }
 }
