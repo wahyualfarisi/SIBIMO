@@ -50,8 +50,8 @@ class AccountSeeder extends Seeder
             ],
             [ // 4
                 'nip' => '7201110345'.$no++,
-                'email' => 'izul@test.com',
-                'nama_lengkap' => 'Izul S.KOM, M.KOM',
+                'email' => 'joshep@test.com',
+                'nama_lengkap' => 'Joseph S.KOM, M.KOM',
                 'password' => bcrypt('12345'),
                 'no_telp' => null,
                 'alamat' => null,
@@ -61,8 +61,8 @@ class AccountSeeder extends Seeder
             ],
             [ // 5
                 'nip' => '7201110454'.$no++,
-                'email' => 'Sri@test.com',
-                'nama_lengkap' => 'Sri S.KOM, M.KOM',
+                'email' => 'Gunawan@test.com',
+                'nama_lengkap' => 'Gunawan  M.KOM',
                 'password' => bcrypt('12345'),
                 'no_telp' => null,
                 'alamat' => null,

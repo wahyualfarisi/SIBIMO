@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
             KategoriBimbinganSeeder::class,
             AccountSeeder::class,
             DospemSeeder::class,
-            FakultasSeeder::class,
             JurusanSeeder::class,
             KaprodiSeeder::class,
             MahasiswaSeeder::class
