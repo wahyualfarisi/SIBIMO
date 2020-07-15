@@ -107,18 +107,13 @@
        
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons indigo-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
+                <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
            
             
             <li class="navigation-header">
                 <a class="navigation-header-text">DATA MASTER </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/fakultas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Fakultas</span></a>
-            </li>
-
             <li class="bold">
                     <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Jurusan</span></a>
             </li>

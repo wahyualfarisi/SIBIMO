@@ -109,6 +109,13 @@
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons indigo-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
+          
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
+            </li>
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Aktifitas Bimbingan</span></a>
+            </li>
            
             
             <li class="navigation-header">
@@ -116,11 +123,11 @@
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa</span></a>
+                <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa Bimbingan</span></a>
             </li>
 
             <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">History Bimbingan</span></a>
+                    <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Histori Bimbingan</span></a>
             </li>
 
 

@@ -25,6 +25,7 @@ Route::group([
     Route::get('/account', 'AccountController@index');
     Route::get('/mahasiswa','MahasiswaController@index');
     Route::get('/laporan','LaporanController@index');
+    Route::get('/notifikasi', 'NotificationController@index');
 });
 //------------------------------END MAIN---------------------------------------------------
 

@@ -108,7 +108,13 @@
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
             
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons indigo-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
+                <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
+            </li>
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
+            </li>
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="#/pembimbing"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Dosen Pembimbing</span></a>
             </li>
            
             
