@@ -12,3 +12,4 @@ Route::post('logout', 'api\Auth@logout');
 Route::post('test', 'api\Auth@test');
 
 Route::get('dashboard', 'api\Dashboard@index');
+Route::apiResource('jurusan', 'api\Jurusan')->middleware('auth:account');
