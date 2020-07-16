@@ -6,7 +6,7 @@ const MainController = ( () => {
         if (location.hash) {
             path = location.hash.substr(2);
             loadContent(path, '#main');
-            // activeNav('#/dashboard');
+            activeNav(location.hash);
         
         } else {
             location.hash = '#/dashboard';
@@ -14,6 +14,7 @@ const MainController = ( () => {
 
         $(window).on('hashchange', function () {
             path = location.hash;
+            
             
             activeNav(path);
             loadContent(path.substr(2), '#main');
@@ -38,7 +39,6 @@ const MainController = ( () => {
                 // LOADER.openPublic()
             },
             success: function (response) {
-                console.log(response);
                 $(element).html(response)
             },
             error: function () {
