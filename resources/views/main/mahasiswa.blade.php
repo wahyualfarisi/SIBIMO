@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pagination.css')}}">
     
     <script>
-        
+            var TOKEN = "{{ session('credentials') }}";
     </script>
 
   </head>

@@ -19,6 +19,10 @@ class Mahasiswa extends Authenticatable implements JWTSubject
         'angkatan'
     ];
 
+    protected $hidden = [
+        'password'
+    ];
+
      /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

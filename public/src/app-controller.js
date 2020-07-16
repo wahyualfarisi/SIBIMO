@@ -80,4 +80,27 @@ const MainController = ( () => {
             runningTime();
         }
     }
-})()
+})();
+
+
+//dashboard controller 
+const DashboardController = ( ( UI, AJAX ) => {
+        const load_dashboard = ( ) => {
+            AJAX.getRes(
+                `/api/dashboard`,
+                {},
+                null,
+                res => {
+                    UI.display(res);
+                },
+                err => {
+                    console.log(err);
+                }
+            )
+        }
+    return {
+        init: () => {
+            load_dashboard();
+        }
+    }
+})(DashboardUI, ajaxSetting)
