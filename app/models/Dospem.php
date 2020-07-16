@@ -15,7 +15,7 @@ class Dospem extends Model
 
     public function getAccount()
     {
-        return $this->belongsTo('App\Account','id_account','id_account');
+        return $this->belongsTo('App\models\Account','id_account','id_account');
     }
 
 }
