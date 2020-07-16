@@ -215,7 +215,7 @@ const JurusanController = ( (AJAX, LIB) => {
                     dom: {
                         button: {
                             tag: 'button',
-                            className: 'btn btn-small red darken-1 my-action'
+                            className: 'btn btn-small red darken-3 my-action'
                         }
                     },
                     buttons: [
@@ -303,10 +303,10 @@ const JurusanController = ( (AJAX, LIB) => {
                         data: null,
                         render: (data, type, row) => {
                             return `
-                            <a class="btn-floating mb-1 btn-flat waves-effect waves-light green white-text btn__edit" data-id_jurusan="${row.id_jurusan}" data-nama="${row.nama_jurusan}">
+                            <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit" data-id_jurusan="${row.id_jurusan}" data-nama="${row.nama_jurusan}">
                                 <i class="material-icons">create</i>
                             </a>
-                            <a class="btn-floating mb-1 btn-flat waves-effect waves-light red accent-2 white-text btn__delete" data-id_jurusan="${row.id_jurusan}">
+                            <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light red accent-2 white-text btn__delete" data-id_jurusan="${row.id_jurusan}">
                                 <i class="material-icons">close</i>
                             </a>
                             `   
@@ -322,3 +322,137 @@ const JurusanController = ( (AJAX, LIB) => {
         }
     }
 })(ajaxSetting, libSettings);
+
+const AccountController = ( (AJAX, LIB) => {
+    let T_ACCOUNT;
+
+    return {
+        data: () => {
+            T_ACCOUNT = $('#t_account').DataTable({
+                processing: false,
+                language: AJAX.dtLanguage(),
+                dom: '<Bf<t>ip>',
+                pageLength: 50,
+                scrollY: 300,
+                scrollX: true,
+                buttons: {
+                    dom: {
+                        button: {
+                            tag: 'button',
+                            className: 'btn btn-small red darken-3 my-action'
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: 'collection',
+                            text: '<i class="material-icons dp48">file_download</i> ',
+                            buttons: [
+                                {
+                                    extend: 'pdfHtml5',
+                                    text: 'PDF',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_ACCONT',
+                                    title: 'Data account'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    text: 'Excel',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_ACCONT',
+                                    title: 'Data account'
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    text: 'CSV',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_ACCONT',
+                                    title: 'Data account'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_ACCONT',
+                                    title: '<h4>Data account</h4>'
+                                },
+                            ]
+                        },
+                        {
+                            text: '<i class="material-icons dp48">autorenew</i>',
+                            action: function (e, dt, node, config) {
+                                dt.ajax.reload()
+                            },
+                        },
+                    ]
+                },
+                ajax: AJAX.dtSettingSrc(
+                    `/api/account`,
+                    {},
+                    res => {
+                        return res.results
+                    },
+                    err => {
+                        console.log(err)
+                    }
+                ),
+                columns:[
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<img src="${BASE_URL}/images/default_user.png" width="40px;" class="circle" />`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<h6> ${row.nama_lengkap} <br> ${row.level}</h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<h6> ${row.nip} </h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<h6> ${row.email} </h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<h6> ${row.level} </h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<h6> Pembimbing ${row.get_dospem.pembimbing}</h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `
+                            <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit">
+                                <i class="material-icons">create</i>
+                            </a>
+                            `
+                        }
+                    }
+                ]
+
+            })
+        }
+    }
+})(ajaxSetting, libSettings)

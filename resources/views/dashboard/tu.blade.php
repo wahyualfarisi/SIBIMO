@@ -12,30 +12,36 @@
     </div>
 
     <div class="col s12" id="card-total-data" style="display:none;">
-        <div class="card" style="border-radius: 10px;">
+        <div class="card" style="border-radius: 10px;  background-image: url({{asset('images/ubk.jpg')}}); background-position: center; ">
           <div class="card-content">
-             <div class="col s12">
+             <div class="col s12" style="margin-bottom: 30px;">
                 <div class="col s2" id="avatar_user">
                     <img src="{{ asset('images/default_user.png')}}" width="100%;" alt="" class="circle">   
                 </div>
-                <div class="col s6">
-                    <h4 id="info_user"></h4>
-                    <h5 class="light" id="user_position">TU</h5>
+                <div class="col s12 m6 l6">
+                    <h4 id="info_user" class="white-text"></h4>
+                    <h5 class="light white-text" id="user_position">TU</h5>
                     <h5 class="light" id="user_service"></h5>
-                    <a href="#/me" class="btn-flat mb-1 waves-effect">
-                        <i class="material-icons right">arrow_forward</i> View Profile
+                    <a href="#/me" class="btn-flat mb-1 waves-effect white-text">
+                        <i class="material-icons right">arrow_forward</i>  View Profile
                    </a>
                 </div> 
               </div>
               
+              <div class="mb-4" ></div>
+          </div>
+        </div>
+
+        <div class="card"  style="border-radius: 10px;">
+          <div class="card-content">
               <h4 class="card-title" id="info_user"></h4>
               <div id="card-stats" class="row">
 
                 <div class="col s12 m6 xl3">
                     <div class="card" style="border-radius: 10px;">
-                      <div class="card-content red lighten-1 white-text">
+                      <div class="card-content  black-text">
                           <p class="card-stats-title"><i class="material-icons">trending_up</i> Jurusan</p>
-                          <h4 class="card-stats-number white-text total_jurusan">0</h4>
+                          <h4 class="card-stats-number black-text total_jurusan">0</h4>
                           <p class="card-stats-compare">
                             
                             <span class="orange-text text-lighten-5"></span>
@@ -51,9 +57,9 @@
 
                 <div class="col s12 m6 xl3">
                     <div class="card" style="border-radius: 10px;">
-                      <div class="card-content teal lighten-1 white-text">
+                      <div class="card-content  black-text">
                           <p class="card-stats-title"><i class="material-icons">person_outline</i> Mahasiswa</p>
-                          <h4 class="card-stats-number white-text total_mahasiswa">0</h4>
+                          <h4 class="card-stats-number black-text total_mahasiswa">0</h4>
                           <p class="card-stats-compare">
                             
                             <span class="teal text text-lighten-5 date_from"></span>
@@ -69,9 +75,9 @@
 
                 <div class="col s12 m6 xl3">
                         <div class="card" style="border-radius: 10px;">
-                          <div class="card-content blue lighten-1 white-text">
-                              <p class="card-stats-title"><i class="material-icons">attach_money</i>Dosen</p>
-                              <h4 class="card-stats-number white-text total_dosen">0</h4>
+                          <div class="card-content black-text">
+                              <p class="card-stats-title"><i class="material-icons">person_outline</i>Dosen</p>
+                              <h4 class="card-stats-number black-text total_dosen">0</h4>
                               <p class="card-stats-compare">
                                 
                                 <span class="red-text text-lighten-5 date_from"></span>
@@ -87,12 +93,12 @@
 
                 <div class="col s12 m6 xl3">
                     <div class="card" style="border-radius: 10px;">
-                      <div class="card-content green lighten-1 white-text">
-                          <p class="card-stats-title"><i class="material-icons">attach_money</i>Notifikasi</p>
-                          <h4 class="card-stats-number white-text total_notifikasi">0</h4>
+                      <div class="card-content black-text">
+                          <p class="card-stats-title"><i class="material-icons">notifications_none</i>Notifikasi</p>
+                          <h4 class="card-stats-number black-text total_notifikasi">0</h4>
                           <p class="card-stats-compare">
                             
-                            <span class="red-text text-lighten-5 date_from"></span>
+                            <span class="red-text date_from"></span>
                           </p>
                       </div>
                       <div class="card-action green">
@@ -110,6 +116,7 @@
               </div>
           </div>
         </div>
+
       </div>
 
 </div>

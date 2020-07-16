@@ -44,6 +44,7 @@
     
     <script>
         var TOKEN = "{{ session('credentials') }}";
+        var BASE_URL = "{{ URL::to('/') }}"
     </script>
 
   </head>
@@ -89,8 +90,6 @@
     </header>
     <!-- END: Header-->
 
-
-
     <!-- BEGIN: SideNav-->
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-dark sidenav-active-rounded" style="background: #732619 !important;">
         <div class="brand-sidebar" style="background: #562525 !important;">
@@ -112,7 +111,7 @@
            
             
             <li class="navigation-header">
-                <a class="navigation-header-text">DATA MASTER </a><i class="navigation-header-icon material-icons">more_horiz</i>
+                <a class="navigation-header-text">DATA JURUSAN </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
             <li class="bold">
                     <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Jurusan</span></a>
@@ -126,10 +125,10 @@
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/account"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n=""> Kaprodi & Dosen Pembimbing </span></a>
+                <a class="waves-effect waves-cyan " href="#/account"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Dosen Pembimbing </span></a>
             </li>
             <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa Bimbingan</span></a>
+                    <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa & Judul Skripsi</span></a>
             </li>
 
 
@@ -138,7 +137,7 @@
             </li>
           
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/laporan"><i class="material-icons white-text">content_paste</i><span class="menu-title" data-i18n="">Reports</span></a>
+                <a class="waves-effect waves-cyan " href="#/laporan"><i class="material-icons white-text">content_paste</i><span class="menu-title" data-i18n="">Kartu Bimbingan</span></a>
             </li>
             <li class="bold" style="margin-bottom: 40px;">
                 

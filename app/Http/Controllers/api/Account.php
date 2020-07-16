@@ -27,8 +27,7 @@ class Account extends Controller
         ], 401);
 
         $data = AccountModel::with([
-            'get_dospem',
-            'get_kaprod.get_jurusan'
+            'get_dospem'
         ])
         ->where('level', '!=', 'TU')
         ->get();
@@ -195,6 +194,8 @@ class Account extends Controller
             'status'   => false,
             'message'  => 'Permission denied'
         ], 401);
+
+        
     }
 
     /**
