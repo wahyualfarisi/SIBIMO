@@ -19,7 +19,6 @@
                                                     <th>Nip</th>
                                                     <th>Email</th>
                                                     <th>Jabatan</th>
-                                                    <th>Pembimbing</th>
                                                     <th>#</th>
                                                 </tr>
                                             </thead>
@@ -33,7 +32,6 @@
                                                     <th>Nip</th>
                                                     <th>Email</th>
                                                     <th>Jabatan</th>
-                                                    <th>Pembimbing</th>
                                                     <th>#</th>
                                                 </tr>
                                             </tfoot>
@@ -52,6 +50,6 @@
 
 <script>
     $(function() {
-        AccountController.data();
+        AccountController.data('get_dosen');
     });
 </script>

@@ -138,7 +138,7 @@
                     <a class="waves-effect waves-cyan " href="#/account/kaprodi"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Kaprodi</span></a>
             </li>
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/account"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Dosen Pembimbing </span></a>
+                <a class="waves-effect waves-cyan " href="#/account/dosen"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Dosen</span></a>
             </li>
             
 

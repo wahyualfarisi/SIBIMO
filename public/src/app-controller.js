@@ -333,7 +333,7 @@ const AccountController = ( (AJAX, LIB) => {
     let T_ACCOUNT;
 
     return {
-        data: () => {
+        data: ( type ) => {
             T_ACCOUNT = $('#t_account').DataTable({
                 processing: false,
                 language: AJAX.dtLanguage(),
@@ -406,7 +406,7 @@ const AccountController = ( (AJAX, LIB) => {
                     ]
                 },
                 ajax: AJAX.dtSettingSrc(
-                    `/api/account`,
+                    `/api/account?${type}`,
                     {},
                     res => {
                         return res.results
@@ -444,12 +444,6 @@ const AccountController = ( (AJAX, LIB) => {
                         data: null,
                         render: (data, type, row) => {
                             return `<h6> ${row.level} </h6>`
-                        }
-                    },
-                    {
-                        data: null,
-                        render: (data, type, row) => {
-                            return `<h6> Pembimbing ${row.get_dospem.pembimbing}</h6>`
                         }
                     },
                     {

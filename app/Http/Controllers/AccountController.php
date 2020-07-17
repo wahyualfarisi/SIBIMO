@@ -18,11 +18,11 @@ class AccountController extends Controller
 
     public function tu()
     {
-
+        return view('account.tu');
     }
 
     public function kaprodi()
     {
-        
+        return view('account.kaprodi');
     }
 }

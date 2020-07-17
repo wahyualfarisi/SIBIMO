@@ -18,7 +18,7 @@ class Account extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
         if(!in_array(auth('account')->user()->level, ['TU']))
         return response()->json([
@@ -26,16 +26,22 @@ class Account extends Controller
             'message'  => 'Permission denied'
         ], 401);
 
-        $data = AccountModel::with([
-            'get_dospem'
-        ])
-        ->where('level', '!=', 'TU')
+        if($request->has('get_dosen')){
+            $level = 'DOSEN';
+        }else if($request->has('get_kaprodi')){
+            $level = 'KAPRODI';
+        }else if($request->has('get_tu') ) {
+            $level = 'TU';
+        }
+        
+        $data = AccountModel::where('level', '=', $level )
         ->get();
+
 
         try{
             return response()->json([
                 'status'   => false,
-                'message'  => 'Fetch all account',
+                'message'  => 'Fetch account',
                 'results'  => $data
             ]);
         }catch(\Exception $e){

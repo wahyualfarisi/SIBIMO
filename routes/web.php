@@ -23,7 +23,7 @@ Route::group([
     Route::get('/fakultas', 'FakultasController@index');
     Route::get('/jurusan', 'JurusanController@index');
 
-    Route::get('/account', 'AccountController@index');
+    Route::get('/account/dosen', 'AccountController@index');
     Route::get('/account/tu', 'AccountController@tu');
     Route::get('/account/kaprodi', 'AccountController@kaprodi');
     Route::get('/account/add', 'AccountController@add');
