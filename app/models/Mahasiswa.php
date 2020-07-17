@@ -53,7 +53,12 @@ class Mahasiswa extends Authenticatable implements JWTSubject
 
     public function get_judul_skripsi()
     {
-        return $this->hasOne('App\models\JudulSkripsi', 'id_mahasiswa', 'id_mahasiswa');
+        return $this->hasOne('App\models\JudulSkripsi', 'id_mahasiswa', 'id_mahasiswa')->where('status','active');
+    }
+
+    public function get_pembimbing()
+    {
+        return $this->hasMany('App\models\Pembimbing', 'id_mahasiswa', 'id_mahasiswa');
     }
     
 }

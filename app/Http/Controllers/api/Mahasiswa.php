@@ -112,7 +112,25 @@ class Mahasiswa extends Controller
             'status'   => true,
             'message'  => 'Success add mahasiswa',
             'results'  => $mahasiswa
-        ]);
-        
+        ]);   
+    }
+
+    public function show(Request $request, $id_mahasiswa)
+    {
+        if(!in_array(auth('account')->user()->level, ['TU'] ) )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Permission denied'
+        ], 401);
+
+        $data_mahasiswa = MahasiswaModel::with([
+            'get_jurusan',
+            'get_judul_skripsi',
+            'get_pembimbing.get_dospem.getAccount'
+        ])->findOrFail($id_mahasiswa);
+
+
+        return $data_mahasiswa;
+
     }
 }

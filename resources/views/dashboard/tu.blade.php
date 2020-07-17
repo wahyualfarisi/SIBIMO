@@ -47,7 +47,7 @@
                             <span class="orange-text text-lighten-5"></span>
                           </p>
                       </div>
-                      <div class="card-action red">
+                      <div class="card-action red darken-3">
                           <div id="clients-bar" class="center-align">
                             <span class="white-text date_today">Jurusan</span>
                           </div>

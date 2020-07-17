@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             JurusanSeeder::class,
             KaprodiSeeder::class,
             MahasiswaSeeder::class,
-            JudulSkripsiSeeder::class
+            JudulSkripsiSeeder::class,
+            PembimbingSeeder::class
         ]);
     }
 }

@@ -837,7 +837,7 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
                         data: null,
                         render: (data, type, row) => {
                             return `
-                            <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit">
+                            <a href="#/mahasiswa/${row.id_mahasiswa}" class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit">
                                 <i class="material-icons">arrow_forward</i>
                             </a>
                             `
