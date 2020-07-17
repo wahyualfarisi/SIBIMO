@@ -20,3 +20,4 @@ Route::apiResource('account', 'api\Account')->middleware('auth:account');
 Route::apiResource('pembimbing', 'api\Pembimbing')->middleware('auth:account');
 
 Route::get('mahasiswa', 'api\Mahasiswa@index')->middleware('auth:account');
+Route::post('mahasiswa', 'api\Mahasiswa@store')->middleware('auth:account');

@@ -42,4 +42,18 @@ const DashboardUI = ( () => {
 
         }   
     }
+})();
+
+const MahasiswaUI = ( () => {
+    return {
+        displaySelectJurusan: (data) => {
+            let output = '<option value="" selected="">-- Pilih Jurusan --</option>';
+            if(data.length > 0) {
+                data.forEach(item => {
+                    output += `<option value="${item.id_jurusan}"> ${item.nama_jurusan} </option>`
+                })
+            }
+            $('#id_jurusan').html(output);
+        }
+    }
 })()

@@ -665,8 +665,47 @@ const PembimbingController = ( (AJAX, LIB) => {
 })(ajaxSetting, libSettings);
 
 
-const MahasiswaController = ( (AJAX, LIB) => {
+const MahasiswaController = ( (AJAX, LIB, UI) => {
     let T_MAHASISWA;
+
+    const EventListener_add = () => {
+        $('#form_add_mahasiswa').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                AJAX.postRes(
+                    `/api/mahasiswa`,
+                    form,
+                    null,
+                    res => {
+                        if(res.status){
+                            $('#form_add_mahasiswa')[0].reset();
+                            M.toast({ html: res.message })
+                        }else{
+                            M.toast({ html: res.message })
+                        }
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                )
+            }
+        })
+    }
+
+    const load_jurusan = ( cb ) => {
+        AJAX.getRes(
+            `/api/jurusan`,
+            {},
+            null,
+            res => {
+                cb(res)
+            },
+            err => {
+                console.log(res);
+            }
+        )
+    }
 
     return {
         data: () => {
@@ -806,6 +845,18 @@ const MahasiswaController = ( (AJAX, LIB) => {
                     }
                 ]
             })
+        },
+        add: () => {
+            console.log('add mahasiswa');
+            EventListener_add();
+            load_jurusan(res => {
+                if(res.status){
+                    $('#loader_container').hide();
+                    $('#main_container').show();
+                    UI.displaySelectJurusan(res.results)
+
+                }
+            })
         }
     }
-})(ajaxSetting, libSettings);
+})(ajaxSetting, libSettings, MahasiswaUI);
