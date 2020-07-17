@@ -18,4 +18,9 @@ class Dospem extends Model
         return $this->belongsTo('App\models\Account','id_account','id_account');
     }
 
+    public function getMahasiswaBimbingan()
+    {
+        return $this->hasMany('App\models\Pembimbing', 'id_dospem','id_dospem');
+    }
+
 }

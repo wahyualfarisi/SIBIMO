@@ -30,6 +30,7 @@ Route::group([
 
     Route::get('/mahasiswa','MahasiswaController@index');
     Route::get('/mahasiswa/add', 'MahasiswaController@add');
+    Route::get('/pembimbing', 'PembimbingController@index');
     Route::get('/laporan','LaporanController@index');
     Route::get('/notifikasi', 'NotificationController@index');
 });

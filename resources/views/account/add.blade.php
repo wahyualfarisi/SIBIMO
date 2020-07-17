@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="row" id="main_container" style="">
-                    <form class="col s12" id="form_edit">
+                    <form class="col s12" id="form_add_account">
                         
                         <div class="card">
                             <div class="card-content">
@@ -86,7 +86,7 @@
                                             <div class="input-field col s6">
                                                 <div>
                                                     <label>Level / Jabatan </label>
-                                                    <select class="browser-default" name="active" id="active" required="">
+                                                    <select class="browser-default" name="level" id="level" required>
                                                             <option value="" selected="">-- Pilih level --</option>
                                                             <option value="TU">TU</option>
                                                             <option value="DOSEN">DOSEN</option>
@@ -96,7 +96,7 @@
                                             </div>
                                            
                                             <div class="input-field-pembimbing">
-                                                <div class="col s12 red darken-4">
+                                                {{-- <div class="col s12 red darken-4">
                                                         <div class="mt-2"></div>
                                                         <h6 class="white-text">Pembimbing</h6>
                                                         <hr class="light">
@@ -113,7 +113,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="input-field err-container level_error"></div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                            
                                            
@@ -128,8 +128,6 @@
                             <div class="input-field col s12">
                                 <button class="btn waves-effect waves-light indigo darken-1 right" type="submit" id="submit_add" name="action">SUBMIT 
                                 </button>
-                                <button class="btn waves-effect waves-light teal darken-1 mr-2 right btn__cancel__edit" type="button">Batal
-                                </button>
                             </div>
                         </div>
                     </form>
@@ -139,3 +137,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(function() {
+        AccountController.add();
+    });
+</script>

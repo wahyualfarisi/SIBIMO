@@ -13,9 +13,11 @@ class Mahasiswa extends Authenticatable implements JWTSubject
         'nim',
         'nama_lengkap',
         'password',
-        'kode_jurusan',
+        'id_jurusan',
         'no_telp',
         'email',
+        'alamat',
+        'foto',
         'angkatan'
     ];
 
@@ -41,6 +43,17 @@ class Mahasiswa extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    //jurusan
+    public function get_jurusan()
+    {
+        return $this->belongsTo('App\models\Jurusan', 'id_jurusan','id_jurusan');
+    }
+
+    public function get_judul_skripsi()
+    {
+        return $this->hasOne('App\models\JudulSkripsi', 'id_mahasiswa', 'id_mahasiswa');
     }
     
 }

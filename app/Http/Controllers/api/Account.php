@@ -73,7 +73,7 @@ class Account extends Controller
             'no_telp' => 'required',
             'alamat' => 'required',
             'level' => 'required|in:TU,KAPRODI,DOSEN',
-            'to_be_pembimbing' => 'required|in:1,2'
+            'to_be_pembimbing' => 'required_if:level,==,DOSEN,KAPRODI|in:1,2'
         ]);
 
         if($validate->fails())
@@ -84,19 +84,19 @@ class Account extends Controller
         ], 422);
 
     
-        if( $request->level == 'KAPRODI' ){
-            $validate = Validator::make($request->all(), [
-                'id_jurusan' => 'required'
-            ]);
+        // if( $request->level == 'KAPRODI' ){
+        //     $validate = Validator::make($request->all(), [
+        //         'id_jurusan' => 'required'
+        //     ]);
 
-            if($validate->fails()){
-                return response()->json([
-                    'status'   => false,
-                    'message'  => 'Your selected level with value KAPRODI',
-                    'errors'   => $validate->errors()
-                ]);
-            }
-        }
+        //     if($validate->fails()){
+        //         return response()->json([
+        //             'status'   => false,
+        //             'message'  => 'Your selected level with value KAPRODI',
+        //             'errors'   => $validate->errors()
+        //         ]);
+        //     }
+        // }
 
 
         //check apakah nip dan email sudah di gunakan
@@ -134,6 +134,7 @@ class Account extends Controller
         switch($request->level)
         {
             case 'DOSEN':
+                case 'KAPRODI':
                 try{
                     $pembimbing = new Dospem;
                     $pembimbing->id_account = $new_account->id_account;
@@ -149,33 +150,33 @@ class Account extends Controller
             break;
 
 
-            case 'KAPRODI':
-                try{
-                    $pembimbing = new Dospem;
-                    $pembimbing->id_account = $new_account->id_account;
-                    $pembimbing->pembimbing = $request->to_be_pembimbing;
+            // case 'KAPRODI':
+            //     try{
+            //         $pembimbing = new Dospem;
+            //         $pembimbing->id_account = $new_account->id_account;
+            //         $pembimbing->pembimbing = $request->to_be_pembimbing;
 
-                    $pembimbing->save();
-                }catch(\Exception $e){
-                    DB::rollback();
-                    return response()->json([
-                        'status'  => false,
-                        'message' => 'Failed to add dospem'
-                    ], 500);
-                }
+            //         $pembimbing->save();
+            //     }catch(\Exception $e){
+            //         DB::rollback();
+            //         return response()->json([
+            //             'status'  => false,
+            //             'message' => 'Failed to add dospem'
+            //         ], 500);
+            //     }
 
-                try{
-                    $kaprodi   = new Kaprod;
-                    $kaprodi->id_account = $new_account->id_account;
-                    $kaprodi->id_jurusan = $request->id_jurusan;
-                    $kaprodi->save();
-                }catch(\Exception $e){
-                    return  response()->json([
-                        'status'   => false,
-                        'message'  => 'Failed to add kaprodi'
-                    ]);
-                }
-            break;
+            //     try{
+            //         $kaprodi   = new Kaprod;
+            //         $kaprodi->id_account = $new_account->id_account;
+            //         $kaprodi->id_jurusan = $request->id_jurusan;
+            //         $kaprodi->save();
+            //     }catch(\Exception $e){
+            //         return  response()->json([
+            //             'status'   => false,
+            //             'message'  => 'Failed to add kaprodi'
+            //         ]);
+            //     }
+            // break;
         }
         
         DB::commit();

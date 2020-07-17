@@ -20,6 +20,7 @@ class CreateMahasiswaTable extends Migration
             $table->string('nama_lengkap', 20);
             $table->string('password', 100);
             $table->string('email', 25)->unique();
+            $table->text('foto')->nullable();
             
             $table->integer('id_jurusan')->unsigned();
             $table->foreign('id_jurusan')

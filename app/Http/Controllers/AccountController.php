@@ -8,7 +8,7 @@ class AccountController extends Controller
 {
     public function index()
     {
-        return view('account.data');
+        return view('account.dosen');
     }
 
     public function add()
