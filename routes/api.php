@@ -22,3 +22,4 @@ Route::apiResource('pembimbing', 'api\Pembimbing')->middleware('auth:account');
 Route::get('mahasiswa', 'api\Mahasiswa@index')->middleware('auth:account');
 Route::post('mahasiswa', 'api\Mahasiswa@store')->middleware('auth:account');
 Route::get('mahasiswa/{id_mahasiswa}', 'api\Mahasiswa@show')->middleware('auth:account');
+Route::get('mahasiswa/material/form', 'api\Mahasiswa@material_mhs_form')->middleware('auth:account');

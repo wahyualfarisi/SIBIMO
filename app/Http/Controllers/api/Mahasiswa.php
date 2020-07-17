@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 use App\models\Mahasiswa as MahasiswaModel;
 use App\models\JudulSkripsi;
+use App\models\Pembimbing;
+use App\models\Dospem;
+use App\models\Jurusan;
 
 class Mahasiswa extends Controller
 {
@@ -52,7 +55,9 @@ class Mahasiswa extends Controller
             'email' => 'required',
             'id_jurusan' => 'required',
             'angkatan' => 'required',
-            'judul_skripsi' => 'required'
+            'judul_skripsi' => 'required',
+            'pembimbing_1' => 'required',
+            'pembimbing_2' => 'required'
         ]);
 
         if($validate->fails())
@@ -100,9 +105,38 @@ class Mahasiswa extends Controller
             $judul_skripsi->id_mahasiswa = $mahasiswa->id_mahasiswa;
             $judul_skripsi->save();
         }catch(\Exception $e){
+            DB::rollback();
             return response()->json([
                 'status'   => false,
                 'message'  => 'Something wrong , when add judul skripsi'
+            ], 500);
+        }
+
+        //insert to pembimbing 1
+        try{
+            $pembimbing_1 = new Pembimbing;
+            $pembimbing_1->id_dospem = $request->pembimbing_1;
+            $pembimbing_1->id_mahasiswa = $mahasiswa->id_mahasiswa;
+            $pembimbing_1->save();
+        }catch(\Exception $e){
+            DB::rollback();
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something wring , when add pembimbing 1'
+            ], 500);
+        }
+
+        //insert into pembimbing 2
+        try{
+            $pembimbing_2 = new Pembimbing;
+            $pembimbing_2->id_dospem = $request->pembimbing_2;
+            $pembimbing_2->id_mahasiswa = $mahasiswa->id_mahasiswa;
+            $pembimbing_2->save();
+        }catch(\Exception $e){
+            DB::rollback();
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something wring , when add pembimbing 2'
             ], 500);
         }
 
@@ -131,6 +165,34 @@ class Mahasiswa extends Controller
 
 
         return $data_mahasiswa;
-
     }
+
+    public function material_mhs_form(Request $request)
+    {
+        if(!in_array(auth('account')->user()->level, ['TU'] ) )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Permission denied'
+        ], 401);
+
+        try{
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Fetch material form add mahasiswa',
+                'results'  => [
+                    'jurusan' => Jurusan::all(),
+                    'dospem'  => Dospem::with('getAccount')->get()
+                ]
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something wrong, please try again'
+            ], 500);
+        }
+
+        
+    }
+
+
 }

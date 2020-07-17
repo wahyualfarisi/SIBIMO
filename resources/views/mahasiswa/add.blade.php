@@ -85,7 +85,7 @@
                                                 <div class="input-field col s6">
                                                     <div>
                                                         <label for="angkatan" class="active">Angkatan</label>
-                                                        <input id="angkatan" name="angkatan" type="text" class="validate" required>
+                                                        <input id="angkatan" name="angkatan" type="text" class="validate" placeholder="Contoh: 2015" required>
                                                     </div>
                                                 </div>
                                                 
@@ -98,10 +98,10 @@
                                                     </div>
                                                 </div>
                                                
-                                                <div class="input-field-pembimbing">
+                                                <div class="input-field-judul">
                                                     <div class="col s12 red darken-4">
                                                             <div class="mt-2"></div>
-                                                            <h6 class="white-text">Judul Tugas AKhir</h6>
+                                                            <h6 class="white-text">Input Judul Tugas AKhir</h6>
                                                             <hr class="light">
                                                     </div>
                                                     
@@ -109,10 +109,38 @@
                                                     <div class="col s12" style="margin-top: 40px;">
                                                         <div id="row-level">
                                                             <label for="">Judul</label>
-                                                            <textarea name="judul_skripsi" id="judul_skripsi" class="materialize-textarea" cols="30" rows="10" required></textarea>
+                                                            <textarea name="judul_skripsi" id="judul_skripsi" class="materialize-textarea" cols="30" rows="10" placeholder="Contoh: SISTEM INFORMASI BIMBINGAN ONLINE " required  ></textarea>
                                                         </div>
                                                         <div class="input-field err-container level_error"></div>
                                                     </div>
+                                                </div>
+
+
+                                                <div class="input-field-pembimbing">
+                                                        <div class="col s12 red darken-4">
+                                                                <div class="mt-2"></div>
+                                                                <h6 class="white-text">Pilih Pembimbing 1 dan 2</h6>
+                                                                <hr class="light">
+                                                        </div>
+                                                        
+            
+                                                        <div class="col s12 m6 l6" style="margin-top: 40px;">
+                                                            <div id="row-level">
+                                                                <label for="">Pembimbing 1</label>
+                                                                <select name="pembimbing_1" class="browser-default" id="pembimbing_1" required>
+                                                                    
+                                                                </select>
+                                                            </div>
+                                                            <div class="input-field err-container level_error"></div>
+                                                        </div>
+
+                                                        <div class="col s12 m6 l6" style="margin-top: 40px;">
+                                                            <div id="row-level">
+                                                                <label for="">Pembimbing 2</label>
+                                                                <select name="pembimbing_2" class="browser-default" id="pembimbing_2" required></select>
+                                                            </div>
+                                                            <div class="input-field err-container level_error"></div>
+                                                        </div>
                                                 </div>
                                                
                                                

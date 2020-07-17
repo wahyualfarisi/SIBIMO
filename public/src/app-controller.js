@@ -693,9 +693,9 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
         })
     }
 
-    const load_jurusan = ( cb ) => {
+    const load_material_form = ( cb ) => {
         AJAX.getRes(
-            `/api/jurusan`,
+            `/api/mahasiswa/material/form`,
             {},
             null,
             res => {
@@ -847,14 +847,15 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             })
         },
         add: () => {
-            console.log('add mahasiswa');
+            
             EventListener_add();
-            load_jurusan(res => {
+            load_material_form(res => {
+                console.log(res);
                 if(res.status){
                     $('#loader_container').hide();
                     $('#main_container').show();
-                    UI.displaySelectJurusan(res.results)
-
+                    UI.displaySelectJurusan(res.results.jurusan)
+                    UI.displayDospem(res.results.dospem)
                 }
             })
         }

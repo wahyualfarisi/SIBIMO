@@ -45,6 +45,16 @@ const DashboardUI = ( () => {
 })();
 
 const MahasiswaUI = ( () => {
+    const displayFieldPembimbing = (data, dom) => {
+        let output = '<option value="" selected="">-- Pilih Pembimbing --</option>';
+        if(data.length > 0){
+            data.forEach(item => {
+                output += `<option value="${item.id_dospem}"> ${item.get_account.nama_lengkap} (${item.get_account.level}) </option>`
+            })
+        }
+        $(dom).html(output);
+    }
+
     return {
         displaySelectJurusan: (data) => {
             let output = '<option value="" selected="">-- Pilih Jurusan --</option>';
@@ -54,6 +64,16 @@ const MahasiswaUI = ( () => {
                 })
             }
             $('#id_jurusan').html(output);
+        },
+        displayDospem: (data) => {
+
+            let pembimbing1 = data.filter(item => parseInt(item.pembimbing)  === 1 );
+            let pembimbing2 = data.filter(item => parseInt(item.pembimbing)  === 2 );
+
+            displayFieldPembimbing(pembimbing1, '[name=pembimbing_1]')
+            displayFieldPembimbing(pembimbing2, '[name=pembimbing_2]')
+
+            
         }
     }
 })()

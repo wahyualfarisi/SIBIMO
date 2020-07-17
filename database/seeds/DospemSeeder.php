@@ -29,7 +29,7 @@ class DospemSeeder extends Seeder
             ],
             [
                 'id_account' => 5, // GUN
-                'pembimbing' => 1, // pembimbing 2
+                'pembimbing' => 1, // pembimbing 1
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
