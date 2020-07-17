@@ -18,5 +18,10 @@ class Kaprod extends Model
         return $this->belongsTo('App\models\Jurusan','id_jurusan', 'id_jurusan');
     }
 
+    public function get_account()
+    {
+        return $this->belongsTo('App\models\Account','id_account','id_account');
+    }
+
 
 }

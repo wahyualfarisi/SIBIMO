@@ -84,7 +84,7 @@ class AccountSeeder extends Seeder
             [ // 7
                 'nip' => '7201160111'.$no++,
                 'email' => 'alex@test.com',
-                'nama_lengkap' => 'Alex',
+                'nama_lengkap' => 'Alex S.KOM, M.KOM',
                 'password' => bcrypt('12345'),
                 'no_telp' => null,
                 'alamat' => null,

@@ -296,6 +296,12 @@ const JurusanController = ( (AJAX, LIB) => {
                     {
                         data: null,
                         render: (data, type, row) => {
+                            return `<h6> ${row.get_kaprodi.get_account.nama_lengkap} </h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
                             return moment(row.created_at).format("Y-M-D H:s")
                         }
                     },
@@ -333,7 +339,7 @@ const AccountController = ( (AJAX, LIB) => {
                 language: AJAX.dtLanguage(),
                 dom: '<Bf<t>ip>',
                 pageLength: 50,
-                scrollY: 300,
+                scrollY: 400,
                 scrollX: true,
                 buttons: {
                     dom: {
@@ -391,6 +397,12 @@ const AccountController = ( (AJAX, LIB) => {
                                 dt.ajax.reload()
                             },
                         },
+                        {
+                            text: '<i class="material-icons dp48">add</i>',
+                            action: function (e, dt, node, config) {
+                                location.hash = '#/account/add';
+                            },
+                        },
                     ]
                 },
                 ajax: AJAX.dtSettingSrc(
@@ -425,7 +437,7 @@ const AccountController = ( (AJAX, LIB) => {
                     {
                         data: null,
                         render: (data, type, row) => {
-                            return `<h6> ${row.email} </h6>`
+                            return `<h6> <b>${row.email}</b> </h6>`
                         }
                     },
                     {

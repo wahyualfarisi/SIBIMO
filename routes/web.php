@@ -22,8 +22,14 @@ Route::group([
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/fakultas', 'FakultasController@index');
     Route::get('/jurusan', 'JurusanController@index');
+
     Route::get('/account', 'AccountController@index');
+    Route::get('/account/tu', 'AccountController@tu');
+    Route::get('/account/kaprodi', 'AccountController@kaprodi');
+    Route::get('/account/add', 'AccountController@add');
+
     Route::get('/mahasiswa','MahasiswaController@index');
+    Route::get('/mahasiswa/add', 'MahasiswaController@add');
     Route::get('/laporan','LaporanController@index');
     Route::get('/notifikasi', 'NotificationController@index');
 });

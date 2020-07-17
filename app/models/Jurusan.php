@@ -13,4 +13,11 @@ class Jurusan extends Model
         'kode_jurusan',
         'nama_jurusan'
     ];
+
+    public function get_kaprodi()
+    {
+        return $this->hasOne('App\models\Kaprod', 'id_jurusan','id_jurusan');
+    }
+
+
 }

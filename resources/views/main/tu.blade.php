@@ -117,15 +117,33 @@
                     <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Jurusan</span></a>
             </li>
 
-
+            <li class="navigation-header">
+                    <a class="navigation-header-text">Kelola akun </a><i class="navigation-header-icon material-icons">more_horiz</i>
+            </li>
+            <li class="bold">
+                    <a class="waves-effect waves-cyan " href="#/account/add"><i class="material-icons white-text">add</i><span class="menu-title" data-i18n="">Tambah Akun</span></a>
+            </li>
+            <li class="bold">
+                    <a class="waves-effect waves-cyan " href="#/mahasiswa/add"><i class="material-icons white-text">add</i><span class="menu-title" data-i18n="">Tambah Mahasiswa</span></a>
+            </li>
 
 
             <li class="navigation-header">
-                <a class="navigation-header-text">ACCOUNT </a><i class="navigation-header-icon material-icons">more_horiz</i>
+                <a class="navigation-header-text">DATA ACCOUNT </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-
+            <li class="bold">
+                    <a class="waves-effect waves-cyan " href="#/account/tu"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">TU</span></a>
+            </li>
+            <li class="bold">
+                    <a class="waves-effect waves-cyan " href="#/account/kaprodi"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Kaprodi</span></a>
+            </li>
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/account"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Dosen Pembimbing </span></a>
+            </li>
+            
+
+            <li class="navigation-header">
+                    <a class="navigation-header-text">DATA MAHASISWA </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
             <li class="bold">
                     <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa & Judul Skripsi</span></a>

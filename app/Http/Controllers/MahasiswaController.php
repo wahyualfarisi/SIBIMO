@@ -10,4 +10,9 @@ class MahasiswaController extends Controller
     {
         return view('mahasiswa.data');
     }
+
+    public function add()
+    {
+        return view('mahasiswa.add');
+    }
 }

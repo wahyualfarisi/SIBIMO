@@ -10,4 +10,19 @@ class AccountController extends Controller
     {
         return view('account.data');
     }
+
+    public function add()
+    {
+        return view('account.add');
+    }
+
+    public function tu()
+    {
+
+    }
+
+    public function kaprodi()
+    {
+        
+    }
 }

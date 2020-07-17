@@ -15,6 +15,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Jurusan</th>
+                                                    <th>Kaprodi</th>
                                                     <th>Created at</th>
                                                     <th>#</th>
                                                 </tr>
@@ -25,6 +26,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>Jurusan</th>
+                                                    <th>Kaprodi</th>
                                                     <th>Created at</th>
                                                     <th>#</th>
                                                 </tr>

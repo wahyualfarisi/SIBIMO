@@ -22,7 +22,7 @@ class Jurusan extends Controller
             return response()->json([
                 'status'   => true,
                 'message'  => 'Fetch jurusan',
-                'results'  => JurusanModel::all()
+                'results'  => JurusanModel::with('get_kaprodi.get_account')->get()
             ]);
         }catch(\Exception $e){
             return response()->json([
