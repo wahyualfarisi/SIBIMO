@@ -704,6 +704,22 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             err => {
                 console.log(res);
             }
+        );
+    }
+
+    const load_detail_mahasiswa = (id_mahasiswa) => {
+        AJAX.getRes(
+            `/api/mahasiswa/${id_mahasiswa}`,
+            {},
+            null,
+            res => {
+                if(res.status){
+                    UI.displayDetail(res.results);
+                }
+            },
+            err => {
+                console.log(err);
+            }
         )
     }
 
@@ -847,10 +863,8 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             })
         },
         add: () => {
-            
             EventListener_add();
             load_material_form(res => {
-                console.log(res);
                 if(res.status){
                     $('#loader_container').hide();
                     $('#main_container').show();
@@ -858,6 +872,9 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
                     UI.displayDospem(res.results.dospem)
                 }
             })
+        },
+        detail: ( id_mahasiswa ) => {
+            load_detail_mahasiswa( id_mahasiswa );
         }
     }
 })(ajaxSetting, libSettings, MahasiswaUI);

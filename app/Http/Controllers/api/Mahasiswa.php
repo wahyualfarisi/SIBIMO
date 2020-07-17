@@ -163,8 +163,25 @@ class Mahasiswa extends Controller
             'get_pembimbing.get_dospem.getAccount'
         ])->findOrFail($id_mahasiswa);
 
+        $histori_judul = JudulSkripsi::where('id_mahasiswa', $id_mahasiswa)->get();
 
-        return $data_mahasiswa;
+        try{    
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Fetch detail mahasiswa',
+                'results'  => [
+                    'data_mahasiswa' => $data_mahasiswa,
+                    'histori_judul'  => $histori_judul
+                ]
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something wrong, when fetch detail mahasiswa'
+            ], 500);
+        }
+
+    
     }
 
     public function material_mhs_form(Request $request)

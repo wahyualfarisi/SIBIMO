@@ -16,8 +16,9 @@ class MahasiswaController extends Controller
         return view('mahasiswa.add');
     }
 
-    public function detail()
+    public function detail( $id_mahasiswa )
     {
-        return view('mahasiswa.detail');
+        $data['id_mahasiswa'] = $id_mahasiswa;
+        return view('mahasiswa.detail', $data);
     }
 }
