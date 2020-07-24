@@ -109,7 +109,16 @@
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
+            </li>
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">ACC Kartu Bimbingan</span></a>
+            </li>
            
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Aktifitas Bimbingan</span></a>
+            </li>
             
             <li class="navigation-header">
                 <a class="navigation-header-text">DATA BIMBINGAN </a><i class="navigation-header-icon material-icons">more_horiz</i>

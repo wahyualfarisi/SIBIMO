@@ -123,7 +123,7 @@
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa Bimbingan</span></a>
+                <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa</span></a>
             </li>
 
             <li class="bold">

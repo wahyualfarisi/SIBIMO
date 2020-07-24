@@ -17,16 +17,16 @@
           <div class="card-content">
              <div class="col s12">
                <div class="col s2" id="avatar_user">
-                <img src="{{asset('images/default_user.png')}} " width="100%;" alt="" class="circle">   
-            </div>
-                <div class="col s6">
-                    <h4 id="info_user"></h4>
-                    <h5 class="light" id="user_position"></h5>
-                    <h5 class="light" id="user_service"></h5>
-                    <a href="#/me" class="btn-flat mb-1 waves-effect">
-                        <i class="material-icons right">arrow_forward</i> View Profile
-                   </a>
-                </div> 
+                    <img src="{{asset('images/default_user.png')}} " width="100%;" alt="" class="circle">   
+                </div>
+                    <div class="col s6">
+                        <h4 id="info_user"></h4>
+                        <h5 class="light" id="user_position"></h5>
+                        <h5 class="light" id="user_service"></h5>
+                        <a href="#/me" class="btn-flat mb-1 waves-effect">
+                            <i class="material-icons right">arrow_forward</i> View Profile
+                    </a>
+                    </div> 
               </div>
               
               <h4 class="card-title" id="info_user"></h4>

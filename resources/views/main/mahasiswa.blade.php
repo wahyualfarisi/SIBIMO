@@ -113,8 +113,14 @@
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
             </li>
+
+            <li class="navigation-header">
+                <a class="navigation-header-text">PEMBIMBING</a><i class="navigation-header-icon material-icons">more_horiz</i>
+            </li>
+
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/pembimbing"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Dosen Pembimbing</span></a>
+                <a class="waves-effect waves-cyan " href="#/pembimbing/1"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Fauziah S.KOM, M.KOM</span></a>
+                <a class="waves-effect waves-cyan " href="#/pembimbing/2"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">ALEX S.KOM, M.KOM</span></a>
             </li>
            
             
@@ -133,17 +139,7 @@
 
 
 
-            <li class="navigation-header">
-                <a class="navigation-header-text">PRINT </a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
-
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/account"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n=""> Kartu Bimbingan </span></a>
-            </li>
-
-            <li class="bold" style="margin-bottom: 40px;">
-                
-            </li>
+         
            
             
         </ul>
