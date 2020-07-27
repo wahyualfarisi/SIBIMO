@@ -16,20 +16,19 @@ class CreateBimbinganTable extends Migration
         Schema::create('bimbingan', function (Blueprint $table) {
             $table->increments('id_bimbingan');
 
+            $table->integer('id_bab')->unsigned();
+            $table->foreign('id_bab')
+                  ->references('id_bab')
+                  ->on('bab')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
             $table->integer('id_mahasiswa')->unsigned();
             $table->foreign('id_mahasiswa')
-                  ->references('id_mahasiswa')
-                  ->on('mahasiswa')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-
-
-            $table->integer('id_kategori_bimbingan')->unsigned();
-            $table->foreign('id_kategori_bimbingan')
-                  ->references('id_kategori_bimbingan')
-                  ->on('kategori_bimbingan')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                ->references('id_mahasiswa')
+                ->on('mahasiswa')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->integer('id_pembimbing')->unsigned();
             $table->foreign('id_pembimbing')

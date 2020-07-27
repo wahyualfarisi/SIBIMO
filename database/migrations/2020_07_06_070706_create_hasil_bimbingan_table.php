@@ -16,13 +16,13 @@ class CreateHasilBimbinganTable extends Migration
         Schema::create('hasil_bimbingan', function (Blueprint $table) {
             $table->increments('id_hasil_bimbingan');
 
-            $table->integer('id_kartu_bimbingan')->unsigned();
-            $table->foreign('id_kartu_bimbingan')
-                  ->references('id_kartu_bimbingan')
-                  ->on('kartu_bimbingan')
+            $table->integer('id_bimbingan')->unsigned();
+            $table->foreign('id_bimbingan')
+                  ->references('id_bimbingan')
+                  ->on('bimbingan')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-
+           
             $table->integer('id_pembimbing')->unsigned();
             $table->foreign('id_pembimbing')
                   ->references('id_pembimbing')
@@ -30,13 +30,7 @@ class CreateHasilBimbinganTable extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            $table->integer('id_bimbingan')->unsigned();
-            $table->foreign('id_bimbingan')
-                  ->references('id_bimbingan')
-                  ->on('bimbingan')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-
+            $table->text('permasalahan');
             $table->enum('revisi', ['YA','TIDAK']);
             $table->enum('acc', ['YA','TIDAK']);
 

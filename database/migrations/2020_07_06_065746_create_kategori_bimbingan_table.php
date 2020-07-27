@@ -13,11 +13,33 @@ class CreateKategoriBimbinganTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_bimbingan', function (Blueprint $table) {
-            $table->increments('id_kategori_bimbingan');
+        Schema::create('bab', function (Blueprint $table) {
+            $table->increments('id_bab');
 
-            $table->string('nama_kategori', 30);
+            $table->integer('id_mahasiswa')->unsigned();
+            $table->foreign('id_mahasiswa')
+                  ->references('id_mahasiswa')
+                  ->on('mahasiswa')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
+            $table->string('nama_bab', 10);
+            $table->enum('status', ['progress', 'selesai'])->default('progress');
             $table->timestamps();
+        });
+
+        Schema::create('plagiatisme', function(Blueprint $table) {
+            $table->increments('id_plagiatisme');
+
+            $table->integer('id_bab')->unsigned();
+            $table->foreign('id_bab')
+                  ->references('id_bab')
+                  ->on('bab')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+           
+            $table->string('nilai_plagiatisme', 25);
+            $table->text('foto');
         });
     }
 
@@ -28,6 +50,7 @@ class CreateKategoriBimbinganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_bimbingan');
+        Schema::dropIfExists('plagiatisme');
+        Schema::dropIfExists('bab');
     }
 }

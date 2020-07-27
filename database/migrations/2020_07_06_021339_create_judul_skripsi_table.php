@@ -26,6 +26,8 @@ class CreateJudulSkripsiTable extends Migration
             $table->text('judul')->nullable();
             $table->enum('status', ['active','inactive']);
             $table->text('deskripsi')->nullable();
+
+            $table->text('ttd_kaprodi')->nullable();
                 
             $table->timestamps();
         });

@@ -16,12 +16,14 @@ class CreatePembimbingTable extends Migration
         Schema::create('pembimbing', function (Blueprint $table) {
             $table->increments('id_pembimbing');
             
-            $table->integer('id_dospem')->unsigned();
-            $table->foreign('id_dospem')
-                  ->references('id_dospem')
-                  ->on('dospem')
+            $table->integer('id_account')->unsigned();
+            $table->foreign('id_account')
+                  ->references('id_account')
+                  ->on('account')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
+
+            $table->enum('pembimbing_status', ['','1','2'])->default('');
 
             $table->integer('id_mahasiswa')->unsigned();
             $table->foreign('id_mahasiswa')
@@ -30,7 +32,17 @@ class CreatePembimbingTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
+            $table->text('ttd_pembimbing')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('pengujian_sistem', function(Blueprint $table) {
+            $table->increments('id_pengujian');
+
+            $table->date('tanggal');
+            $table->text('hasil_pengujian')->nullable();
+            $table->enum('status', ['oke','tidak'])->default('oke');
+ 
         });
     }
 
@@ -41,6 +53,7 @@ class CreatePembimbingTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('pengujian_sistem');
         Schema::dropIfExists('pembimbing');
     }
 }
