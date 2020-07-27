@@ -101,7 +101,7 @@
                                                 <div class="input-field-judul">
                                                     <div class="col s12 red darken-4">
                                                             <div class="mt-2"></div>
-                                                            <h6 class="white-text">Input Judul Tugas AKhir</h6>
+                                                            <h6 class="white-text">Input Judul Tugas Akhir</h6>
                                                             <hr class="light">
                                                     </div>
                                                     

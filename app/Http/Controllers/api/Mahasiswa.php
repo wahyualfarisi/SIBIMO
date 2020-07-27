@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\models\Mahasiswa as MahasiswaModel;
 use App\models\JudulSkripsi;
 use App\models\Pembimbing;
-use App\models\Dospem;
 use App\models\Jurusan;
+use App\models\Account;
 
 class Mahasiswa extends Controller
 {
@@ -76,8 +76,7 @@ class Mahasiswa extends Controller
             'status'   => false,
             'message'  => 'NIM / Email Sudah ada'
         ]);
-
-       
+        
         try{
             $mahasiswa = new MahasiswaModel;
             $mahasiswa->nim = $request->nim;
@@ -115,7 +114,8 @@ class Mahasiswa extends Controller
         //insert to pembimbing 1
         try{
             $pembimbing_1 = new Pembimbing;
-            $pembimbing_1->id_dospem = $request->pembimbing_1;
+            $pembimbing_1->id_account = $request->pembimbing_1;
+            $pembimbing_1->pembimbing_status = '1';
             $pembimbing_1->id_mahasiswa = $mahasiswa->id_mahasiswa;
             $pembimbing_1->save();
         }catch(\Exception $e){
@@ -129,7 +129,8 @@ class Mahasiswa extends Controller
         //insert into pembimbing 2
         try{
             $pembimbing_2 = new Pembimbing;
-            $pembimbing_2->id_dospem = $request->pembimbing_2;
+            $pembimbing_2->id_account = $request->pembimbing_2;
+            $pembimbing_1->pembimbing_status = '2';
             $pembimbing_2->id_mahasiswa = $mahasiswa->id_mahasiswa;
             $pembimbing_2->save();
         }catch(\Exception $e){
@@ -160,7 +161,7 @@ class Mahasiswa extends Controller
         $data_mahasiswa = MahasiswaModel::with([
             'get_jurusan',
             'get_judul_skripsi',
-            'get_pembimbing.get_dospem.getAccount'
+            'get_pembimbing.get_account'
         ])->findOrFail($id_mahasiswa);
 
         $histori_judul = JudulSkripsi::where('id_mahasiswa', $id_mahasiswa)->get();
@@ -198,7 +199,7 @@ class Mahasiswa extends Controller
                 'message'  => 'Fetch material form add mahasiswa',
                 'results'  => [
                     'jurusan' => Jurusan::all(),
-                    'dospem'  => Dospem::with('getAccount')->get()
+                    'dospem'  => Account::where('level', '!=', 'TU')->get()
                 ]
             ]);
         }catch(\Exception $e){
@@ -208,7 +209,6 @@ class Mahasiswa extends Controller
             ], 500);
         }
 
-        
     }
 
 

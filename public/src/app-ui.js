@@ -49,15 +49,17 @@ const MahasiswaUI = ( () => {
         let output = '<option value="" selected="">-- Pilih Pembimbing --</option>';
         if(data.length > 0){
             data.forEach(item => {
-                output += `<option value="${item.id_dospem}"> ${item.get_account.nama_lengkap} (${item.get_account.level}) </option>`
+                output += `<option value="${item.id_account}"> ${item.nama_lengkap} (${item.level}) </option>`
             })
         }
         $(dom).html(output);
     }
 
     const sortPembimbing = (a, b) => {
-        let pembimbing1 = parseInt(a.get_dospem.id_pembimbing);
-        let pembimbing2 = parseInt(b.get_dospem.id_pembimbing);
+        let pembimbing1 = parseInt(a.pembimbing_status);
+        let pembimbing2 = parseInt(b.pembimbing_status);
+
+
 
         let comparison = 0;
         if(pembimbing1 > pembimbing2){
@@ -79,13 +81,8 @@ const MahasiswaUI = ( () => {
             }
             $('#id_jurusan').html(output);
         },
-        displayDospem: (data) => {
-
-            let pembimbing1 = data.filter(item => parseInt(item.pembimbing)  === 1 );
-            let pembimbing2 = data.filter(item => parseInt(item.pembimbing)  === 2 );
-
-            displayFieldPembimbing(pembimbing1, '[name=pembimbing_1]')
-            displayFieldPembimbing(pembimbing2, '[name=pembimbing_2]')
+        displaySelectDospem: ( data, dom ) => {
+            return displayFieldPembimbing(data, dom);
         },
         displayDetail: (data) => {
             $('#loader_container').hide();
@@ -124,14 +121,14 @@ const MahasiswaUI = ( () => {
                             <div style="display: inline-flex; width: 100%;" class="mt-4">
                                 <img src="${BASE_URL}/images/default_user.png" class="circle" width="50px" alt="">
                                 <h5 class="ml-4">
-                                    ${item.get_dospem.get_account.nama_lengkap}
+                                    ${item.get_account.nama_lengkap}
                                 </h5>
                                 <br>
                             </div>
                         </div>
                         <div class="card-action red darken-3">
                             <div id="clients-bar" class="center-align">
-                                <span class="white-text date_today">PEMBIMBING ${item.get_dospem.pembimbing}</span>
+                                <span class="white-text date_today">PEMBIMBING ${item.pembimbing_status}</span>
                             </div>
                         </div>
                     </div>

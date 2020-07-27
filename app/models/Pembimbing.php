@@ -13,9 +13,14 @@ class Pembimbing extends Model
         'id_mahasiswa'
     ];
 
-    public function get_dospem()
+    public function get_account()
     {
-        return $this->belongsTo('App\models\Dospem', 'id_dospem','id_dospem');
+        return $this->belongsTo('App\models\Account', 'id_account','id_account');
+    }
+
+    public function get_mahasiswa()
+    {
+        return $this->belongsTo('App\models\Mahasiswa', 'id_mahasiswa', 'id_mahasiswa');
     }
 
 }

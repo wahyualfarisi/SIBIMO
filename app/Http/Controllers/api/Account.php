@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 use App\models\Account as AccountModel;
-use App\models\Dospem;
 use App\models\Kaprod;
 
 class Account extends Controller
@@ -34,8 +33,7 @@ class Account extends Controller
             $level = 'TU';
         }
         
-        $data = AccountModel::where('level', '=', $level )
-        ->get();
+        $data = AccountModel::where('level', '=', $level )->get();
 
 
         try{
@@ -72,8 +70,7 @@ class Account extends Controller
             'nama_lengkap' => 'required',
             'no_telp' => 'required',
             'alamat' => 'required',
-            'level' => 'required|in:TU,KAPRODI,DOSEN',
-            'to_be_pembimbing' => 'required_if:level,==,DOSEN,KAPRODI|in:1,2'
+            'level' => 'required|in:TU,KAPRODI,DOSEN'
         ]);
 
         if($validate->fails())
@@ -82,21 +79,6 @@ class Account extends Controller
             'message'  => 'Field required',
             'error'    => $validate->errors()
         ], 422);
-
-    
-        // if( $request->level == 'KAPRODI' ){
-        //     $validate = Validator::make($request->all(), [
-        //         'id_jurusan' => 'required'
-        //     ]);
-
-        //     if($validate->fails()){
-        //         return response()->json([
-        //             'status'   => false,
-        //             'message'  => 'Your selected level with value KAPRODI',
-        //             'errors'   => $validate->errors()
-        //         ]);
-        //     }
-        // }
 
 
         //check apakah nip dan email sudah di gunakan
@@ -130,55 +112,7 @@ class Account extends Controller
                 'message'  => 'Failed to add account'
             ], 500);
         }
-
-        switch($request->level)
-        {
-            case 'DOSEN':
-                case 'KAPRODI':
-                try{
-                    $pembimbing = new Dospem;
-                    $pembimbing->id_account = $new_account->id_account;
-                    $pembimbing->pembimbing = $request->to_be_pembimbing;
-                    $pembimbing->save();
-                }catch(\Exception $e){
-                    DB::rollback();
-                    return response()->json([
-                        'status'  => false,
-                        'message' => 'Failed to add dospem'
-                    ], 500);
-                }
-            break;
-
-
-            // case 'KAPRODI':
-            //     try{
-            //         $pembimbing = new Dospem;
-            //         $pembimbing->id_account = $new_account->id_account;
-            //         $pembimbing->pembimbing = $request->to_be_pembimbing;
-
-            //         $pembimbing->save();
-            //     }catch(\Exception $e){
-            //         DB::rollback();
-            //         return response()->json([
-            //             'status'  => false,
-            //             'message' => 'Failed to add dospem'
-            //         ], 500);
-            //     }
-
-            //     try{
-            //         $kaprodi   = new Kaprod;
-            //         $kaprodi->id_account = $new_account->id_account;
-            //         $kaprodi->id_jurusan = $request->id_jurusan;
-            //         $kaprodi->save();
-            //     }catch(\Exception $e){
-            //         return  response()->json([
-            //             'status'   => false,
-            //             'message'  => 'Failed to add kaprodi'
-            //         ]);
-            //     }
-            // break;
-        }
-        
+   
         DB::commit();
         return response()->json([
             'status'   => true,

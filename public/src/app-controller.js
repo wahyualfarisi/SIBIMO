@@ -666,9 +666,20 @@ const PembimbingController = ( (AJAX, LIB) => {
 
 
 const MahasiswaController = ( (AJAX, LIB, UI) => {
-    let T_MAHASISWA;
+    let T_MAHASISWA, DOSPEM = [];
 
     const EventListener_add = () => {
+
+        $('[name=pembimbing_1]').on('change', function() {
+            let selected_id = parseInt($(this).val());
+            let dospem = DOSPEM;
+
+            let filterDospem = dospem.filter(item => parseInt(item.id_account) !== selected_id);
+
+            UI.displaySelectDospem(filterDospem, '[name=pembimbing_2]');
+
+        })
+
         $('#form_add_mahasiswa').on('submit', function(e) {
             e.preventDefault();
         }).validate({
@@ -680,6 +691,7 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
                     res => {
                         if(res.status){
                             $('#form_add_mahasiswa')[0].reset();
+                            location.hash = '#/mahasiswa/'+res.results.id_mahasiswa;
                             M.toast({ html: res.message })
                         }else{
                             M.toast({ html: res.message })
@@ -714,6 +726,7 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             null,
             res => {
                 if(res.status){
+                    console.log(res);
                     UI.displayDetail(res.results);
                 }
             },
@@ -866,10 +879,16 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             EventListener_add();
             load_material_form(res => {
                 if(res.status){
+
+                    //push data dospem on var dospem
+                    DOSPEM = res.results.dospem
+
                     $('#loader_container').hide();
                     $('#main_container').show();
                     UI.displaySelectJurusan(res.results.jurusan)
-                    UI.displayDospem(res.results.dospem)
+
+                    //embed pembimbing 1 select
+                    UI.displaySelectDospem(res.results.dospem, '[name=pembimbing_1]');
                 }
             })
         },

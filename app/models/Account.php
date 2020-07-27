@@ -50,11 +50,6 @@ class Account extends Authenticatable implements JWTSubject
     }
     
 
-    public function get_dospem()
-    {
-        return $this->hasOne('App\models\Dospem', 'id_account','id_account');
-    }
-
     public function get_kaprod()
     {
         return $this->hasOne('App\models\Kaprod','id_account','id_account');

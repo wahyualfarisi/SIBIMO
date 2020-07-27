@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\models\Dospem;
+use App\models\Pembimbing as Pembimbing_Model;
 
 class Pembimbing extends Controller
 {
@@ -17,7 +17,7 @@ class Pembimbing extends Controller
             'message'  => 'Permission denied'
         ], 401);
 
-        $data = Dospem::with('getAccount','getMahasiswaBimbingan')->get();
+        $data = Pembimbing_Model::with(['get_account','get_mahasiswa'])->get();
 
         try{
             return response()->json([
