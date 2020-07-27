@@ -16,6 +16,8 @@ Route::get('dashboard', 'api\Dashboard@index');
 
 
 Route::apiResource('jurusan', 'api\Jurusan')->middleware('auth:account');
+Route::post('/jurusan/{id_jurusan}/update_kaprodi', 'api\Jurusan@updateKaprodi');
+
 Route::apiResource('account', 'api\Account')->middleware('auth:account');
 Route::apiResource('pembimbing', 'api\Pembimbing')->middleware('auth:account');
 

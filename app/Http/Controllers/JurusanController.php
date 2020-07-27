@@ -10,4 +10,11 @@ class JurusanController extends Controller
     {
         return view('jurusan.data');  
     }
+
+    public function show($id)
+    {
+        $data['id'] = $id;
+        
+        return view('jurusan.detail', $data);
+    }
 }

@@ -197,6 +197,13 @@ const JurusanController = ( (AJAX, LIB) => {
         })
     }
 
+    const OnUpdateKaprodiHandler = (t_mahasiswa) => {
+
+        $('#t_detail_jurusan').on('click', '.btn_update_kaprodi', function() {
+            $('#modalUpdateKaprodi').modal('open')
+        })
+    }
+
     return {
         data: () => {
             console.log('data jurusan');
@@ -215,7 +222,7 @@ const JurusanController = ( (AJAX, LIB) => {
                     dom: {
                         button: {
                             tag: 'button',
-                            className: 'btn btn-small red darken-3 my-action'
+                            className: 'btn btn-floating btn-small red darken-3 my-action'
                         }
                     },
                     buttons: [
@@ -315,6 +322,9 @@ const JurusanController = ( (AJAX, LIB) => {
                             <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light red accent-2 white-text btn__delete" data-id_jurusan="${row.id_jurusan}">
                                 <i class="material-icons">close</i>
                             </a>
+                            <a href="#/jurusan/${row.id_jurusan}" class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light blue white-text">
+                                <i class="material-icons">arrow_forward</i>
+                            </a>
                             `   
                         }
                     }
@@ -325,6 +335,146 @@ const JurusanController = ( (AJAX, LIB) => {
             onSubmitFormDelete(t_jurusan);
             onSubmitFormEdit(t_jurusan);
             
+        },
+
+        detail: id_jurusan => {
+            $('#modalUpdateKaprodi').modal()
+            let t_mahasiswa = $('#t_mahasiswa').DataTable({
+                processing: false,
+                language: AJAX.dtLanguage(),
+                dom: '<Bf<t>ip>',
+                pageLength: 50,
+                scrollY: 300,
+                scrollX: true,
+                buttons: {
+                    dom: {
+                        button: {
+                            tag: 'button',
+                            className: 'btn btn-floating btn-small red darken-3 my-action'
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: 'collection',
+                            text: '<i class="material-icons dp48">file_download</i> ',
+                            buttons: [
+                                {
+                                    extend: 'pdfHtml5',
+                                    text: 'PDF',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_JURUSAN',
+                                    title: 'Data Jurusan'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    text: 'Excel',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_JURUSAN',
+                                    title: 'Data Jurusan'
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    text: 'CSV',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_JURUSAN',
+                                    title: 'Data Jurusan'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5, 6]
+                                    },
+                                    filename: 'DATA_JURUSAN',
+                                    title: '<h4>Data Jurusan</h4>'
+                                },
+                            ]
+                        },
+                        {
+                            text: '<i class="material-icons dp48">autorenew</i>',
+                            action: function (e, dt, node, config) {
+                                dt.ajax.reload()
+                                M.toast({ html: 'Refresh table success' })
+                            },
+                        },
+                    ]
+                },
+                ajax: AJAX.dtSettingSrc(
+                    `/api/jurusan/${id_jurusan}`,
+                    {},
+                    res => {
+                        $('.jurusan_name').html(`${res.results.nama_jurusan}`)
+                        $('.td_kaprodi').html(`
+                            ${res.results.get_kaprodi.get_account.nama_lengkap} <a href="javascript:void(0)" class="btn_update_kaprodi"> <i class="material-icons green-text" style="font-size: 15px;">create</i> </a>
+                        `)
+                        return res.results.get_mahasiswa 
+                    },
+                    err => {
+                        console.log(err)
+                    }
+                ),
+                columns: [
+                    {
+                        data: null,
+                        render: ( data, type, row ) => {
+                            return `
+                            <img src="${BASE_URL}/images/default_user.png" width="40px;" class="circle">
+                            `
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row) => {
+                            return row.nama_lengkap 
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row) => {
+                            return row.nim
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return row.get_judul_skripsi.judul
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row) => {
+                            if(row.no_telp)
+                                return row.no_telp 
+                            else 
+                                return '-'
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row ) => {
+                            return row.angkatan
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type , row ) => {
+                            return `
+                            <a href="#/mahasiswa/${row.id_mahasiswa}" class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit">
+                                <i class="material-icons">arrow_forward</i>
+                            </a>
+                            `
+                        }
+                    }
+                ]
+            });
+
+            OnUpdateKaprodiHandler(t_mahasiswa);
         }
     }
 })(ajaxSetting, libSettings);

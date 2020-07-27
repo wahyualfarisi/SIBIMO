@@ -5,8 +5,11 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddJurusan;
+use Illuminate\Support\Facades\Validator;
 
 use App\models\Jurusan as JurusanModel;
+use App\models\Account;
+use App\models\Kaprod;
 
 class Jurusan extends Controller
 {
@@ -69,7 +72,22 @@ class Jurusan extends Controller
      */
     public function show($id)
     {
-        
+        $jurusan = JurusanModel::with([
+            'get_kaprodi.get_account',
+            'get_mahasiswa.get_judul_skripsi'
+        ])->findOrFail($id);
+        try{
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Detail Jurusan',
+                'results'  => $jurusan
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'status' => false,
+                'error'  => $e->getMessage()
+            ], 500);
+        } 
     }
 
     /**
@@ -128,5 +146,50 @@ class Jurusan extends Controller
             'message'  => 'Success delete jurusan',
             'results'  => $findJurusan
         ]);
+    }
+
+    public function updateKaprodi(Request $request, $id_jurusan)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_account' => 'required',
+            'id_kaprodi' => 'required'
+        ]);
+
+        if($validator->fails())
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Fields Required',
+                'error' => $validator->errors()
+            ], 422);
+
+
+        $kaprodi = Kaprod::findOrFail($request->id_kaprodi);
+        $account = Account::findOrFail($request->id_account);
+
+        if($account->level == 'TU')
+        return response()->json([
+            'status' => false,
+            'messae' => 'TU cannot to be Kaprodi'
+        ]);
+
+
+        try{
+            $kaprodi->id_account = $account->id_account;
+            $kaprodi->update();
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'error'  => $e->getMessage()
+            ], 500);
+        }
+
+        
+
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Success update kaprodi',
+            'results'  => $kaprodi
+        ]);
+        
     }
 }

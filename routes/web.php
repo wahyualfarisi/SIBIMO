@@ -19,7 +19,9 @@ Route::group([
     Route::get('/', 'MainController@index');
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/fakultas', 'FakultasController@index');
+
     Route::get('/jurusan', 'JurusanController@index');
+    Route::get('/jurusan/{id}', 'JurusanController@show');
 
     Route::get('/account/dosen', 'AccountController@index');
     Route::get('/account/tu', 'AccountController@tu');

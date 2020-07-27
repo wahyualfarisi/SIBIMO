@@ -19,5 +19,10 @@ class Jurusan extends Model
         return $this->hasOne('App\models\Kaprod', 'id_jurusan','id_jurusan');
     }
 
+    public function get_mahasiswa()
+    {
+        return $this->hasMany('App\models\Mahasiswa', 'id_jurusan','id_jurusan');
+    }
+
 
 }
