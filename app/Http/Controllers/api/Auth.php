@@ -19,13 +19,15 @@ class Auth extends Controller
             return response()->json([
                 'message' => 'Token verified',
                 'status'  => 200,
-                'data'    => auth('mahasiswa')->user()
+                'level'   => 'MAHASISWA',
+                'results'    => auth('mahasiswa')->user()
             ]);
         }else if(auth('account')->user() ){
             return response()->json([
                 'message' => 'Token verified',
                 'status'  => 200,
-                'data'    => auth('account')->user()
+                'level'   => 'ACCOUNT',
+                'results'    => auth('account')->user()
             ]);
         }
     }

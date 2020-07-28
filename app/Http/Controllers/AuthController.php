@@ -139,7 +139,7 @@ class AuthController extends Controller
  
                      $request->session()->put('credentials', $token);
                      $request->session()->put('level', 'mahasiswa');
-                     $request->session()->put('users', $user);
+                     $request->session()->put('users',  $user);
                      $request->session()->put('login', true);
  
                      return response()->json([

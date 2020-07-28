@@ -43,7 +43,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pagination.css')}}">
     
     <script>
-            var TOKEN = "{{ session('credentials') }}";
+        var TOKEN = "{{ session('credentials') }}";
+        var BASE_URL = "{{ URL::to('/') }}"
+        var LEVEL = "{{ session('level') }}"
     </script>
 
   </head>

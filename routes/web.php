@@ -35,6 +35,8 @@ Route::group([
     Route::get('/pembimbing', 'PembimbingController@index');
     Route::get('/laporan','LaporanController@index');
     Route::get('/notifikasi', 'NotificationController@index');
+
+    Route::get('/me', 'MeController@index');
 });
 //------------------------------END MAIN---------------------------------------------------
 

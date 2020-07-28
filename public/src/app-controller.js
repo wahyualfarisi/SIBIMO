@@ -82,6 +82,68 @@ const MainController = ( () => {
     }
 })();
 
+//profile controller 
+const ProfileController = ( ( AJAX, LIB, UI ) => {
+
+    const EventListener = () => {
+        $(document).on('click', '.btn_update_avatar', function() {
+            $('#modalUpdateAvatar').modal('open');
+        });
+
+        $('[name=foto]').on('change', function(e) {
+            e.preventDefault();
+            AJAX.previewImage(e, '.preview_image_profile')
+        });
+
+        $('#form_update_avatar').on('submit', function(e) {
+            e.preventDefault();
+
+            let url;
+            if(LEVEL == 'mahasiswa'){
+                url = `/api/mahasiswa/update/foto`;
+            }else{
+                url = `/api/account/update/avatar`;
+            }
+
+            AJAX.postFormData(
+                `${url}`,
+                this,
+                null,
+                res => {
+                    $('#modalUpdateAvatar').modal('close');
+                    load_profile()
+                },
+                err => {
+                    console.log(err)
+                }
+            )
+           
+            
+        })
+    }
+
+    const load_profile = () => {
+        AJAX.getRes(
+            `/api/verify`,
+            {},
+            null,
+            res => {
+                UI.display(res)
+            },
+            err => {
+                console.log(err)
+            }
+        )
+    }
+
+    return {
+        init: () => {
+            EventListener();
+            $('#modalUpdateAvatar').modal();
+            load_profile()
+        }
+    }
+})(ajaxSetting, libSettings, ProfileUI)
 
 //dashboard controller 
 const DashboardController = ( ( UI, AJAX ) => {
@@ -865,7 +927,6 @@ const PembimbingController = ( (AJAX, LIB) => {
     }
 })(ajaxSetting, libSettings);
 
-
 const MahasiswaController = ( (AJAX, LIB, UI) => {
     let T_MAHASISWA, DOSPEM = [];
 
@@ -1098,3 +1159,12 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
         }
     }
 })(ajaxSetting, libSettings, MahasiswaUI);
+
+const MeController = ( (AJAX, LIB) => {
+
+    return {
+        init: () => {
+            console.log('init me controller');
+        }
+    }
+})(ajaxSetting, libSettings)

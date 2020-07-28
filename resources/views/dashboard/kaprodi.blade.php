@@ -16,7 +16,7 @@
         <div class="card" style="border-radius: 10px;">
           <div class="card-content">
              <div class="col s12">
-               <div class="col s2" id="avatar_user">
+               <div class="col s2" id="image_user">
                 <img src="{{ asset('images/default_user.png') }} " width="100%;" alt="" class="circle">   
             </div>
                 <div class="col s6">

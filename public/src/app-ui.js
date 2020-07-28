@@ -3,8 +3,23 @@ const DashboardUI = ( () => {
 
     }
 
+    const displayFotoAccount = (data) => {
+        console.log('data', data)
+        let src;
+        if(data.foto) {
+            src = `/api/foto/account/${data.foto}`
+        }else{
+            src = `${BASE_URL}/images/default_user.png`;
+        }
+
+        $('#image_user').html(`
+            <img src="${src}" width="100%;" alt="" class="circle z-depth-5">   
+        `);
+    }
+
     return {
         display: ( res) => {
+            console.log(res);
             //hide loader container
             $('#loader_container').hide();
             $('#card-total-data').show();
@@ -22,20 +37,19 @@ const DashboardUI = ( () => {
                     $('.total_jurusan').text(res.results.jurusan.length);
                     $('.total_mahasiswa').text(res.results.mahasiswa);
                     $('.total_dosen').text(res.results.dosen);
+                    displayFotoAccount(res.info_user)
                     //notification !....
                 break;
 
                 case 'DOSEN':
-
+                    displayFotoAccount(res.info_user)
                 break;
 
                 case 'KAPRODI':
-
-
+                    displayFotoAccount(res.info_user)
                 break;
 
                 case 'MAHASISWA':
-
 
                 break;
             }
@@ -155,6 +169,71 @@ const MahasiswaUI = ( () => {
             })
             $('#t_history_judul').html(output_history);
 
+        }
+    }
+})();
+
+const ProfileUI = ( () => {
+
+    
+
+    const renderAccount = (data) => {
+        $('.nama_lengkap').text(data.results.nama_lengkap);
+
+        $('[name=email]').val(data.results.email);
+        $('[name=nama_lengkap]').val(data.results.nama_lengkap);
+        $('[name=nip]').val(data.results.nip);
+        $('[name=no_telp]').val(data.results.no_telp)
+        $('[name=alamat]').val(data.results.alamat);
+
+        //check foto 
+        let src;
+        if( data.results.foto ) {
+            src = `/api/foto/account/${data.results.foto}`
+            console.log('oke')
+        }else{
+            src = `${BASE_URL}/images/default_user.png`;
+            console.log('no')
+        }
+
+        $('.image_user').html(`
+            <img src="${src}" width="10%;" alt="" class="circle">
+            <a class="btn-floating btn-small waves-effect waves-light red btn_update_avatar"> <i class="material-icons">mode_edit</i></a>
+        `)
+    }
+
+    const renderMahasiswa = (data) => {
+        $('.nama_lengkap').text(data.results.nama_lengkap);
+        
+        $('[name=email]').val(data.results.email);
+        $('[name=nama_lengkap]').val(data.results.nama_lengkap);
+        $('[name=nip]').val(data.results.nim);
+        $('[name=no_telp]').val(data.results.no_telp)
+        $('[name=alamat]').val(data.results.alamat);
+
+        let src;
+        if( data.results.foto ) {
+            src = `/api/foto/mahasiswa/${data.results.foto}`
+            console.log('oke')
+        }else{
+            src = `${BASE_URL}/images/default_user.png`;
+            console.log('no')
+        }
+
+        $('.image_user').html(`
+            <img src="${src}" width="10%;" alt="" class="circle">
+            <a class="btn-floating btn-small waves-effect waves-light red btn_update_avatar"> <i class="material-icons">mode_edit</i></a>
+        `);
+
+    }
+
+    return {
+        display: (data) => {
+            if(data.level === 'ACCOUNT'){
+                renderAccount(data)
+            }else if(data.level === 'MAHASISWA'){
+                renderMahasiswa(data);
+            }
         }
     }
 })()

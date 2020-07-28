@@ -208,6 +208,64 @@ class Mahasiswa extends Controller
                 'message'  => 'Something wrong, please try again'
             ], 500);
         }
+    }
+
+    public function updateFoto(Request $request)
+    {
+        $user = $request->user('mahasiswa');
+
+        $validate = Validator::make($request->all(), [
+            'foto' => 'required'
+        ]);
+
+        if( $validate->fails() )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Fields Required',
+            'error' => $validate->errors()
+        ], 422);
+
+        if($user->foto){
+            $image_path = public_path().'/storage/foto/mahasiswa/'.$user->foto;
+            unlink($image_path);
+        }
+
+        try{
+            $image           = $request->file('foto');
+            $name            = $image->getClientOriginalName();
+
+            $filename        = pathinfo($name, PATHINFO_FILENAME);
+
+            $extension       = $image->getClientOriginalExtension();
+
+            $filenametostore = $user->nim.'_'.time().'.'.$extension;
+
+            $add             = $image->storeAs('public/foto/mahasiswa/', $filenametostore);
+        }catch(\Exception $e){
+            return response()->json([
+                'status' => false,
+                'error' => $e->getMessage()
+            ], 500);
+        }
+
+        try{
+            $user->foto = $filenametostore;
+
+            $user->update();
+        }catch(\Exception $e){
+            return response()->json([
+                'status' => false,
+                'error' => $e->getMessage()
+            ], 500);
+        }
+        
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Success update foto',
+            'results'  => $user
+        ]);
+
+
 
     }
 

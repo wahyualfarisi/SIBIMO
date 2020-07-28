@@ -45,6 +45,7 @@
     <script>
         var TOKEN = "{{ session('credentials') }}";
         var BASE_URL = "{{ URL::to('/') }}"
+        var LEVEL = "{{ session('level') }}"
     </script>
 
   </head>

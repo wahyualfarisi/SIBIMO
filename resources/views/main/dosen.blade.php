@@ -11,7 +11,7 @@
 	<meta name="msapplication-navbutton-color" content="#3949ab">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#3949ab">
 
-    <title>TU | SIBIMO</title>
+    <title>DOSEN | SIBIMO</title>
     <link rel="apple-touch-icon" href="{{ asset('images/logo2.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo2.png') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -44,6 +44,8 @@
     
     <script>
             var TOKEN = "{{ session('credentials') }}";
+            var BASE_URL = "{{ URL::to('/') }}"
+            var LEVEL = "{{ session('level') }}"
     </script>
 
   </head>

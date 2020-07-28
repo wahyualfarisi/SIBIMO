@@ -15,8 +15,8 @@
         <div class="card" style="border-radius: 10px;  background-image: url({{asset('images/ubk.jpg')}}); background-position: center; ">
           <div class="card-content">
              <div class="col s12" style="margin-bottom: 30px;">
-                <div class="col s2" id="avatar_user">
-                    <img src="{{ asset('images/default_user.png')}}" width="100%;" alt="" class="circle">   
+                <div class="col s2" id="image_user">
+                     
                 </div>
                 <div class="col s12 m6 l6">
                     <h4 id="info_user" class="white-text"></h4>
