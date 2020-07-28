@@ -10,17 +10,23 @@ use Hash;
 //models
 use App\models\Account;
 use App\models\Mahasiswa;
+use App\models\Pembimbing;
 
 
 class Auth extends Controller
 {
     public function verify(){
         if(auth('mahasiswa')->user() ){
+            $pembimbing  = Pembimbing::with('get_account')->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa)->get();
+
             return response()->json([
                 'message' => 'Token verified',
                 'status'  => 200,
                 'level'   => 'MAHASISWA',
-                'results'    => auth('mahasiswa')->user()
+                'results'    => auth('mahasiswa')->user(),
+                'data' => [
+                    'pembimbing' => $pembimbing
+                ]
             ]);
         }else if(auth('account')->user() ){
             return response()->json([

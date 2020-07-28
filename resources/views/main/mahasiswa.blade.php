@@ -117,25 +117,22 @@
             </li>
 
             <li class="navigation-header">
-                <a class="navigation-header-text">PEMBIMBING</a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
-
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/pembimbing/1"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Fauziah S.KOM, M.KOM</span></a>
-                <a class="waves-effect waves-cyan " href="#/pembimbing/2"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">ALEX S.KOM, M.KOM</span></a>
-            </li>
-           
-            
-            <li class="navigation-header">
                 <a class="navigation-header-text">BIMBINGAN</a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
 
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/fakultas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Aktifitas</span></a>
+                <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Aktifitas</span></a>
             </li>
 
             <li class="bold">
                     <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">History Bimbingan</span></a>
+            </li>
+
+            <li class="navigation-header">
+                    <a class="navigation-header-text">PEMBIMBING</a><i class="navigation-header-icon material-icons">more_horiz</i>
+            </li>
+            <li class="bold" id="list_pembimbing_menu">
+                
             </li>
 
 

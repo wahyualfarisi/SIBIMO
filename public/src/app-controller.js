@@ -1,4 +1,4 @@
-const MainController = ( () => {
+const MainController = ( (AJAX, UI) => {
     const setRoute = () => {
         let path;
         
@@ -73,14 +73,33 @@ const MainController = ( () => {
          return i
     }
 
+    const getInitMahasiswa = () => {
+        AJAX.getRes(
+            `/api/verify`,
+            {},
+            null,
+            res => {
+
+                UI.displayMenuMahasiswa(res.data.pembimbing);
+                
+            },
+            err => {
+                console.log(err);
+            }
+        )
+    }
+
     return {
         init: () => {
             console.log('init main controller');
             setRoute();
             runningTime();
+            if(LEVEL === 'mahasiswa'){
+                getInitMahasiswa();
+            }
         }
     }
-})();
+})(ajaxSetting, mainUI);
 
 //profile controller 
 const ProfileController = ( ( AJAX, LIB, UI ) => {

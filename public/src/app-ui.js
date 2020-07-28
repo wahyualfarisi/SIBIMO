@@ -1,3 +1,22 @@
+const mainUI = ( () => {
+
+    return {
+        displayMenuMahasiswa: (data) => {
+            let output = '';
+            if(data.length > 0){
+                data.forEach(item => {
+                    output += `
+                        <a class="waves-effect waves-cyan" href="#/pembimbing/${item.id_pembimbing}"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">${item.get_account.nama_lengkap}</span></a>
+                    `
+                });
+            }else{
+                output = ''
+            }
+            $('#list_pembimbing_menu').html(output);
+        }
+    }
+})()
+
 const DashboardUI = ( () => {
     const tu = () => {
 
@@ -30,6 +49,7 @@ const DashboardUI = ( () => {
             <img src="${src}" width="100%;" alt="" class="circle z-depth-5">   
         `);
     }
+
 
     return {
         display: ( res) => {
@@ -64,7 +84,7 @@ const DashboardUI = ( () => {
                 break;
 
                 case 'MAHASISWA':
-                    displayFotoMahasiswa(res.info_user)
+                    displayFotoMahasiswa(res.info_user);
                 break;
             }
 
