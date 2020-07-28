@@ -24,7 +24,9 @@ Route::post('/jurusan/{id_jurusan}/update_kaprodi', 'api\Jurusan@updateKaprodi')
 Route::apiResource('account', 'api\Account')->middleware('auth:account');
 Route::post('account/update/avatar', 'api\Account@updateAvatar')->middleware('auth:account');
 
+//pembimbing
 Route::apiResource('pembimbing', 'api\Pembimbing')->middleware('auth:account');
+Route::post('pembimbing/{id_pembimbing}/update_pembimbing', 'api\Pembimbing@update_pembimbing');
 
 Route::get('mahasiswa', 'api\Mahasiswa@index')->middleware('auth:account');
 Route::post('mahasiswa', 'api\Mahasiswa@store')->middleware('auth:account');
