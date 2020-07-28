@@ -61,13 +61,13 @@
                         </div>
                         
                         <div class="col s12 mt-2">
-                            <a href="#/user/edit/" class="grey-text text-darken-2">
-                            <button class="btn green darken-1 col s12"> EDIT ACCOUNT </button>
+                            <a href="javascript:void(0)" class="grey-text text-darken-2">
+                            <button class="btn green darken-1 col s12 btn_edit_mahasiswa"> EDIT MAHASISWA </button>
                             </a>
                         </div>
                         <div class="col s12 mt-2 ">
                             <a class="grey-text text-darken-2">
-                            <button class="btn indigo darken-1 col s12 btn__reset__password"> RESET PASSWORD </button>
+                                <button class="btn indigo darken-1 col s12 btn__reset__password"> RESET PASSWORD </button>
                             </a>
                         </div>
                         
@@ -94,31 +94,11 @@
 
 
                         </div>
-                      
-
-                        {{-- <div class="col s12 m6 l6">
-                            <div class="card">
-                                <a class="btn-floating btn-small waves-effect waves-light red right"> <i class="material-icons">mode_edit</i></a>
-                                <div class="card-content">
-                                        <div style="display: inline-flex; width: 100%;" class="mt-4">
-                                            <img src="{{ asset('images/default_user.png') }}" class="circle" width="50px" alt="">
-                                            <h5 class="ml-4">
-                                                ALEX S.KOM , M.KOM
-                                            </h5>
-                                            <br>
-                                        </div>
-                                </div>
-                                <div class="card-action red darken-3">
-                                        <div id="clients-bar" class="center-align">
-                                            <span class="white-text date_today">PEMBIMBING 2</span>
-                                        </div>
-                                </div>
-                            </div>
-                        </div> --}}
-
+                     
                         <div class="col s12">
                             <div class="card">
                                 <div class="card-content">
+                                    <button type="submit" class="btn right btn_add_judul indigo darken-1"> Tambah Judul </button>
                                     <h6>Histori Judul Tugas Akhir</h6>
                                     <table>
                                         <thead>
@@ -147,6 +127,98 @@
         </div>
 
 </div>
+
+<form id="form_update_pembimbing">
+    <div id="modalUpdatePembimbing" class="modal modal-fixed-footer" style="height: 250px;">
+        <div class="modal-content">
+            <h4 class="status_pembimbing">Update pembimbing</h4>
+
+                <div>
+                    <label>Pilih Dosen</label>
+                    <select name="id_account" class="browser-default">
+                        <option value=""> -- Pilih dosen -- </option>
+                    </select>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">BATAL</a>
+            <button type="submit" class="btn red darken-3">UPDATE</button>
+        </div>
+    </div>
+</form>
+
+<form id="form_edit_mahasiswa">
+    <div id="modalEditMahasiswa" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Edit Mahasiswa</h4>
+
+            <div>
+                <label>NIM</label>
+                <input type="text" name="nim" id="nim">
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input type="text" name="email" id="email">
+            </div>
+
+            <div>
+                <label>No. Telp</label>
+                <input type="text" name="no_telp" id="no_telp">
+            </div>
+
+            <div>
+                <label>Tahun Angkatan</label>
+                <input type="text" name="angkatan" id="angkatan">
+            </div>
+
+            <div>
+                <label>Jurusan</label>
+                <select name="id_jurusan" class="browser-default" id="id_jurusan">
+                    <option value=""> -- Pilih Jurusan -- </option>
+                </select>
+            </div>
+                
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">BATAL</a>
+            <button type="submit" class="btn red darken-3">UPDATE</button>
+        </div>
+    </div>
+</form>
+
+<form id="form_reset_password">
+    <div id="modalResetPassword" class="modal modal-fixed-footer" style="height: 250px;">
+        <div class="modal-content">
+            <h4>Reset Password</h4>
+                <div>
+                    <label>New Password</label>
+                    <input type="text" name="new_password" id="new_password">
+                </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">BATAL</a>
+            <button type="submit" class="btn red darken-3">RESET</button>
+        </div>
+    </div>
+</form>
+
+
+<form id="form_add_judul">
+    <div id="modalAddJudul" class="modal modal-fixed-footer" style="height: 250px;">
+        <div class="modal-content">
+            <h4>Tambah Judul Skripsi</h4>
+                <div>
+                    <label>Judul</label>
+                    <input type="text" name="judul" id="judul">
+                </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">BATAL</a>
+            <button type="submit" class="btn red darken-3">RESET</button>
+        </div>
+    </div>
+</form>
 
 <script>
     $(function() {

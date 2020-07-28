@@ -1017,6 +1017,28 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
         )
     }
 
+    const EventListener_detail = () => {
+        $(document).on('click', '.btn_update_pembimbing', function() {
+            let status_pembimbing = $(this).data('pembimbing_status');
+
+            $('.status_pembimbing').text(`Update Pembimbing ${status_pembimbing}`)
+
+            $('#modalUpdatePembimbing').modal('open')
+        });
+
+        $('.btn_edit_mahasiswa').on('click', function() {
+            $('#modalEditMahasiswa').modal('open')
+        });
+
+        $('.btn__reset__password').on('click', function() {
+            $('#modalResetPassword').modal('open')
+        });
+
+        $('.btn_add_judul').on('click', function() {
+            $('#modalAddJudul').modal('open')
+        })
+    }
+
     return {
         data: () => {
             T_MAHASISWA = $('#t_mahasiswa').DataTable({
@@ -1174,7 +1196,12 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             })
         },
         detail: ( id_mahasiswa ) => {
+            $('#modalUpdatePembimbing').modal()
+            $('#modalEditMahasiswa').modal()
+            $('#modalResetPassword').modal()
+            $('#modalAddJudul').modal()
             load_detail_mahasiswa( id_mahasiswa );
+            EventListener_detail()
         }
     }
 })(ajaxSetting, libSettings, MahasiswaUI);

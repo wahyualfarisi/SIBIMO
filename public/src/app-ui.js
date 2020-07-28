@@ -164,7 +164,7 @@ const MahasiswaUI = ( () => {
                 output += `
                 <div class="col s12 m6 l6">
                     <div class="card">
-                        <a class="btn-floating btn-small waves-effect waves-light red right"> <i class="material-icons">mode_edit</i></a>
+                        <a class="btn-floating btn-small waves-effect waves-light red right btn_update_pembimbing" data-pembimbing_status="${item.pembimbing_status}"> <i class="material-icons">mode_edit</i></a>
                         <div class="card-content">
                             <div style="display: inline-flex; width: 100%;" class="mt-4">
                                 <img src="${BASE_URL}/images/default_user.png" class="circle" width="50px" alt="">
