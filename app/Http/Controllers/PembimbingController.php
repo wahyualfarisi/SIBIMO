@@ -10,4 +10,9 @@ class PembimbingController extends Controller
     {
         return view('pembimbing.data');
     }
+
+    public function show(Request $request)
+    {
+        return view('pembimbing.detail');
+    }
 }

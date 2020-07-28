@@ -28,11 +28,15 @@ Route::group([
     Route::get('/account/kaprodi', 'AccountController@kaprodi');
     Route::get('/account/add', 'AccountController@add');
 
+    Route::get('/aktifitas', 'AktifitasController@index');
+
     Route::get('/mahasiswa','MahasiswaController@index');
     Route::get('/mahasiswa/add', 'MahasiswaController@add');
     Route::get('/mahasiswa/{id}', 'MahasiswaController@detail');
 
     Route::get('/pembimbing', 'PembimbingController@index');
+    Route::get('/pembimbing/{id_pembimbing}', 'PembimbingController@show');
+
     Route::get('/laporan','LaporanController@index');
     Route::get('/notifikasi', 'NotificationController@index');
 

@@ -124,10 +124,6 @@
                 <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Aktifitas</span></a>
             </li>
 
-            <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">History Bimbingan</span></a>
-            </li>
-
             <li class="navigation-header">
                     <a class="navigation-header-text">PEMBIMBING</a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>

@@ -147,11 +147,14 @@ class Account extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(!in_array(auth('account')->user()->level, ['TU'] ))
-        return response()->json([
-            'status'   => false,
-            'message'  => 'Permission denied'
-        ], 401);
+        try{
+            return "oke";
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'error'  => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
