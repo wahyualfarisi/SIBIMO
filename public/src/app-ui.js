@@ -4,10 +4,24 @@ const DashboardUI = ( () => {
     }
 
     const displayFotoAccount = (data) => {
-        console.log('data', data)
+       
         let src;
         if(data.foto) {
             src = `/api/foto/account/${data.foto}`
+        }else{
+            src = `${BASE_URL}/images/default_user.png`;
+        }
+
+        $('#image_user').html(`
+            <img src="${src}" width="100%;" alt="" class="circle z-depth-5">   
+        `);
+    }
+
+    const displayFotoMahasiswa = (data) => {
+        let src;
+
+        if(data.foto) {
+            src = `/api/foto/mahasiswa/${data.foto}`
         }else{
             src = `${BASE_URL}/images/default_user.png`;
         }
@@ -50,7 +64,7 @@ const DashboardUI = ( () => {
                 break;
 
                 case 'MAHASISWA':
-
+                    displayFotoMahasiswa(res.info_user)
                 break;
             }
 
