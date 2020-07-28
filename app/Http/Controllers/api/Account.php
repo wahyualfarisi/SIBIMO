@@ -35,10 +35,9 @@ class Account extends Controller
         
         $data = AccountModel::where('level', '=', $level )->get();
 
-
         try{
             return response()->json([
-                'status'   => false,
+                'status'   => true,
                 'message'  => 'Fetch account',
                 'results'  => $data
             ]);

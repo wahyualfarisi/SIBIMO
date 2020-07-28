@@ -139,15 +139,7 @@
             </li>
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/account/dosen"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Dosen</span></a>
-            </li>
-
-            <li class="navigation-header">
-                    <a class="navigation-header-text">PEMBIMBING </a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
-            <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/pembimbing"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Dosen Pembimbing</span></a>
-            </li>
-            
+            </li>  
 
             <li class="navigation-header">
                     <a class="navigation-header-text">DATA MAHASISWA </a><i class="navigation-header-icon material-icons">more_horiz</i>

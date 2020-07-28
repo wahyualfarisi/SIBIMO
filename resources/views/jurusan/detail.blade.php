@@ -80,15 +80,22 @@
 
 </div>
 
+<form id="form_update_kaprodi">
 <div id="modalUpdateKaprodi" class="modal modal-fixed-footer">
+        <input type="hidden" name="id_kaprodi">
+        
         <div class="modal-content">
           <h4>Update Kaprodi</h4>
-          
+           <select name="id_account" class="browser-default" required>
+                <option value=""> -- Select Account -- </option>
+           </select>
         </div>
         <div class="modal-footer">
           <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">BATAL</a>
+          <button type="submit" class="btn btn_submit red daken-2">UPDATE</button>
         </div>
 </div>
+</form>
 <script>
     $(function() {
         var ID_JURUSAN = "{{ $id }}";

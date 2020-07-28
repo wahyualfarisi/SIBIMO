@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddJurusan;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 use App\models\Jurusan as JurusanModel;
 use App\models\Account;
 use App\models\Kaprod;
+
 
 class Jurusan extends Controller
 {
@@ -164,6 +166,25 @@ class Jurusan extends Controller
 
 
         $kaprodi = Kaprod::findOrFail($request->id_kaprodi);
+        
+        //old kaprodi
+        $kaprodi_account = Account::findOrfail($kaprodi->id_account);
+
+        DB::beginTransaction();
+
+        //update old kaprodi to LEVEL dosen
+        try{
+            $kaprodi_account->level = 'DOSEN';
+            $kaprodi_account->save();
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something went wrong',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+        
+        //update new account to kaprodi
         $account = Account::findOrFail($request->id_account);
 
         if($account->level == 'TU')
@@ -172,7 +193,24 @@ class Jurusan extends Controller
             'messae' => 'TU cannot to be Kaprodi'
         ]);
 
+        if($account->level == 'KAPRODI')
+        return response()->json([
+            'status'  => false,
+            'message' => 'Akun sudah menjadi kaprodi'
+        ]);
 
+        try{
+            $account->level = 'KAPRODI';
+            $account->save();
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something went wrong',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+
+        //update kaprodi
         try{
             $kaprodi->id_account = $account->id_account;
             $kaprodi->update();
@@ -183,12 +221,11 @@ class Jurusan extends Controller
             ], 500);
         }
 
-        
-
+        DB::commit();
         return response()->json([
             'status'   => true,
             'message'  => 'Success update kaprodi',
-            'results'  => $kaprodi
+            'results'  => $kaprodi->get_account
         ]);
         
     }

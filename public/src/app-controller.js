@@ -197,11 +197,59 @@ const JurusanController = ( (AJAX, LIB) => {
         })
     }
 
-    const OnUpdateKaprodiHandler = (t_mahasiswa) => {
+    const OnUpdateKaprodiHandler = (t_mahasiswa, id_jurusan) => {
 
         $('#t_detail_jurusan').on('click', '.btn_update_kaprodi', function() {
+            AJAX.getRes(
+                `/api/account?get_dosen`,
+                {},
+                null,
+                res => {
+                    if(res.status){
+                        const data = res.results;
+
+                        let output = '<option value=""> -- Select Account -- </option>'
+                        if( data.length > 0 ){
+                            data.forEach(item => {
+                                output += `<option value="${item.id_account}"> ${item.nama_lengkap} </option>`
+                            })
+                        }
+
+                        $('[name=id_account]').html(output);
+                    }
+                },
+                err => {
+                    console.log(err);
+                }
+            )
+
             $('#modalUpdateKaprodi').modal('open')
+        });
+
+        $('#form_update_kaprodi').on('submit', function(e) {
+            e.preventDefault();
+            AJAX.postRes(
+                `/api/jurusan/${id_jurusan}/update_kaprodi`,
+                this,
+                null, 
+                res => {
+                    if(res.status){
+                        M.toast({
+                            html: 'Berhasil mengupdate kaprodi'
+                        });
+                        $('.td_kaprodi').html(`
+                            ${res.results.nama_lengkap} <a href="javascript:void(0)" class="btn_update_kaprodi"> <i class="material-icons green-text" style="font-size: 15px;">create</i> </a>
+                        `);
+                        $('#modalUpdateKaprodi').modal('close')
+                    }
+                },
+                err => {
+                    console.log(err);
+                }
+            )
         })
+
+
     }
 
     return {
@@ -409,7 +457,10 @@ const JurusanController = ( (AJAX, LIB) => {
                     `/api/jurusan/${id_jurusan}`,
                     {},
                     res => {
-                        $('.jurusan_name').html(`${res.results.nama_jurusan}`)
+                        
+                        $('.jurusan_name').html(`${res.results.nama_jurusan}`);
+                        $('[name=id_kaprodi]').val(res.results.get_kaprodi.id_kaprodi);
+
                         $('.td_kaprodi').html(`
                             ${res.results.get_kaprodi.get_account.nama_lengkap} <a href="javascript:void(0)" class="btn_update_kaprodi"> <i class="material-icons green-text" style="font-size: 15px;">create</i> </a>
                         `)
@@ -474,7 +525,7 @@ const JurusanController = ( (AJAX, LIB) => {
                 ]
             });
 
-            OnUpdateKaprodiHandler(t_mahasiswa);
+            OnUpdateKaprodiHandler(t_mahasiswa, id_jurusan);
         }
     }
 })(ajaxSetting, libSettings);
