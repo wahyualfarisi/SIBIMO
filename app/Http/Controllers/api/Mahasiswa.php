@@ -23,14 +23,31 @@ class Mahasiswa extends Controller
             switch(auth('account')->user()->level)
             {
                 case 'TU':
-                    case 'DOSEN':
-                        case 'KAPRODI':
+                        return response()->json([
+                            'status'   => true,
+                            'message'  => 'Fetch all mahasiswa',
+                            'results'  => $data
+                        ]);
+                break;
+
+                case 'DOSEN':
+                    case 'KAPRODI':
+                        $data = MahasiswaModel::with([
+                            'get_jurusan',
+                            'get_judul_skripsi',
+                            'get_pembimbing'
+                        ])
+                        ->whereHas('get_pembimbing', function($query) {
+                            $query->where('id_account', auth('account')->user()->id_account );
+                        })
+                        ->get();
 
                         return response()->json([
                             'status'   => true,
                             'message'  => 'Fetch all mahasiswa',
                             'results'  => $data
                         ]);
+                    break;
                 break;
             }
         }catch(\Exception $e){
@@ -152,7 +169,7 @@ class Mahasiswa extends Controller
 
     public function show(Request $request, $id_mahasiswa)
     {
-        if(!in_array(auth('account')->user()->level, ['TU'] ) )
+        if(!in_array(auth('account')->user()->level, ['TU','KAPRODI','DOSEN'] ) )
         return response()->json([
             'status'   => false,
             'message'  => 'Permission denied'
