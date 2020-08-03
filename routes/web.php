@@ -27,6 +27,7 @@ Route::group([
     Route::get('/account/tu', 'AccountController@tu');
     Route::get('/account/kaprodi', 'AccountController@kaprodi');
     Route::get('/account/add', 'AccountController@add');
+    Route::get('/account/edit/{id_account}', 'AccountController@edit');
 
     Route::get('/aktifitas', 'AktifitasController@index');
 

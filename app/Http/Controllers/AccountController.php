@@ -25,4 +25,11 @@ class AccountController extends Controller
     {
         return view('account.kaprodi');
     }
+
+    public function edit($id_account)
+    {
+        $data['id_account'] = $id_account;
+        return view('account.edit', $data);
+    }
+
 }

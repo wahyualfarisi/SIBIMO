@@ -671,6 +671,22 @@ const AccountController = ( (AJAX, LIB) => {
 
     }
 
+    const fetch_account_by_id = id => {
+        AJAX.getRes(
+            `/api/account/${id}`,
+            {},
+            null,
+            res => {
+                if(res.status){
+                    $('#loader_container').hide();
+                    $('#main_container').show();
+                }
+            },
+            err => {
+                console.log(err);
+            }
+        )
+    }
 
     return {
         data: ( type ) => {
@@ -685,7 +701,7 @@ const AccountController = ( (AJAX, LIB) => {
                     dom: {
                         button: {
                             tag: 'button',
-                            className: 'btn btn-small red darken-3 my-action'
+                            className: 'btn btn-floating btn-small red darken-3 my-action'
                         }
                     },
                     buttons: [
@@ -800,7 +816,7 @@ const AccountController = ( (AJAX, LIB) => {
                         data: null,
                         render: (data, type, row) => {
                             return `
-                            <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit">
+                            <a href="#/account/edit/${row.id_account}" class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit">
                                 <i class="material-icons">create</i>
                             </a>
                             `
@@ -814,6 +830,10 @@ const AccountController = ( (AJAX, LIB) => {
         add: () => {
             console.log('add controller')
             EventHandler_add()
+        },
+
+        edit: ( id ) => {
+            fetch_account_by_id(id);
         }
     }
 })(ajaxSetting, libSettings);

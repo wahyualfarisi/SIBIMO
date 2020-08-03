@@ -135,6 +135,20 @@ class Account extends Controller
             'message'  => 'Permission denied'
         ], 401);
 
+        $account = AccountModel::findOrFail($id);
+
+        try{
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Success fetch account by id',
+                'results'  => $account
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something went wrong'
+            ], 500);
+        }
         
     }
 

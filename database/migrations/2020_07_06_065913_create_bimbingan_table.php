@@ -40,7 +40,7 @@ class CreateBimbinganTable extends Migration
             $table->date('tanggal_bimbingan');
             $table->text('deskripsi_bimbingan');
             $table->text('file');
-            $table->enum('status', ['progress','seleseai'])->default('progress');
+            $table->enum('status', ['progress','selesai'])->default('progress');
 
             $table->timestamps();
         });
