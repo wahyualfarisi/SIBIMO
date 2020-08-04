@@ -202,6 +202,82 @@ class Mahasiswa extends Controller
     
     }
 
+    public function update(Request $request , $id_mahasiswa)
+    {
+        $validate = Validator::make($request->all(), [
+            'nim' => 'required',
+            'nama_lengkap' => 'required',
+            'email' => 'required',
+            'id_jurusan' => 'required',
+            'angkatan' => 'required'
+        ]);
+
+        if( $validate->fails() )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Fields Required',
+            'error'    => $validate->errors()
+        ], 422);
+
+        $mahasiswa = MahasiswaModel::findOrFail($id_mahasiswa);
+
+        try{
+            $mahasiswa->nim = $request->nim;
+            $mahasiswa->nama_lengkap = $request->nama_lengkap;
+            $mahasiswa->email = $request->email;
+            $mahasiswa->id_jurusan = $request->id_jurusan;
+            $mahasiswa->angkatan = $request->angkatan;
+            $mahasiswa->no_telp = $request->no_telp;
+
+            $mahasiswa->update();
+        }catch(\Exception $e){
+            return response()->json([
+                'status' => false,
+                'message' => 'Something went wrong'
+            ], 500);
+        }
+
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Success update mahasiswa',
+            'results'  => $mahasiswa
+        ]);
+    }
+
+    public function resetPassword(Request $request, $id_maahsiswa)
+    {
+        $validate = Validator::make($request->all(), [
+            'new_password' => 'required'
+        ]);
+
+        if( $validate->fails() )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Fields Required',
+            'results'  => $validate->errors()
+        ], 422);
+
+        $mahasiswa = MahasiswaModel::findOrFail($id_maahsiswa);
+
+        try{
+            $mahasiswa->password = bcrypt($request->new_password);
+
+            $mahasiswa->update();
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Something went wrong'
+            ], 500);
+        }
+
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Success reset password',
+            'results'  => $mahasiswa
+        ], 200);
+    }
+
+
     public function material_mhs_form(Request $request)
     {
         if(!in_array(auth('account')->user()->level, ['TU'] ) )
@@ -281,9 +357,6 @@ class Mahasiswa extends Controller
             'message'  => 'Success update foto',
             'results'  => $user
         ]);
-
-
-
     }
 
 

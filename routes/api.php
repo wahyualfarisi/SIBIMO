@@ -31,6 +31,8 @@ Route::post('pembimbing/{id_pembimbing}/update_pembimbing', 'api\Pembimbing@upda
 Route::get('mahasiswa', 'api\Mahasiswa@index')->middleware('auth:account');
 Route::post('mahasiswa', 'api\Mahasiswa@store')->middleware('auth:account');
 Route::get('mahasiswa/{id_mahasiswa}', 'api\Mahasiswa@show')->middleware('auth:account');
+Route::put('mahasiswa/{id_mahasiswa}', 'api\Mahasiswa@update');
+Route::post('mahasiswa/reset/{id_mahasiswa}', 'api\Mahasiswa@resetPassword');
 Route::get('mahasiswa/material/form', 'api\Mahasiswa@material_mhs_form')->middleware('auth:account');
 Route::post('mahasiswa/update/foto', 'api\Mahasiswa@updateFoto');
 //mahasiswa api
