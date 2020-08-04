@@ -170,6 +170,26 @@ const MahasiswaUI = ( () => {
             $('#skripsi_status').html(`Status: ${data_mahasiswa.get_judul_skripsi.status}`)
             $('#skripsi_created').html(`Di Buat Pada: ${moment(data_mahasiswa.get_judul_skripsi.created_at).format('D MMM YYYY HH:m')}`);
 
+            //field for form edit mahasiswa
+            $('[name=nim]').val(data_mahasiswa.nim);
+            $('[name=email]').val(data_mahasiswa.email);
+            $('[name=no_telp]').val(data_mahasiswa.no_telp);
+            $('[name=angkatan]').val(data_mahasiswa.angkatan);
+            $('[name=id_jurusan]').val(data_mahasiswa.id_jurusan);
+            $('[name=nama_lengkap]').val(data_mahasiswa.nama_lengkap);
+
+            //embed photo mahasiswa
+            let image_source;
+            if(data_mahasiswa.foto){
+                image_source = `/api/foto/mahasiswa/${data_mahasiswa.foto}`;
+            }else{
+                image_source = `${BASE_URL}/images/default_user.png`;
+            }
+
+            $('.mahasiswa_photo').html(`
+                 <img src="${image_source}" alt="" style="position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%);" alt="preview image" class="preview_image responsive-img">
+            `);
+
             //pembimbing
             let pembimbing = data_mahasiswa.get_pembimbing.sort(sortPembimbing);
 

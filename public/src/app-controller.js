@@ -1064,7 +1064,8 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
         )
     }
 
-    const EventListener_detail = () => {
+    const EventListener_detail = (id_mahasiswa) => {
+
         $(document).on('click', '.btn_update_pembimbing', function() {
             let status_pembimbing = $(this).data('pembimbing_status');
 
@@ -1074,6 +1075,7 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
         });
 
         $('.btn_edit_mahasiswa').on('click', function() {
+            load_material_form(res => UI.displaySelectJurusan(res.results.jurusan) );
             $('#modalEditMahasiswa').modal('open')
         });
 
@@ -1083,6 +1085,75 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
 
         $('.btn_add_judul').on('click', function() {
             $('#modalAddJudul').modal('open')
+        });
+
+        $('#form_edit_mahasiswa').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                AJAX.putRes(
+                    `/api/mahasiswa/${id_mahasiswa}`,
+                    form,
+                    null,
+                    res => {
+                        if(res.status){
+                            $('#modalEditMahasiswa').modal('close')
+                            M.toast({
+                                html: 'Mahasiswa berhasil di update'
+                            });
+                            load_detail_mahasiswa( id_mahasiswa )
+                        }
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                )
+            }
+        });
+
+        $('#form_reset_password').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                AJAX.postRes(
+                    `/api/mahasiswa/reset/${id_mahasiswa}`,
+                    form,
+                    null,
+                    res => {
+                        M.toast({
+                            html: 'Password berhasil di reset'
+                        })
+                        $('#modalResetPassword').modal('close');
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                )
+            }
+        });
+
+        $('#form_add_judul').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                AJAX.postRes(
+                    `/api/judul/add`,
+                    form,
+                    null,
+                    res => {
+                        console.log(res)
+                        if(res.status){
+                            load_detail_mahasiswa(id_mahasiswa);
+                            $('#modalAddJudul').modal('close')
+                            $('[name=judul]').val('')
+                            $('[name=status]').val('')
+                        }
+                    },
+                    err => {
+                        console.log(res)
+                    }
+                )
+            }
         })
     }
 
@@ -1248,7 +1319,7 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             $('#modalResetPassword').modal()
             $('#modalAddJudul').modal()
             load_detail_mahasiswa( id_mahasiswa );
-            EventListener_detail()
+            EventListener_detail( id_mahasiswa )
         }
     }
 })(ajaxSetting, libSettings, MahasiswaUI);

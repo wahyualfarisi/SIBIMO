@@ -32,8 +32,8 @@
                         <div class="row">
                         <div class="col s12 center-align" >
                             <div class="card-image z-depth-20 grey lighten-3" style="padding: 20px; position:relative;">
-                                <div class="before__preview_image" style="padding: 170px 170px 90px 90px;">
-                                    <img src="{{ asset('images/default_user.png') }}" alt="" style="position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%);" alt="preview image" class="preview_image responsive-img">
+                                <div class="mahasiswa_photo" style="padding: 170px 170px 90px 90px;">
+                                    
                                 </div>
                             </div>
                             <br>
@@ -158,6 +158,11 @@
             </div>
 
             <div>
+                <label>Nama Lengkap</label>
+                <input type="text" name="nama_lengkap" id="nama_lengkap">
+            </div>
+
+            <div>
                 <label>Email</label>
                 <input type="text" name="email" id="email">
             </div>
@@ -174,7 +179,7 @@
 
             <div>
                 <label>Jurusan</label>
-                <select name="id_jurusan" class="browser-default" id="id_jurusan">
+                <select name="id_jurusan" class="browser-default" id="id_jurusan" required>
                     <option value=""> -- Pilih Jurusan -- </option>
                 </select>
             </div>
@@ -193,7 +198,7 @@
             <h4>Reset Password</h4>
                 <div>
                     <label>New Password</label>
-                    <input type="text" name="new_password" id="new_password">
+                    <input type="text" name="new_password" id="new_password" required>
                 </div>
         </div>
         <div class="modal-footer">
@@ -208,9 +213,18 @@
     <div id="modalAddJudul" class="modal modal-fixed-footer" style="height: 250px;">
         <div class="modal-content">
             <h4>Tambah Judul Skripsi</h4>
+                <input type="hidden" name="id_mahasiswa" value="{{$id_mahasiswa}}">
                 <div>
                     <label>Judul</label>
-                    <input type="text" name="judul" id="judul">
+                    <input type="text" name="judul" id="judul" minlength="8" required>
+                </div>
+                <div>
+                    <label>Status</label>
+                    <select name="status" id="status" class="browser-default" required>
+                        <option value=""> -- Pilih status judul -- </option>
+                        <option value="active">  aktif</option>
+                        <option value="inactive">Tidak aktif</option>
+                    </select>
                 </div>
         </div>
         <div class="modal-footer">
