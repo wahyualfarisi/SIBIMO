@@ -611,7 +611,7 @@ const JurusanController = ( (AJAX, LIB) => {
     }
 })(ajaxSetting, libSettings);
 
-const AccountController = ( (AJAX, LIB) => {
+const AccountController = ( (AJAX, LIB, UI) => {
     let T_ACCOUNT;
 
     const EventHandler_add = () => {
@@ -680,12 +680,38 @@ const AccountController = ( (AJAX, LIB) => {
                 if(res.status){
                     $('#loader_container').hide();
                     $('#main_container').show();
+                    UI.embedOnInput(res.results);
                 }
             },
             err => {
                 console.log(err);
             }
         )
+    }
+
+    const formEditHandler = () => {
+        $('#form_edit_account').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                let id_account = $('[name=id_account]').val();
+
+                AJAX.putRes(
+                    `/api/account/${id_account}`,
+                    form,
+                    null,
+                    res => {
+                        if(res.status){
+                            M.toast({ html: 'Account berhasil di update' })
+                            window.history.back();
+                        }
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                )
+            }
+        })
     }
 
     return {
@@ -834,9 +860,10 @@ const AccountController = ( (AJAX, LIB) => {
 
         edit: ( id ) => {
             fetch_account_by_id(id);
+            formEditHandler();
         }
     }
-})(ajaxSetting, libSettings);
+})(ajaxSetting, libSettings, AccountUI);
 
 const PembimbingController = ( (AJAX, LIB) => {
     let T_PEMBIMBING;

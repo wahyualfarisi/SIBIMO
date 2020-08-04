@@ -17,6 +17,20 @@ const mainUI = ( () => {
     }
 })()
 
+const AccountUI = ( () => {
+
+    return {
+        embedOnInput: data => {
+            $('[name=nip]').val(data.nip);
+            $('[name=email]').val(data.email);
+            $('[name=no_telp]').val(data.no_telp);
+            $('[name=alamat]').val(data.alamat);
+            $('[name=level]').val(data.level);
+            $('[name=nama_lengkap]').val(data.nama_lengkap);
+        }
+    }
+})()
+
 const DashboardUI = ( () => {
     const tu = () => {
 

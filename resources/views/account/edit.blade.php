@@ -47,6 +47,7 @@
                                     </div>
                                     <div class="col s12">
                                         <div class="row">
+                                            <input type="hidden" name="id_account" value="{{$id_account}}">
                                             <div class="input-field col s6">
                                                 <div>
                                                     <label for="nip" class="active">NIP</label>
@@ -70,8 +71,8 @@
                                         
                                             <div class="input-field col s6">
                                                 <div>
-                                                    <label for="no_telp" class="active">No Telefon</label>
-                                                    <input id="no_telp" name="no_telp" type="text" class="validate" required>
+                                                    <label for="no_telp" class="active">No Telepon</label>
+                                                    <input id="no_telp" name="no_telp" type="text" class="validate">
                                                 </div>
                                             </div>
 

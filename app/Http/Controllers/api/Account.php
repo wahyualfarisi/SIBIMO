@@ -161,14 +161,44 @@ class Account extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validate = Validator::make($request->all(), [
+            'nip' => 'required',
+            'email' => 'required',
+            'nama_lengkap' => 'required',
+            'level' => 'required|in:TU,KAPRODI,DOSEN'
+        ]);
+
+        if( $validate->fails() )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Fields Required',
+            'error' => $validate->errors()
+        ], 422);
+
+        $account = AccountModel::findOrFail($id);
+
+
         try{
-            return "oke";
+            $account->nip = $request->nip;
+            $account->email = $request->email;
+            $account->nama_lengkap = $request->nama_lengkap;
+            $account->no_telp = $request->no_telp;
+            $account->alamat = $request->alamat;
+            $account->level = $request->level;
+            
+            $account->update();
         }catch(\Exception $e){
             return response()->json([
                 'status'   => false,
                 'error'  => $e->getMessage()
             ], 500);
         }
+
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Success update account',
+            'results'  => $account
+        ]);
     }
 
     /**
