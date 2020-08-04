@@ -37,3 +37,5 @@ Route::get('mahasiswa/material/form', 'api\Mahasiswa@material_mhs_form')->middle
 Route::post('mahasiswa/update/foto', 'api\Mahasiswa@updateFoto');
 //mahasiswa api
 
+Route::post('judul/add', 'api\Judul@store');
+
