@@ -1068,10 +1068,21 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
 
         $(document).on('click', '.btn_update_pembimbing', function() {
             let status_pembimbing = $(this).data('pembimbing_status');
+            let id_account        = $(this).data('id_account');
+            let id_pembimbing     = $(this).data('id_pembimbing');
 
             $('.status_pembimbing').text(`Update Pembimbing ${status_pembimbing}`)
+            load_material_form(res => {
+                let dospem = res.results.dospem;
 
-            $('#modalUpdatePembimbing').modal('open')
+                let filterDospem = dospem.filter(item => item.id_account !== id_account);
+
+                UI.displaySelectDospem(filterDospem, '[name=id_account]')
+
+                $('[name=id_pembimbing]').val(id_pembimbing);
+                $('#modalUpdatePembimbing').modal('open');
+            } );
+            
         });
 
         $('.btn_edit_mahasiswa').on('click', function() {
@@ -1151,6 +1162,32 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
                     },
                     err => {
                         console.log(res)
+                    }
+                )
+            }
+        });
+
+        $('#form_update_pembimbing').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                let id_pembimbing = $('[name=id_pembimbing]').val();
+
+                AJAX.postRes(
+                    `/api/pembimbing/${id_pembimbing}/update_pembimbing`,
+                    form,
+                    null,
+                    res => {
+                        if(res.status){
+                            $('#modalUpdatePembimbing').modal('close');
+                            M.toast({
+                                html: 'Pembimbing berhasil di update'
+                            })
+                            load_detail_mahasiswa(id_mahasiswa)
+                        }
+                    },
+                    err => {
+                        console.log(err)
                     }
                 )
             }

@@ -132,10 +132,10 @@
     <div id="modalUpdatePembimbing" class="modal modal-fixed-footer" style="height: 250px;">
         <div class="modal-content">
             <h4 class="status_pembimbing">Update pembimbing</h4>
-
+                <input type="hidden" name="id_pembimbing">
                 <div>
                     <label>Pilih Dosen</label>
-                    <select name="id_account" class="browser-default">
+                    <select name="id_account" class="browser-default" required>
                         <option value=""> -- Pilih dosen -- </option>
                     </select>
                 </div>
