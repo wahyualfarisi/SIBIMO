@@ -232,6 +232,14 @@ const MahasiswaUI = ( () => {
                         <td> ${item.judul} </td>
                         <td> ${status} </td>
                         <td> ${moment(item.created_at).format('D MMM YYYY HH:m')} </td>
+                        <td>
+                            <a data-judul_text="${item.judul}" data-id="${item.id_judul_skripsi}" href="javascript:void(0)" class="grey-text btn__manage__status">
+                                <i class="material-icons" style="font-size: 13px;">visibility</i>
+                            </a>
+                            <a data-judul_text="${item.judul}" data-id="${item.id_judul_skripsi}" href="javascript:void(0)" class="grey-text btn__delete__judul">
+                                <i class="material-icons" style="font-size: 13px;">clear</i>
+                            </a>
+                        </td>
                     </tr>
                 `;
             })

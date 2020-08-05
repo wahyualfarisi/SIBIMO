@@ -100,12 +100,13 @@
                                 <div class="card-content">
                                     <button type="submit" class="btn right btn_add_judul indigo darken-1"> Tambah Judul </button>
                                     <h6>Histori Judul Tugas Akhir</h6>
-                                    <table>
+                                    <table id="table_data_judul">
                                         <thead>
                                             <tr>
                                                 <th>Judul Skrispsi</th>
                                                 <th>Status</th>
                                                 <th>Di buat tanggal</th>
+                                                <th>#</th>
                                             </tr>
                                         </thead>
                                         <tbody id="t_history_judul"></tbody>
@@ -232,6 +233,43 @@
             <button type="submit" class="btn red darken-3">RESET</button>
         </div>
     </div>
+</form>
+
+<form id="form_delete_judul">
+    <div id="modalDeleteJudul" class="modal bottom-sheet">
+        <div class="modal-content">
+          <input type="hidden" name="id_judul" id="id_judul_delete">
+          <h4 class="judul"></h4>
+          <p class="red-text">and yakin ingin menghapus judul ini ?</p>
+        </div>
+        <div class="modal-footer">
+          <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat">Batal</a>
+        </div>
+    </div>
+</form>
+
+<form id="form_manage_status">
+        <div id="ModalManageStatus" class="modal bottom-sheet">
+            <div class="modal-content">
+              <input type="hidden" name="id_judul" id="id_judul_manage_status">
+              <h4 class="judul"></h4>
+                <p>
+                    <label>
+                      <input name="group1" type="radio" checked/>
+                      <span>Active</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                      <input name="group1" type="radio" />
+                      <span>Tidak Aktif</span>
+                    </label>
+                </p>
+            </div>
+            <div class="modal-footer">
+              <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat">Batal</a>
+            </div>
+        </div>
 </form>
 
 <script>

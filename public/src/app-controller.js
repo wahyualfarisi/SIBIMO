@@ -445,13 +445,13 @@ const JurusanController = ( (AJAX, LIB) => {
                         data: null,
                         render: (data, type, row) => {
                             return `
-                            <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit" data-id_jurusan="${row.id_jurusan}" data-nama="${row.nama_jurusan}">
+                            <a class="mb-1 waves-effect waves-light green-text btn__edit" data-id_jurusan="${row.id_jurusan}" data-nama="${row.nama_jurusan}">
                                 <i class="material-icons">create</i>
                             </a>
-                            <a class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light red accent-2 white-text btn__delete" data-id_jurusan="${row.id_jurusan}">
+                            <a class="mb-1 waves-effect waves-light red-text  accent-2 btn__delete" data-id_jurusan="${row.id_jurusan}">
                                 <i class="material-icons">close</i>
                             </a>
-                            <a href="#/jurusan/${row.id_jurusan}" class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light blue white-text">
+                            <a href="#/jurusan/${row.id_jurusan}" class="mb-1 grey-text waves-effect waves-light">
                                 <i class="material-icons">arrow_forward</i>
                             </a>
                             `   
@@ -1094,9 +1094,31 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             $('#modalResetPassword').modal('open')
         });
 
+        //show modal add judul
         $('.btn_add_judul').on('click', function() {
             $('#modalAddJudul').modal('open')
         });
+
+        //show modal delete judul
+        $('#table_data_judul tbody').on('click', '.btn__delete__judul', function() {
+            let id, judul;
+            id = $(this).data('id');
+            judul = $(this).data('judul_text');
+            
+            $('.judul').html(judul);
+            $('#id_judul_delete').val(id)
+            $('#modalDeleteJudul').modal('open')
+        });
+
+        $('#table_data_judul tbody').on('click', '.btn__manage__status', function() {
+            let id, judul;
+            id = $(this).data('id');
+            judul = $(this).data('judul_text')
+
+            $('.judul').html(judul);
+            $('#id_judul_manage_status').val(id)
+            $('#ModalManageStatus').modal('open')
+        })
 
         $('#form_edit_mahasiswa').on('submit', function(e) {
             e.preventDefault();
@@ -1355,6 +1377,8 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
             $('#modalEditMahasiswa').modal()
             $('#modalResetPassword').modal()
             $('#modalAddJudul').modal()
+            $('#modalDeleteJudul').modal();
+            $('#ModalManageStatus').modal();
             load_detail_mahasiswa( id_mahasiswa );
             EventListener_detail( id_mahasiswa )
         }
