@@ -11,7 +11,7 @@ class Bimbingan extends Model
     protected $fillable = [
         'id_mahasiswa',
         'deskripsi_bimbingan',
-        'id_bab',
+        'bab',
         'file',
         'status',
         'tanggal_bimbingan',

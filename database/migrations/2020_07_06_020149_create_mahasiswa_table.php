@@ -34,6 +34,23 @@ class CreateMahasiswaTable extends Migration
             
             $table->timestamps();
         });
+
+
+        Schema::create('nilai_plagiatisme', function(Blueprint $table) {
+            $table->increments('id_plagiatisme');
+
+            $table->integer('id_mahasiswa')->unsigned();
+            $table->foreign('id_mahasiswa')
+                  ->references('id_mahasiswa')
+                  ->on('mahasiswa')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
+            $table->enum('bab', ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5']);
+           
+            $table->string('nilai_plagiatisme', 25);
+            $table->text('foto');
+        });
     }
 
     /**
@@ -43,6 +60,7 @@ class CreateMahasiswaTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('nilai_plagiatisme');
         Schema::dropIfExists('mahasiswa');
     }
 }

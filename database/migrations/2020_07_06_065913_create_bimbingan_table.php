@@ -16,13 +16,6 @@ class CreateBimbinganTable extends Migration
         Schema::create('bimbingan', function (Blueprint $table) {
             $table->increments('id_bimbingan');
 
-            $table->integer('id_bab')->unsigned();
-            $table->foreign('id_bab')
-                  ->references('id_bab')
-                  ->on('bab')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-
             $table->integer('id_mahasiswa')->unsigned();
             $table->foreign('id_mahasiswa')
                 ->references('id_mahasiswa')
@@ -37,6 +30,7 @@ class CreateBimbinganTable extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
+            $table->enum('bab', ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5']);
             $table->date('tanggal_bimbingan');
             $table->text('deskripsi_bimbingan');
             $table->text('file');

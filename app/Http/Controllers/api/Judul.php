@@ -46,7 +46,7 @@ class Judul extends Controller
             //create 
             $judul = new JudulSkripsi;
             $judul->id_mahasiswa = $request->id_mahasiswa;
-            $judul->judul = $request->judul;
+            $judul->judul = strtoupper($request->judul);
             $judul->deskripsi = $request->deskripsi;
             $judul->status = $request->status;
 
