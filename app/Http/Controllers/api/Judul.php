@@ -64,8 +64,72 @@ class Judul extends Controller
             'message'  => 'Success add new judul',
             'results'  => $judul
         ]);
+    }
 
 
+    public function delete(Request $request , $id_judul)
+    {
+        if( !in_array( auth('account')->user()->level, ['TU'])  )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Permission denied'
+        ], 401);
+
+        $judul = JudulSkripsi::findOrFail($id_judul);
+
+        if($judul->status === 'active'){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Tidak bisa menghapus judul dengan status aktif'
+            ]);
+        }
+
+        try{
+            $judul->delete();
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Success delete judul'
+        ]);
+    }
+
+    public function manageJudul(Request $request)
+    {
+        if( !in_array( auth('account')->user()->level, ['TU'])  )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Permission denied'
+        ], 401);
+
+        $validated = Validator::make($request->all(), [
+            'id_judul' => 'required',
+            'status'   => 'required'
+        ]);
+
+        if( $validated->fails() )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Fields Required',
+            'errors'  => $validated->errors()
+        ]);
+
+        $judul = JudulSkripsi::findOrFail($request->id_judul);
+
+        try{
+            $judul->status = $request->status;
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => $e->getMessage()
+            ], 500);
+        }
 
     }
+
 }

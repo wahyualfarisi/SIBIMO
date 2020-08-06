@@ -1,3 +1,4 @@
+// 
 const MainController = ( (AJAX, UI) => {
     const setRoute = () => {
         let path;
@@ -101,7 +102,7 @@ const MainController = ( (AJAX, UI) => {
     }
 })(ajaxSetting, mainUI);
 
-//profile controller 
+// profile controller 
 const ProfileController = ( ( AJAX, LIB, UI ) => {
 
     const EventListener = () => {
@@ -164,7 +165,7 @@ const ProfileController = ( ( AJAX, LIB, UI ) => {
     }
 })(ajaxSetting, libSettings, ProfileUI)
 
-//dashboard controller 
+// dashboard controller 
 const DashboardController = ( ( UI, AJAX ) => {
         const load_dashboard = ( ) => {
             AJAX.getRes(
@@ -186,8 +187,8 @@ const DashboardController = ( ( UI, AJAX ) => {
     }
 })(DashboardUI, ajaxSetting);
 
+//
 const JurusanController = ( (AJAX, LIB) => {
-
 
     const EventListener = ( datatable ) => {
 
@@ -1229,7 +1230,7 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
                     dom: {
                         button: {
                             tag: 'button',
-                            className: 'btn btn-small red darken-3 my-action'
+                            className: 'btn btn-floating btn-small red darken-3 my-action'
                         }
                     },
                     buttons: [

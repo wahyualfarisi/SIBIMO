@@ -38,4 +38,6 @@ Route::post('mahasiswa/update/foto', 'api\Mahasiswa@updateFoto');
 //mahasiswa api
 
 Route::post('judul/add', 'api\Judul@store');
+Route::post('judul/delete/{id_judul}', 'api\Judul@delete');
+Route::post('judul/manage_judul', 'api\Judul@manageJudul');
 
