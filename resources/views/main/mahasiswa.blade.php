@@ -50,6 +50,12 @@
         var LEVEL = "{{ session('level') }}"
     </script>
 
+    <style>
+        .menu_sidebar {
+            display: none;
+        }
+    </style>
+
   </head>
   <body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu 2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <!-- BEGIN: Header-->
@@ -74,7 +80,6 @@
                     <ul class="dropdown-content" id="profile-dropdown">
                         <li class="divider"></li>
                         <li><a class="grey-text text-darken-1" href="#/me"><i class="material-icons green-text">verified_user</i> My Profile </a></li>
-                        <li><a class="grey-text text-darken-1" href="#/setting"><i class="material-icons blue-text">settings</i> Setting </a></li>
                         <li><a class="grey-text text-darken-1" href="/authorization_clear" id="logout"><i class="material-icons red-text">keyboard_tab</i> Logout</a></li>
                     </ul>
 
@@ -111,34 +116,31 @@
        
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
             
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
+            <div class="loader-sidebar"></div>
+
+            <li class="bold menu_sidebar">
+                <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons white-text">track_changes</i>
+                    <span class="menu-title" data-i18n="">Dashboard</span>
+                </a>
             </li>
-            <li class="bold">
+            <li class="bold menu_sidebar">
                 <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
             </li>
 
-            <li class="navigation-header">
+            <li class="navigation-header menu_sidebar">
                 <a class="navigation-header-text">BIMBINGAN</a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
 
-            <li class="bold">
+            <li class="bold menu_sidebar">
                 <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Aktifitas</span></a>
             </li>
 
-            <li class="navigation-header">
+            <li class="navigation-header menu_sidebar">
                     <a class="navigation-header-text">PEMBIMBING</a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-            <li class="bold" id="list_pembimbing_menu">
+            <li class="bold menu_sidebar" id="list_pembimbing_menu">
                 
             </li>
-
-
-
-
-         
-           
-            
         </ul>
         <div class="navigation-background"></div>
         <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium indigo darken-1 waves-effect waves-light hide-on-large-only" href="javascript:void(0)" data-target="slide-out"><i class="material-icons">menu</i></a>

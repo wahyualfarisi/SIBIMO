@@ -1,5 +1,5 @@
 // 
-const MainController = ( (AJAX, UI) => {
+const MainController = ( (AJAX, UI, LIB) => {
     const setRoute = () => {
         let path;
         
@@ -37,9 +37,11 @@ const MainController = ( (AJAX, UI) => {
             url: `${path}`,
             dataType: 'HTML',
             beforeSend: function () {
-                // LOADER.openPublic()
+               
             },
             success: function (response) {
+                $('.loader-sidebar').html('')
+                $('.menu_sidebar').css('display','block')
                 $(element).html(response)
             },
             error: function () {
@@ -92,7 +94,8 @@ const MainController = ( (AJAX, UI) => {
 
     return {
         init: () => {
-            console.log('init main controller');
+            AJAX.placeHolderBigSize('.loader-sidebar', 2)
+
             setRoute();
             runningTime();
             if(LEVEL === 'mahasiswa'){
@@ -100,7 +103,7 @@ const MainController = ( (AJAX, UI) => {
             }
         }
     }
-})(ajaxSetting, mainUI);
+})(ajaxSetting, mainUI, libSettings);
 
 // profile controller 
 const ProfileController = ( ( AJAX, LIB, UI ) => {

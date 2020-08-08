@@ -601,21 +601,27 @@ const ajaxSetting = (() => {
             `;
             $(dom).html(html)
         },
-        placeHolderBigSize: (dom) => {
-            let html = `
+        placeHolderBigSize: (dom, total = 1) => {
+            let html = '';
+            for(var i = 0; i<total; i++){
+                html += `
                 <div class="ph-item">
                     <div class="ph-col-12">
                         <div class="ph-row">
-                            <div class="ph-col-6 big"></div>
+                            <div class="ph-col-6"></div>
                             <div class="ph-col-4 empty big"></div>
                             <div class="ph-col-2 big"></div>
                             <div class="ph-col-4"></div>
                             <div class="ph-col-8 empty"></div>
                             <div class="ph-col-6"></div>
+                            <div class="ph-col-6 empty"></div>
+                            <div class="ph-col-12"></div>
                         </div>
                     </div>
                 </div>
-            `
+                `
+            }
+            
             $(dom).html(html);
         },
         renderBarcode: (data, id_dom) => {
