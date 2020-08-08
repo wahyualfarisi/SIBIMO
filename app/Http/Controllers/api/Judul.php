@@ -109,7 +109,7 @@ class Judul extends Controller
 
         $validated = Validator::make($request->all(), [
             'id_judul' => 'required',
-            'status'   => 'required'
+            'status'   => 'required|in:active,inactive'
         ]);
 
         if( $validated->fails() )
@@ -123,12 +123,18 @@ class Judul extends Controller
 
         try{
             $judul->status = $request->status;
+            $judul->update();
         }catch(\Exception $e){
             return response()->json([
                 'status'   => false,
                 'message'  => $e->getMessage()
             ], 500);
         }
+
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Berhasil update status'
+        ]);
 
     }
 

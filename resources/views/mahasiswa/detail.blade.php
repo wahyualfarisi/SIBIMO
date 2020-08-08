@@ -85,7 +85,6 @@
                                     <h5 class="white-text" id="judul_skripsi">SISTEM INFORMASI PREVENTIVE MAINTENANCE </h5>
                                     <p class="white-text" id="skripsi_status">Status: Active</p>
                                     <p class="white-text" id="skripsi_created">Dibuat pada tanggal: 2020-09-09 18:11:11</p>
-                                    <a href="" class="white-text">Edit Judul</a>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +229,7 @@
         </div>
         <div class="modal-footer">
             <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">BATAL</a>
-            <button type="submit" class="btn red darken-3">RESET</button>
+            <button type="submit" class="btn red darken-3">TAMBAH</button>
         </div>
     </div>
 </form>
@@ -244,6 +243,7 @@
         </div>
         <div class="modal-footer">
           <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat">Batal</a>
+          <button type="submit" class="btn red darken-1">Delete</button>
         </div>
     </div>
 </form>
@@ -253,21 +253,18 @@
             <div class="modal-content">
               <input type="hidden" name="id_judul" id="id_judul_manage_status">
               <h4 class="judul"></h4>
-                <p>
-                    <label>
-                      <input name="group1" type="radio" checked/>
-                      <span>Active</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                      <input name="group1" type="radio" />
-                      <span>Tidak Aktif</span>
-                    </label>
-                </p>
+              <div>
+                    <label>Status</label>
+                    <select name="status" id="status" class="browser-default" required>
+                        <option value=""> -- Pilih status judul -- </option>
+                        <option value="active">  aktif</option>
+                        <option value="inactive">Tidak aktif</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
               <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat">Batal</a>
+              <button type="submit" class="btn red darken-3">UPDATE</button>
             </div>
         </div>
 </form>

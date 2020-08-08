@@ -1112,11 +1112,13 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
         });
 
         $('#table_data_judul tbody').on('click', '.btn__manage__status', function() {
-            let id, judul;
+            let id, judul, status;
             id = $(this).data('id');
             judul = $(this).data('judul_text')
+            status = $(this).data('status')
 
             $('.judul').html(judul);
+            $('[name=status]').val(status);
             $('#id_judul_manage_status').val(id)
             $('#ModalManageStatus').modal('open')
         })
@@ -1214,6 +1216,46 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
                     }
                 )
             }
+        });
+
+        //Delete Judul
+        $('#form_delete_judul').on('submit', function(e) {
+            e.preventDefault();
+            let id_judul = $('[name=id_judul]').val();
+            AJAX.postRes(
+                `/api/judul/delete/${id_judul}`,
+                null,
+                null,
+                res => {
+                    if(res.status){
+                        load_detail_mahasiswa( id_mahasiswa );
+                        $('#modalDeleteJudul').modal('close')
+                        M.toast({ html: 'Berhasil Menghapus Judul' });
+                    }
+                    M.toast({ html: res.message })
+                },
+                err => {
+                    M.toast({ html: 'Proses hapus gagal, Silahkan coba kembali ' })
+                }
+            )
+        });
+
+        //Manage status
+        $('#form_manage_status').on('submit', function(e) {
+            e.preventDefault();
+            AJAX.postRes(
+                `/api/judul/manage_judul`,
+                this,
+                null,
+                res => {
+                    console.log(res);
+                    $('#ModalManageStatus').modal('close')
+                    load_detail_mahasiswa( id_mahasiswa )
+                },
+                err => {
+                    console.log(err);
+                }
+            )
         })
     }
 
@@ -1324,6 +1366,8 @@ const MahasiswaController = ( (AJAX, LIB, UI) => {
                         render: (ata, type, row) => {
                             if(row.get_judul_skripsi){
                                 return `<h6> ${row.get_judul_skripsi.judul}  </h6>`
+                            }else{
+                                return '-'
                             }
                         }
                     },

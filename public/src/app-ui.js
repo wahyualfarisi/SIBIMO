@@ -166,9 +166,16 @@ const MahasiswaUI = ( () => {
             //----
 
             //info judul skripsi
-            $('#judul_skripsi').html(data_mahasiswa.get_judul_skripsi.judul);
-            $('#skripsi_status').html(`Status: ${data_mahasiswa.get_judul_skripsi.status}`)
-            $('#skripsi_created').html(`Di Buat Pada: ${moment(data_mahasiswa.get_judul_skripsi.created_at).format('D MMM YYYY HH:m')}`);
+            if(data_mahasiswa.get_judul_skripsi){
+                $('#judul_skripsi').html(data_mahasiswa.get_judul_skripsi.judul);
+                $('#skripsi_status').html(`Status: ${data_mahasiswa.get_judul_skripsi.status}`)
+                $('#skripsi_created').html(`Di Buat Pada: ${moment(data_mahasiswa.get_judul_skripsi.created_at).format('D MMM YYYY HH:m')}`);
+            }else{
+                $('#judul_skripsi').html('-');
+                $('#skripsi_status').html('-');
+                $('#skripsi_created').html('-')
+            }
+            
 
             //field for form edit mahasiswa
             $('[name=nim]').val(data_mahasiswa.nim);
@@ -233,7 +240,7 @@ const MahasiswaUI = ( () => {
                         <td> ${status} </td>
                         <td> ${moment(item.created_at).format('D MMM YYYY HH:m')} </td>
                         <td>
-                            <a data-judul_text="${item.judul}" data-id="${item.id_judul_skripsi}" href="javascript:void(0)" class="grey-text btn__manage__status">
+                            <a data-judul_text="${item.judul}" data-status=${item.status} data-id="${item.id_judul_skripsi}" href="javascript:void(0)" class="grey-text btn__manage__status">
                                 <i class="material-icons" style="font-size: 13px;">visibility</i>
                             </a>
                             <a data-judul_text="${item.judul}" data-id="${item.id_judul_skripsi}" href="javascript:void(0)" class="grey-text btn__delete__judul">
