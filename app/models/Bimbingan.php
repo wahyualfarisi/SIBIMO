@@ -18,6 +18,7 @@ class Bimbingan extends Model
         'id_pembimbing'
     ];
 
+    public $incrementing = false;
     
 
 

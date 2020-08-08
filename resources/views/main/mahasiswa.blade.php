@@ -31,6 +31,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pages/intro.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/dropify/css/dropify.min.css')}}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/app-chat.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/datatable/datatables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/sweetalert/sweetalert.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/select2/dist/css/select2-materialize.css')}}">
@@ -160,7 +162,7 @@
                                 <ul class="tabs">
                                     <li class="tab col s12 p-0">
                                     <a href="#messages">
-                                        <span>Online</span>
+                                        <span> CATATAN DOSEN </span>
                                     </a>
                                     </li>
                                 </ul>

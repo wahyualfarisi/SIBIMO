@@ -10,4 +10,10 @@ class AktifitasController extends Controller
     {
         return view('aktifitas.data');
     }
+
+    public function aktifitas(Request $request, $id )
+    {
+        return view('aktifitas.detail');
+    }
+
 }

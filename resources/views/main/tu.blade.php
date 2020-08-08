@@ -26,6 +26,8 @@
     <link href="{{asset('assets/vendors/fullcalendar/core/main.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/vendors/fullcalendar/daygrid/main.css')}}" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/app-chat.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/loaders/loaders.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/loaders/loaders-palette.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pages/intro.css')}}">

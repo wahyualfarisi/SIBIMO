@@ -30,6 +30,9 @@ Route::group([
     Route::get('/account/edit/{id_account}', 'AccountController@edit');
 
     Route::get('/aktifitas', 'AktifitasController@index');
+    Route::get('/aktifitas/{id}', 'AktifitasController@aktifitas');
+
+    Route::get('/history', 'HistoryController@index');
 
     Route::get('/mahasiswa','MahasiswaController@index');
     Route::get('/mahasiswa/add', 'MahasiswaController@add');

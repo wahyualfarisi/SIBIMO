@@ -416,7 +416,7 @@
 {
     position: relative; 
 
-    overflow: hidden;
+    overflow: scroll;
 
     height: -webkit-calc( 100vh - 400px);
     height:    -moz-calc( 100vh - 400px);

@@ -26,6 +26,8 @@
     <link href="{{asset('assets/vendors/fullcalendar/core/main.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/vendors/fullcalendar/daygrid/main.css')}}" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/app-chat.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/loaders/loaders.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/loaders/loaders-palette.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pages/intro.css')}}">
@@ -114,12 +116,16 @@
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
             </li>
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">ACC Kartu Bimbingan</span></a>
-            </li>
            
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Aktifitas Bimbingan</span></a>
+            </li>
+
+            <li class="navigation-header">
+                <a class="navigation-header-text">Kaprodi </a><i class="navigation-header-icon material-icons">more_horiz</i>
+            </li>
+            <li class="bold">
+                <a class="waves-effect waves-cyan " href="javascript:void(0)"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Sistem Informasi</span></a>
             </li>
             
             <li class="navigation-header">
@@ -131,7 +137,7 @@
             </li>
 
             <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">History Bimbingan</span></a>
+                    <a class="waves-effect waves-cyan " href="#/history"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">History Bimbingan</span></a>
             </li>
 
 
