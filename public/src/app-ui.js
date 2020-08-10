@@ -412,21 +412,22 @@ const AktifitasUI = ( () => {
 
     const showTopCard = ( { get_account, get_mahasiswa, get_pembimbing }) => {
         const default_foto = `${BASE_URL}/images/default_user.png`;
-        let foto_mhs , foto_dospem = default_foto;
+        let foto = default_foto;
+        let foto_dospem = default_foto;
 
         if(get_account.foto){
             foto_dospem = `/api/foto/account/${get_account.foto}`;
         }
 
         if(get_mahasiswa.foto){
-            foto_mhs = `/api/foto/mahasiswa/${get_mahasiswa.foto}`
+            foto = `/api/foto/mahasiswa/${get_mahasiswa.foto}`
         }
         
 
         let html = `
         <div class="col s6">
             <h6 class="font-weight-800 mb-3">Mahasiswa</h6>
-            <img src="${foto_mhs}" width="100px;" class="circle" alt="avatar" />
+            <img src="${foto}" width="100px;" class="circle" alt="avatar" />
             <table>
                 <tr>
                     <th>Mahasiswa </th>
@@ -458,7 +459,7 @@ const AktifitasUI = ( () => {
     }
 
     const displayDiskusi = ( { get_diskusi } ) => {
-        let class_chat = '', image = `${BASE_URL}/images/default_user.png` , html = '';
+        let class_chat = '', image = `` , html = '';
 
         if(get_diskusi.length > 0 ){
             get_diskusi.forEach(item => {
@@ -469,6 +470,8 @@ const AktifitasUI = ( () => {
 
                     if(item.get_dospem.foto){
                         image = `/api/foto/account/${item.get_dospem.foto}`;
+                    }else{
+                        image = `${BASE_URL}/images/default_user.png`
                     }
                 }
 
@@ -476,6 +479,8 @@ const AktifitasUI = ( () => {
                     class_chat = ''
                     if(item.get_mahasiswa.foto){
                         image = `/api/foto/mahasiswa/${item.get_mahasiswa.foto}`;
+                    }else{
+                        image = `${BASE_URL}/images/default_user.png`
                     }
                 }
 
@@ -523,8 +528,9 @@ const AktifitasUI = ( () => {
 
     return {
         renderAktifitas: (data) => {
-            let html;
+            let html, btn_start;
             if(data.results.length > 0) {
+
                 html = ''
                 if(LEVEL === 'mahasiswa'){
                    html = aktifitas_mahasiswa(data)
@@ -532,13 +538,19 @@ const AktifitasUI = ( () => {
                     html = aktifitas_pembimbing(data);
                 }
                 
-
             }else{
+
+                if(LEVEL === 'mahasiswa'){
+                    btn_start = '<a class="btn btn-flat waves-effect waves-light btn_start_bimbingan" href="javascript:void(0)">Mulai Bimbingan</a>';
+                }else{
+                    btn_start = '<a class="btn btn-flat waves-effect waves-light" href="javascript:void(0)"></a>'
+                }
+
                 html = `
                     <div id="aktifitas" class="col s12 center-align white" style="padding: 10px;">
                         <img width="30%" src="${BASE_URL}/images/todoList.svg" class="responsive-img maintenance-img" alt="">
                         <h4 class="error-code">Tidak ada aktifitas bimbingan</h4>
-                        <a class="btn btn-flat waves-effect waves-light btn_start_bimbingan" href="javascript:void(0)">Mulai Bimbingan</a>
+                        ${btn_start}
                     </div>
                 `;
             }
@@ -562,6 +574,11 @@ const AktifitasUI = ( () => {
         },
 
         renderDetailBimbingan: (data) => {
+            //cek status bimbingan
+            if(data.status === 'progress'){
+                $('#btn_close_bimbingan').show();
+            }
+
             //display top Card 
             $('#showTopCard').html( showTopCard(data) );
 

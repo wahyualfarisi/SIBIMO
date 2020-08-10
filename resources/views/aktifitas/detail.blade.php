@@ -9,8 +9,8 @@
                         </h5>
                     </div>
                     @if ( session('level') === 'kaprodi' || session('level') === 'dosen' )
-                        <div class="col s2 m6 l6">
-                            <a class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right" href="javascript:void(-)">
+                        <div class="col s2 m6 l6" id="btn_close_bimbingan" style="display: none;">
+                            <a class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right btn__tutup__bimbingan" href="javascript:void(0)">
                                 <span class="hide-on-small-onl">Tutup Bimbingan</span>
                             </a>
                         </div>
@@ -186,7 +186,9 @@
                 <div class="card-content">
                     <div style="display: inline">
                         <h5 class="m-0 sidebar-title"><i class="material-icons app-header-icon text-top">create</i> Catatan Dari Dosen </h5>
-                        <button type="submit" style="margin-top: -30px;" class="btn right btn__tambah__catatan">+</button>
+                        @if (session('level') === 'kaprodi' || session('level') === 'dosen' )
+                            <button type="submit" style="margin-top: -30px;" class="btn right btn__tambah__catatan">+</button>
+                        @endif
                     </div>
                    
                     <div class="catatan-content" style="margin-top: 50px;">
@@ -226,6 +228,54 @@
         <button type="submit" class="btn">Submit</button>
     </div>
 </div>
+</form>
+
+<form id="form-tutup-bimbingan">
+<div id="modalTutupBimbingan" class="modal modal-fixed-footer" style="height: 400px;">
+    
+    <div class="modal-content">
+        <h4 class="center-align">Konfirmasi Tutup Bimbingan</h4>
+        <div class="row mt-8">
+            <div class="col s6">
+                <div>
+                    <h5>Hasil Bimbingan</h5>
+                        <p>
+                        <label>
+                            <input name="status" value="acc" type="radio" checked/>
+                            <span>Acc</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input name="status" value="revisi" type="radio" />
+                            <span>Revisi</span>
+                        </label>
+                        </p>
+                </div>
+            </div>
+            <div class="col s6">
+                <div id="signature-pad" class="m-signature-pad">
+                        <div class="m-signature-pad--body">
+                            <canvas style="border: 1px solid grey;"></canvas>
+                        </div>
+                        <div class="m-signature-pad--footer">
+                            <div class="description">Tanda tangan di pada kotak tersebut</div>
+                            <div class="left">
+                            <button type="button" class="button clear btn_clear" data-action="clear">Clear</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+        <button type="submit" class="btn">Submit</button>
+    </div>
+    </div>
 </form>
 
 <script>

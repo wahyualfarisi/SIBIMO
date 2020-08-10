@@ -31,6 +31,7 @@ Route::group([
 
     Route::get('/aktifitas', 'AktifitasController@index');
     Route::get('/aktifitas/{id}', 'AktifitasController@aktifitas');
+    Route::get('/aktifitas/{id}/close', 'AktifitasController@tutup_bimbingan');
 
     Route::get('/history', 'HistoryController@index');
 

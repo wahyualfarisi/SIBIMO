@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pages/app-email.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/pagination.css')}}">
+  {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/signature.css')}}"> --}}
     
     <script>
              var TOKEN = "{{ session('credentials') }}";
@@ -237,6 +238,7 @@
     <script src="{{asset('assets/vendors/fullcalendar/interaction/main.js')}}"></script>
     <script src="{{asset('assets/vendors/fullcalendar/daygrid/main.js')}}"></script>
     <script src="{{asset('assets/js/custom/popper.min.js')}}" ></script>
+    <script src="{{asset('assets/js/signature.js')}}" ></script>
     <script src="{{asset('assets/js/JIC.min.js')}}"></script>
     <script src="{{asset('assets/js/printArea.js')}}"></script>
     <script src="{{asset('assets/js/pagination.js')}}" ></script>

@@ -1579,6 +1579,51 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
         })
     }
 
+    const onCloseBimbingan = (id, signaturePad) => {
+        $('.btn__tutup__bimbingan').on('click', function() {
+            $('#modalTutupBimbingan').modal('open');
+        })
+
+        $('.btn_clear').on('click', function(){
+            signaturePad.clear()
+        });
+
+        $('#form-tutup-bimbingan').on('submit', function(e) {
+            e.preventDefault();
+            if( signaturePad.isEmpty() )
+            return M.toast({
+                html: 'Tanda tangan tidak boleh kosong'
+            });
+
+            let signToUrl = signaturePad.toDataURL();
+            let createToImage = document.createElement('IMG');
+            createToImage.src = signToUrl;
+
+            let blob = AJAX.dataURItoBlob(createToImage.src);
+            blob.filename = `signature${new Date().getTime()}.png`;
+            let replaceName = blob.filename.replace(/\.[^/.]+$/, ".jpg");
+ 
+            let form_data = new FormData();
+            form_data.append('id_bimbingan', id);
+            form_data.append('status', $('[name=status]').val() )
+            form_data.append('paraf', blob, replaceName);
+
+            AJAX.postBlobData(
+                `/api/bimbingan/close`,
+                form_data,
+                null,
+                res => {
+                    $('#modalTutupBimbingan').modal('open');
+                    signaturePad.clear();
+                },
+                err => {
+                    console.log(err)
+                }
+            );
+            
+        })
+    }
+
     return  {
         init: () => {
             $('#modalStartBimbingan').modal();
@@ -1588,9 +1633,16 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
 
         detail: id => {
             $('#modalAddCatatan').modal();
+            $('#modalTutupBimbingan').modal();
             load_detail_bimbingan( id )
             onSubmitFormDiskusi( id )
             onActionCatatan( id )
+            
+
+            var canvas       = document.querySelector("canvas");
+            var signaturePad = new SignaturePad(canvas);
+
+            onCloseBimbingan( id , signaturePad )
         }
     }
 })(ajaxSetting, libSettings, AktifitasUI)

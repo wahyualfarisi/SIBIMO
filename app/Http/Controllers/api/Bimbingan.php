@@ -4,10 +4,12 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use App\models\Bimbingan as BimbinganModel;
 use App\models\Pembimbing;
+use App\models\LembarBimbingan;
 
 
 class Bimbingan extends Controller
@@ -198,14 +200,96 @@ class Bimbingan extends Controller
 
     public function tutup_bimbingan(Request $request)
     {
-        if(!in_array(auth('account')->user, ['DOSEN','KAPRODI'] ) )
+        if(!in_array(auth('account')->user()->level, ['DOSEN','KAPRODI'] ) )
         return response()->json([
             'status'   => false,
             'message'  => 'Permission denied'
         ], 401);
-        
 
-        //create lembar bimbingan
+        $validated = Validator::make($request->all(), [
+            'id_bimbingan' => 'required',
+            'status'       => 'required|in:revisi,acc',
+            'paraf'        => 'required'
+        ]);
+
+        if( $validated->fails() ) {
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Fields Required',
+                'errors'   => $validated->errors()
+            ], 422);
+        }
+
+        $bimbingan = BimbinganModel::findOrFail($request->id_bimbingan);
+
+        if($bimbingan->status === 'selesai'){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Bimbingan sudah selesai'
+            ]);
+        }
+
+
+        try{
+            $file = $request->file('paraf');
+
+            $name = $file->getClientOriginalName();
+
+            $filename = pathinfo($name, PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+
+            $filenametoStore = $filename.'_'.time().'.'.$extension;
+
+            $file->storeAs('public/ttd/',$filenametoStore);
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => $e->getMessage()
+            ], 500);
+        }
+
+        DB::beginTransaction();
+        try{
+            $bimbingan->status = 'selesai';
+            $bimbingan->update();
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => $e->getMessage()
+            ], 500);
+        }
+
+
+        try{
+            $lembar_bimbingan = new LembarBimbingan;
+            $lembar_bimbingan->id_bimbingan = $bimbingan->id_bimbingan;
+            $lembar_bimbingan->id_pembimbing = $bimbingan->id_pembimbing;
+            $lembar_bimbingan->permasalahan = $bimbingan->bab;
+
+            if($request->status === 'revisi'){
+                $lembar_bimbingan->revisi = 'YA';
+                $lembar_bimbingan->acc    = 'TIDAK';
+            }else if($request->status === 'acc'){
+                $lembar_bimbingan->revisi = 'TIDAK';
+                $lembar_bimbingan->acc    = 'YA';
+            }
+            $lembar_bimbingan->paraf = $filenametoStore;
+
+            $lembar_bimbingan->save();
+
+
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => $e->getMessage()
+            ]);
+        }
+
+        DB::commit();
+        return response()->json([
+            'status'   => true,
+            'message'  => 'Tutup bimbingan'
+        ]);
 
 
     }

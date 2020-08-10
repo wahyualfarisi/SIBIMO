@@ -17,4 +17,10 @@ class AktifitasController extends Controller
         return view('aktifitas.detail', $data);
     }
 
+    public function tutup_bimbingan(Request $request, $id)
+    {
+        $data['id_bimbingan'] = $id;
+        return view('aktifitas.close', $data);
+    }
+
 }

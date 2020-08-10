@@ -50,6 +50,7 @@ Route::post('bimbingan/create', 'api\Bimbingan@store');
 Route::get('bimbingan/current', 'api\Bimbingan@current_activity');
 Route::get('bimbingan/history', 'api\Bimbingan@history');
 Route::get('bimbingan/{id_bimbingan}', 'api\Bimbingan@detail');
+Route::post('bimbingan/close', 'api\Bimbingan@tutup_bimbingan');
 
 //Diskusi
 Route::post('diskusi/create', 'api\Diskusi@create');
