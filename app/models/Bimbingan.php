@@ -35,6 +35,28 @@ class Bimbingan extends Model
     {
         return $this->hasOne('App\models\LembarBimbingan', 'id_bimbingan', 'id_bimbingan');
     }
+
+    public function get_account()
+    {
+        return $this->hasOneThrough(
+            'App\models\Account',
+            'App\models\Pembimbing',
+            'id_pembimbing',
+            'id_account',
+            'id_pembimbing',
+            'id_account'
+        );
+    }
+
+    public function get_pembimbing()
+    {
+        return $this->belongsTo('App\models\Pembimbing', 'id_pembimbing','id_pembimbing');
+    }
+
+    public function get_mahasiswa()
+    {
+        return $this->belongsTo('App\models\Mahasiswa','id_mahasiswa', 'id_mahasiswa');
+    }
     
 
 }

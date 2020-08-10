@@ -105,6 +105,7 @@ class Bimbingan extends Controller
                 'type' => 'Dospem',
                 'results' => $dospem
                             ->get_bimbingan()
+                            ->with('get_mahasiswa')
                             ->where('status', 'progress')
                             ->get()
             ]);
@@ -113,7 +114,7 @@ class Bimbingan extends Controller
 
         if( auth('mahasiswa')->user() ) {
 
-            $bimbingan = BimbinganModel::where([
+            $bimbingan = BimbinganModel::with('get_account','get_pembimbing','get_mahasiswa')->where([
                 ['status', 'progress'],
                 ['id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa]
             ])->get();

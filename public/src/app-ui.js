@@ -6,7 +6,10 @@ const mainUI = ( () => {
             if(data.length > 0){
                 data.forEach(item => {
                     output += `
-                        <a class="waves-effect waves-cyan" href="#/pembimbing/${item.id_pembimbing}"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">${item.get_account.nama_lengkap}</span></a>
+                        <a class="waves-effect waves-cyan" href="#/pembimbing/${item.id_pembimbing}">
+                            <i class="material-icons white-text">track_changes</i>
+                            <span class="menu-title" data-i18n="">${item.get_account.nama_lengkap}</span>
+                        </a>
                     `
                 });
             }else{
@@ -319,4 +322,134 @@ const ProfileUI = ( () => {
             }
         }
     }
-})()
+})();
+
+const AktifitasUI = ( () => {
+    const aktifitas_mahasiswa = (data) => {
+        let html = '';
+
+        data.results.forEach(item => {
+
+            let src;
+
+            if(item.get_account.foto){
+                src = `/api/foto/account/${item.get_account.foto}`;
+            }else{
+                src = `${BASE_URL}/images/default_user.png`;
+            }
+
+            html += `
+            <div class="col s12 m12 l12">
+                    <div class="card horizontal border-radius-6">
+                        
+                        <div class="card-stacked">
+                                <div class="card-content">
+                                    <div class="left" style="margin-right: 35px;">
+                                        <img width="150px" style="border-radius: 50%" src="${src}" />
+                                    </div>
+                                    <h4>${item.bab}</h4>
+                                    <h5>${item.tanggal_bimbingan}</h5>
+
+                                    <h5>Pembimbing ${item.get_pembimbing.pembimbing_status}</h5>
+                                    <div>
+                                        <h4> ${item.get_account.nama_lengkap} </h4>
+                                    </div>
+                                </div>
+                                <div class="card-action red darken-3">
+                                    <a class="white-text right" href="#/aktifitas/${item.id_bimbingan}">
+                                    Masuk Ke Halaman diskusi <i style="font-size: 15px;" class="material-icons">keyboard_arrow_right </i>
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+            `;
+        });
+
+        return html;
+    }
+
+    const aktifitas_pembimbing = (data) => {
+        let html = ''
+        data.results.forEach(item => {
+            let src;
+
+            if(item.get_mahasiswa.foto){
+                src = `/api/foto/mahasiswa/${item.get_mahasiswa.foto}`;
+            }else{
+                src = `${BASE_URL}/images/default_user.png`;
+            }
+            html += `
+            <div class="col s12 m12 l12">
+                    <div class="card horizontal border-radius-6">
+                        
+                        <div class="card-stacked">
+                                <div class="card-content">
+                                    <div class="left" style="margin-right: 35px;">
+                                        <img width="150px" style="border-radius: 50%" src="${src}" />
+                                    </div>
+                                    <h4 class="font-weight-800">${item.bab}</h4>
+                                    
+                                    <h5>${item.tanggal_bimbingan}</h5>
+
+                                    <h4>${item.get_mahasiswa.nama_lengkap}</h4>
+                                    <h5><b>${item.get_mahasiswa.nim}</b> </h5>
+                                    
+                                </div>
+                                <div class="card-action red darken-3">
+                                    <a class="white-text right" href="#/aktifitas/${item.id_bimbingan}">
+                                    Masuk Ke Halaman diskusi <i style="font-size: 15px;" class="material-icons">keyboard_arrow_right </i>
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+            `;
+        });
+
+        return html;
+    }
+
+    return {
+        renderAktifitas: (data) => {
+            let html;
+            if(data.results.length > 0) {
+                html = ''
+                if(LEVEL === 'mahasiswa'){
+                   html = aktifitas_mahasiswa(data)
+                }else if(LEVEL === 'kaprodi' || LEVEL === 'dosen'){
+                    html = aktifitas_pembimbing(data);
+                }
+                
+
+            }else{
+                html = `
+                    <div id="aktifitas" class="col s12 center-align white" style="padding: 10px;">
+                        <img width="30%" src="${BASE_URL}/images/todoList.svg" class="responsive-img maintenance-img" alt="">
+                        <h4 class="error-code">Tidak ada aktifitas bimbingan</h4>
+                        <a class="btn btn-flat waves-effect waves-light btn_start_bimbingan" href="javascript:void(0)">Mulai Bimbingan</a>
+                    </div>
+                `;
+            }
+            $('.main-aktifitas').html(html);
+        },
+
+        renderFieldPembimbing: (data) => {
+            let html = '';
+
+            if(data.length > 0) {
+                data.forEach(item => {
+                    html += `
+                        <option value="${item.id_pembimbing}"> ${item.get_account.nama_lengkap} </option>
+                    `;
+                });
+            }else{
+                html = '';
+            }
+
+            $('[name=id_pembimbing]').html(html)
+
+            
+        }
+    }
+})();

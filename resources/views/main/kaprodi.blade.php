@@ -129,7 +129,7 @@
             </li>
             
             <li class="navigation-header">
-                <a class="navigation-header-text">DATA BIMBINGAN </a><i class="navigation-header-icon material-icons">more_horiz</i>
+                <a class="navigation-header-text">DATA MAHASISWA BIMBINGAN </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
 
             <li class="bold">

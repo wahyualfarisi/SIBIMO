@@ -1440,4 +1440,73 @@ const MeController = ( (AJAX, LIB) => {
             console.log('init me controller');
         }
     }
-})(ajaxSetting, libSettings)
+})(ajaxSetting, libSettings);
+
+const AktifitasController = ( ( AJAX, LIB , UI) => {
+
+    const load_aktifitas = () => {
+        AJAX.getRes(
+            `/api/bimbingan/current`,
+            {},
+            null,
+            res => {
+                UI.renderAktifitas(res)
+            },
+            err => {
+                console.log(err)
+            }
+        )
+    }
+
+    const get_pembimbing = ( cb ) => {
+        AJAX.getRes(
+            `/api/verify`,
+            {},
+            null,
+            res => {
+                cb(res)
+            },
+            err => {
+                console.log(err)
+            }
+        )
+    }
+
+    const EventListener = () => {
+
+        $('.main-aktifitas').on('click', '.btn_start_bimbingan', function() {
+            get_pembimbing(res => {
+                
+                UI.renderFieldPembimbing(res.data.pembimbing)
+                $('#modalStartBimbingan').modal('open');
+            });
+        });
+
+        $('#form_start_bimbingan').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                AJAX.postFormData(
+                    `/api/bimbingan/create`,
+                    form,
+                    null,
+                    res => {
+                        $('#modalStartBimbingan').modal('close');
+                        load_aktifitas()
+                    },
+                    err => {
+                        console.log(err)
+                    }
+                )
+            }
+        })
+    }
+
+    return  {
+        init: () => {
+            $('#modalStartBimbingan').modal();
+            load_aktifitas();
+            EventListener()
+        }
+    }
+})(ajaxSetting, libSettings, AktifitasUI)
