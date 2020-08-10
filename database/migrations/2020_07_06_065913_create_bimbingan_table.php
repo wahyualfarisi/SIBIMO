@@ -14,7 +14,7 @@ class CreateBimbinganTable extends Migration
     public function up()
     {
         Schema::create('bimbingan', function (Blueprint $table) {
-            $table->string('id_bimbingan', 32)->primary();
+            $table->string('id_bimbingan', 50)->primary();
 
             $table->integer('id_mahasiswa')->unsigned();
             $table->foreign('id_mahasiswa')

@@ -16,7 +16,7 @@ class CreateDiskusiBimbinganTable extends Migration
         Schema::create('diskusi_bimbingan', function (Blueprint $table) {
             $table->increments('id_diskusi_bimbingan');
 
-            $table->integer('id_bimbingan')->unsigned();
+            $table->string('id_bimbingan', 50);
             $table->foreign('id_bimbingan')
                   ->references('id_bimbingan')
                   ->on('bimbingan')

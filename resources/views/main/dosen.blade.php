@@ -131,7 +131,7 @@
             </li>
 
             <li class="bold">
-                    <a class="waves-effect waves-cyan " href="#/jurusan"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Histori Bimbingan</span></a>
+                    <a class="waves-effect waves-cyan " href="#/history"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Histori Bimbingan</span></a>
             </li>
 
 

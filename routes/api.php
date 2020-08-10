@@ -41,3 +41,6 @@ Route::post('judul/add', 'api\Judul@store');
 Route::post('judul/delete/{id_judul}', 'api\Judul@delete');
 Route::post('judul/manage_judul', 'api\Judul@manageJudul');
 
+//bimbingan
+Route::post('bimbingan/create', 'api\Bimbingan@store');
+
