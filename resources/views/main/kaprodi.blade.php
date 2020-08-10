@@ -125,9 +125,6 @@
             <li class="navigation-header">
                 <a class="navigation-header-text">Kaprodi </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="javascript:void(0)"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Sistem Informasi</span></a>
-            </li>
             
             <li class="navigation-header">
                 <a class="navigation-header-text">DATA MAHASISWA BIMBINGAN </a><i class="navigation-header-icon material-icons">more_horiz</i>

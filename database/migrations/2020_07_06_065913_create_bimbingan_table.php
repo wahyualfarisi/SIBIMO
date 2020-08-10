@@ -32,7 +32,7 @@ class CreateBimbinganTable extends Migration
 
             $table->enum('bab', ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5']);
             $table->date('tanggal_bimbingan');
-            $table->text('deskripsi_bimbingan');
+            $table->text('deskripsi_bimbingan')->nullable();
             $table->text('file');
             $table->enum('status', ['progress','selesai'])->default('progress');
 

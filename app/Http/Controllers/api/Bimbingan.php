@@ -25,7 +25,7 @@ class Bimbingan extends Controller
 
         $validated = Validator::make($request->all(), [
             'id_pembimbing' => 'required',
-            'bab'           => 'required|in:BAB 1, BAB 2, BAB 3, BAB 4, BAB 5',
+            'bab'           => 'required|in:BAB 1,BAB 2,BAB 3,BAB 4,BAB 5',
             'file'          => 'required'
         ]);
 

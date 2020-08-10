@@ -1570,6 +1570,7 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
                         $('#modalAddCatatan').modal('close');
                         load_detail_bimbingan( id )
                         $('[name=catatan]').val(' ')
+                        
                     },
                     err => {
 
@@ -1613,8 +1614,9 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
                 form_data,
                 null,
                 res => {
-                    $('#modalTutupBimbingan').modal('open');
+                    $('#modalTutupBimbingan').modal('close');
                     signaturePad.clear();
+                    $('#btn_close_bimbingan').hide()
                 },
                 err => {
                     console.log(err)
