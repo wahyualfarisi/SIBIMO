@@ -43,4 +43,12 @@ Route::post('judul/manage_judul', 'api\Judul@manageJudul');
 
 //bimbingan
 Route::post('bimbingan/create', 'api\Bimbingan@store');
+Route::get('bimbingan/current', 'api\Bimbingan@current_activity');
+Route::get('bimbingan/history', 'api\Bimbingan@history');
+Route::get('bimbingan/{id_bimbingan}', 'api\Bimbingan@detail');
+
+//Diskusi
+Route::post('diskusi/create', 'api\Diskusi@create');
+
+Route::post('catatan/create', 'api\Catatan@create');
 

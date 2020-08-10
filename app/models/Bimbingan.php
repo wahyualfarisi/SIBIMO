@@ -21,5 +21,20 @@ class Bimbingan extends Model
     public $incrementing = false;
     
 
+    public function get_diskusi()
+    {
+        return $this->hasMany('App\models\DiskusiBimbingan', 'id_bimbingan', 'id_bimbingan');
+    }
+
+    public function get_catatan()
+    {
+        return $this->hasMany('App\models\CatatanBimbingan', 'id_bimbingan', 'id_bimbingan');
+    }
+
+    public function get_lembar_bimbingan()
+    {
+        return $this->hasOne('App\models\LembarBimbingan', 'id_bimbingan', 'id_bimbingan');
+    }
+    
 
 }

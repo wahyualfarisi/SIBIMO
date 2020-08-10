@@ -13,8 +13,8 @@ class CreateHasilBimbinganTable extends Migration
      */
     public function up()
     {
-        Schema::create('hasil_bimbingan', function (Blueprint $table) {
-            $table->increments('id_hasil_bimbingan');
+        Schema::create('lembar_bimbingan', function (Blueprint $table) {
+            $table->increments('id_lembar_bimbingan');
 
             $table->string('id_bimbingan', 50);
             $table->foreign('id_bimbingan')
@@ -47,6 +47,6 @@ class CreateHasilBimbinganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hasil_bimbingan');
+        Schema::dropIfExists('lembar_bimbingan');
     }
 }

@@ -69,7 +69,6 @@ class Bimbingan extends Controller
             $bimbingan->file = $filenametoStore;
             $bimbingan->status = 'progress';
 
-            
             $bimbingan->save();
         }catch(\Exception $e){
             return response()->json([
@@ -89,10 +88,122 @@ class Bimbingan extends Controller
     public function current_activity(Request $request)
     {
 
+        if( auth('account')->user() ){
+            
+            if(auth('account')->user()->level === 'TU'){
+                return response()->json([
+                    'status'   => false,
+                    'message'  => 'Permission denied'
+                ], 401);
+            }
+
+            $dospem = auth('account')->user();
+
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Current Activity',
+                'type' => 'Dospem',
+                'results' => $dospem
+                            ->get_bimbingan()
+                            ->where('status', 'progress')
+                            ->get()
+            ]);
+        }
+
+
+        if( auth('mahasiswa')->user() ) {
+
+            $bimbingan = BimbinganModel::where([
+                ['status', 'progress'],
+                ['id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa]
+            ])->get();
+
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Current Activity',
+                'type'     => 'Mahasiswa',
+                'results'  => $bimbingan
+            ]);
+        }
+    }
+
+    public function detail(Request $request, $id_bimbingan)
+    {
+        $bimbingan = BimbinganModel::findOrFail($id_bimbingan);
+
+        try{
+            $bimbingan = BimbinganModel::with([
+                'get_diskusi.get_dospem',
+                'get_diskusi.get_mahasiswa',
+                'get_catatan',
+                'get_lembar_bimbingan'
+            ])->where('id_bimbingan', $bimbingan->id_bimbingan)->first();
+
+
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Fetch detail bimbingan',
+                'results'  => $bimbingan
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function history(Request $request)
     {
-        
+        if( auth('account')->user() ){
+            if(auth('account')->user()->level === 'TU'){
+                return response()->json([
+                    'status'   => false,
+                    'message'  => 'Permission denied'
+                ], 401);
+            }
+
+            $dospem = auth('account')->user();
+
+            return response()->json([
+                'status'   => true,
+                'message'  => 'History Activity',
+                'type' => 'Dospem',
+                'results' => $dospem
+                            ->get_bimbingan()
+                            ->where('status', 'selesai')
+                            ->get()
+            ]);
+        }
+
+        if( auth('mahasiswa')->user() ) {
+            $bimbingan = BimbinganModel::where([
+                ['status', 'selesai'],
+                ['id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa]
+            ])->get();
+
+
+            return response()->json([
+                'message' => 'History Activity',
+                'type'    => 'Mahasiswa',
+                'status'  => true,
+                'results' => $bimbingan
+            ]);
+        }
     }
+
+    public function tutup_bimbingan(Request $request)
+    {
+        if(!in_array(auth('account')->user, ['DOSEN','KAPRODI'] ) )
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Permission denied'
+        ], 401);
+        
+
+        //create lembar bimbingan
+
+
+    }
+
 }

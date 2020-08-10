@@ -23,16 +23,7 @@ class CreateCatatanBimbinganTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-
-            $table->integer('id_pembimbing')->unsigned();
-            $table->foreign('id_pembimbing')
-                ->references('id_pembimbing')
-                ->on('pembimbing')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-
-            $table->text('file');
+            $table->text('file')->nullable();
             $table->text('catatan');
 
             $table->timestamps();

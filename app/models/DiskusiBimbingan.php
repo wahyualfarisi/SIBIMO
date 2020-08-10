@@ -14,4 +14,22 @@ class DiskusiBimbingan extends Model
         'id_mahasiswa',
         'pesan'
     ];
+
+    public function get_dospem()
+    {
+        return $this->hasOneThrough(
+            'App\models\Account',
+            'App\models\Pembimbing',
+            'id_pembimbing',
+            'id_account',
+            'id_pembimbing',
+            'id_account'
+        );
+    }
+
+    public function get_mahasiswa()
+    {
+        return $this->belongsTo('App\models\Mahasiswa', 'id_mahasiswa', 'id_mahasiswa');
+    }
+
 }

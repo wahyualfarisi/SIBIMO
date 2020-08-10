@@ -55,6 +55,23 @@ class Account extends Authenticatable implements JWTSubject
         return $this->hasOne('App\models\Kaprod','id_account','id_account');
     }
 
+    public function get_pembimbing()
+    {
+        return $this->hasMany('App\models\Pembimbing', 'id_account','id_account');
+    }
+
+    public function get_bimbingan()
+    {
+        return $this->hasManyThrough(
+            'App\models\Bimbingan', 
+            'App\models\Pembimbing',
+            'id_account',
+            'id_pembimbing',
+            'id_account',
+            'id_pembimbing'
+        );
+    }
+
     
 
 }

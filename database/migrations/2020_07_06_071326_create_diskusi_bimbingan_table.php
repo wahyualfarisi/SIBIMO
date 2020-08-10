@@ -24,7 +24,7 @@ class CreateDiskusiBimbinganTable extends Migration
                   ->onUpdate('cascade');
 
 
-            $table->integer('id_pembimbing')->unsigned();
+            $table->integer('id_pembimbing')->unsigned()->nullable();
             $table->foreign('id_pembimbing')
                 ->references('id_pembimbing')
                 ->on('pembimbing')
@@ -32,7 +32,7 @@ class CreateDiskusiBimbinganTable extends Migration
                 ->onUpdate('cascade');
 
 
-            $table->integer('id_mahasiswa')->unsigned();
+            $table->integer('id_mahasiswa')->unsigned()->nullable();
             $table->foreign('id_mahasiswa')
                     ->references('id_mahasiswa')
                     ->on('mahasiswa')
