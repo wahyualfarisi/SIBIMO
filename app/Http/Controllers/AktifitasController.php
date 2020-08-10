@@ -13,7 +13,8 @@ class AktifitasController extends Controller
 
     public function aktifitas(Request $request, $id )
     {
-        return view('aktifitas.detail');
+        $data['id_bimbingan'] = $id;
+        return view('aktifitas.detail', $data);
     }
 
 }

@@ -1502,11 +1502,95 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
         })
     }
 
+    const load_detail_bimbingan = id => {
+        AJAX.getRes(
+            `/api/bimbingan/${id}`,
+            {},
+            null,
+            res => {
+                UI.renderDetailBimbingan(res.results)
+            },
+            err => {
+                console.log(err);
+            }
+        )
+    }
+
+    const onSubmitFormDiskusi = id => {
+
+        $('#form-diskusi').on('submit', function(e) {
+            e.preventDefault();
+            if( $('[name=pesan]').val() === '' ) return false;
+
+            AJAX.postRes(
+                `/api/diskusi/create`,
+                this,
+                null,
+                res => {
+                    load_detail_bimbingan( id )
+                    $('[name=pesan]').val(' ')
+                },
+                err => {
+                    console.log(err)
+                }
+            )
+        })
+    }
+
+    const onActionCatatan = ( id ) => {
+
+        function field_file(){
+            return `
+                <label> File</label>
+                <input type="file" name="file" >
+            `;
+        }
+
+        $('.btn__tambah__catatan').on('click', function() {
+            $('#modalAddCatatan').modal('open');
+        });
+
+        $('#show_field_file').on('click', function() {
+            if( $(this).is(':checked') ){
+                $('.field-add-file').html( field_file() )
+            }else{
+                $('.field-add-file').html( ' ' )
+            }
+        })
+
+        $('#form_add_catatan').on('submit', function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: (form) => {
+                AJAX.postFormData(
+                    `/api/catatan/create`,
+                    form,
+                    null,
+                    res => {
+                        $('#modalAddCatatan').modal('close');
+                        load_detail_bimbingan( id )
+                        $('[name=catatan]').val(' ')
+                    },
+                    err => {
+
+                    }
+                );
+            }
+        })
+    }
+
     return  {
         init: () => {
             $('#modalStartBimbingan').modal();
             load_aktifitas();
             EventListener()
+        },
+
+        detail: id => {
+            $('#modalAddCatatan').modal();
+            load_detail_bimbingan( id )
+            onSubmitFormDiskusi( id )
+            onActionCatatan( id )
         }
     }
 })(ajaxSetting, libSettings, AktifitasUI)

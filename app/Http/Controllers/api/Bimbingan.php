@@ -137,7 +137,10 @@ class Bimbingan extends Controller
                 'get_diskusi.get_dospem',
                 'get_diskusi.get_mahasiswa',
                 'get_catatan',
-                'get_lembar_bimbingan'
+                'get_lembar_bimbingan',
+                'get_account',
+                'get_pembimbing',
+                'get_mahasiswa'
             ])->where('id_bimbingan', $bimbingan->id_bimbingan)->first();
 
 

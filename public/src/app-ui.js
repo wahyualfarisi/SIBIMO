@@ -410,6 +410,117 @@ const AktifitasUI = ( () => {
         return html;
     }
 
+    const showTopCard = ( { get_account, get_mahasiswa, get_pembimbing }) => {
+        const default_foto = `${BASE_URL}/images/default_user.png`;
+        let foto_mhs , foto_dospem = default_foto;
+
+        if(get_account.foto){
+            foto_dospem = `/api/foto/account/${get_account.foto}`;
+        }
+
+        if(get_mahasiswa.foto){
+            foto_mhs = `/api/foto/mahasiswa/${get_mahasiswa.foto}`
+        }
+        
+
+        let html = `
+        <div class="col s6">
+            <h6 class="font-weight-800 mb-3">Mahasiswa</h6>
+            <img src="${foto_mhs}" width="100px;" class="circle" alt="avatar" />
+            <table>
+                <tr>
+                    <th>Mahasiswa </th>
+                    <td>: ${get_mahasiswa.nama_lengkap}</td>
+                </tr>
+                <tr>
+                    <th>Nim </th>
+                    <td>: ${get_mahasiswa.nim}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col s6">
+            <h6 class="font-weight-800 mb-3">Pembimbing: ${get_pembimbing.pembimbing_status}</h6>
+            <img src="${foto_dospem}" width="100px;" class="circle" alt="avatar" />
+            <table>
+                <tr>
+                    <th>Nama Pembimbing </th>
+                    <td>: ${get_account.nama_lengkap}</td>
+                </tr>
+                <tr>
+                    <th>Nip </th>
+                    <td>: ${get_account.nip}</td>
+                </tr>
+            </table>
+        </div>
+        
+        `
+        return html;
+    }
+
+    const displayDiskusi = ( { get_diskusi } ) => {
+        let class_chat = '', image = `${BASE_URL}/images/default_user.png` , html = '';
+
+        if(get_diskusi.length > 0 ){
+            get_diskusi.forEach(item => {
+
+                if(item.get_dospem){
+                    
+                    class_chat = 'chat-right';
+
+                    if(item.get_dospem.foto){
+                        image = `/api/foto/account/${item.get_dospem.foto}`;
+                    }
+                }
+
+                if(item.get_mahasiswa){
+                    class_chat = ''
+                    if(item.get_mahasiswa.foto){
+                        image = `/api/foto/mahasiswa/${item.get_mahasiswa.foto}`;
+                    }
+                }
+
+                html += `
+                    <div class="chat ${class_chat}">
+                        <div class="chat-avatar">
+                            <a class="avatar">
+                            <img src="${image}" class="circle" alt="avatar" />
+                            </a>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-text">
+                                <p>${item.pesan}</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            })
+        }else{
+            html = ''
+        }
+
+        $('.chats').html(html)
+    }
+
+    const displayCatatan = ( { get_catatan, get_mahasiswa }) => {
+        let html = '', no = 1
+        if(get_catatan.length > 0) {
+            get_catatan.forEach(item => {
+                let file;
+                if(item.file){
+                    file = `<a href="/api/file/${get_mahasiswa.nim}/catatan/${item.file}"><i style="font-size: 13px" class="material-icons"> attach_file </i> Download attachment </a>`
+                }else{
+                    file = ''
+                }
+
+                html += `<p>${no++}.  ${item.catatan} ${file} </p>`
+            })
+        }else{
+            html = ''
+        }
+
+        $('.catatan-content').html(html);
+    }
+
     return {
         renderAktifitas: (data) => {
             let html;
@@ -448,8 +559,24 @@ const AktifitasUI = ( () => {
             }
 
             $('[name=id_pembimbing]').html(html)
+        },
 
-            
+        renderDetailBimbingan: (data) => {
+            //display top Card 
+            $('#showTopCard').html( showTopCard(data) );
+
+            //display File Bimbingan
+            $('.file-bimbingan-content').html( `
+                <a href="/api/file/${data.get_mahasiswa.nim}/${data.file}" class="btn grey darken-3 col s12"><i class="material-icons">file_download</i> DOWNLOAD FILE BIMBINGAN</a>
+            ` )
+            $('.bab_bimbingan').html(data.bab)
+            $('.tanggal_bimbingan').html(data.tanggal_bimbingan)
+
+            //display Catatan Bimbingan
+            displayCatatan(data);
+
+            //display Diskusi
+            displayDiskusi(data);
         }
     }
 })();

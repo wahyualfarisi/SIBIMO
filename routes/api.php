@@ -17,6 +17,10 @@ Route::get('dashboard', 'api\Dashboard@index');
 Route::get('foto/account/{filename}', 'api\PhotoApi@account_foto');
 Route::get('foto/mahasiswa/{filename}', 'api\PhotoApi@mahasiswa_foto');
 
+//file 
+Route::get('file/{nim}/{filename}', 'api\PhotoApi@file_bimbingan');
+Route::get('file/{nim}/catatan/{filename}', 'api\PhotoApi@catatan');
+
 //account api
 Route::apiResource('jurusan', 'api\Jurusan')->middleware('auth:account');
 Route::post('/jurusan/{id_jurusan}/update_kaprodi', 'api\Jurusan@updateKaprodi');

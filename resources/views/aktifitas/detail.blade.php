@@ -1,58 +1,48 @@
 
-
 <div class="row">
     <div class="breadcrumbs-inline pt-3 pb-1" id="breadcrumbs-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col s10 m6 l6">
                         <h5 class="breadcrumbs-title mt-0 mb-0">
-                            Diskusi Bimbingan
+                            Overview Bimbingan
                         </h5>
                     </div>
-                    <div class="col s2 m6 l6">
-                        <a class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right" href="javascript:void(-)">
-                            <span class="hide-on-small-onl">Tutup Bimbingan</span>
-                        </a>
-                    </div>
+                    @if ( session('level') === 'kaprodi' || session('level') === 'dosen' )
+                        <div class="col s2 m6 l6">
+                            <a class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right" href="javascript:void(-)">
+                                <span class="hide-on-small-onl">Tutup Bimbingan</span>
+                            </a>
+                        </div>
+                    @endif
+                   
                 </div>
             </div>
     </div>
-    <div class="col s12">
+    <div class="col s12 m8 l8">
         <div class="container">
             <div class="card border-radius-6">
-                <div class="card-content">
-                    <div class="col s6">
-                        <h6 class="font-weight-800 mb-3">Info Mahasiswa</h6>
-                        <img src="{{ asset('assets/images/user/12.jpg') }}" width="50px;" class="circle" alt="avatar" />
-                        <table>
-                            <tr>
-                                <th>Mahasiswa </th>
-                                <td>: Wahyu Alfarisi</td>
-                            </tr>
-                            <tr>
-                                <th>Nim </th>
-                                <td>: 7201160111</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col s6">
-                        <h6 class="font-weight-800 mb-3">Info Pembimbing</h6>
-                        <img src="{{ asset('assets/images/user/12.jpg') }}" width="50px;" class="circle" alt="avatar" />
-                        <table>
-                            <tr>
-                                <th>Nama Pembimbing </th>
-                                <td>: Fauziah S.KOM</td>
-                            </tr>
-                            <tr>
-                                <th>Nip </th>
-                                <td>: 116011011899999</td>
-                            </tr>
-                        </table>
-                    </div>
+                <div class="card-content" id="showTopCard">
+                   
                 </div>
             </div>
         </div>
         
+    </div>
+
+    <div class="col s12 m4">
+            <div class="container">
+                <div class="card border-radius-6" style="height: 245px;">
+                    <div class="card-content">
+                        <h1 class="bab_bimbingan"></h1>
+                        <h5 class="m-0 sidebar-title"><i class="material-icons app-header-icon text-top">insert_drive_file</i> File Bimbingan </h5>
+                        
+                        <div class="file-bimbingan-content mt-3">
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
 
@@ -74,14 +64,14 @@
                             
     
                             <!-- Content Area -->
-                            <div class="chat-content-area animate fadeUp">
+                            <div class="chat-content-area">
                             <!-- Chat header -->
                             
                             <div class="chat-header">
                                 <div class="row valign-wrapper">
                                     <div class="col">
-                                        <p class="m-0 blue-grey-text text-darken-4 font-weight-700">Tanggal: 14 Agustus 2020</p>
-                                        <p class="m-0 chat-text truncate">Bimbingan: BAB 2</p>
+                                        <p class="m-0 blue-grey-text text-darken-4 font-weight-700">Tanggal: <span class="tanggal_bimbingan" ></span> </p>
+                                        <p class="m-0 chat-text truncate bab_bimbingan"></p>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +82,7 @@
                                 <div class="chats">
                                     <div class="chats">
                                         
-                                        <div class="chat">
+                                        {{-- <div class="chat">
                                             <div class="chat-avatar">
                                                 <a class="avatar">
                                                 <img src="{{ asset('assets/images/user/12.jpg') }}" class="circle" alt="avatar" />
@@ -100,15 +90,11 @@
                                             </div>
                                             <div class="chat-body">
                                                 <div class="chat-text">
-                                                <p>Hey John, I am looking for the best admin template. Could you please help me to find it
-                                                    out?</p>
-                                                </div>
-                                                <div class="chat-text">
-                                                <p>It should be material css compatible.</p>
+                                                <p>Selamat Sore PAk</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="chat chat-right">
+                                        </div> --}}
+                                        {{-- <div class="chat chat-right">
                                             <div class="chat-avatar">
                                                 <a class="avatar">
                                                 <img src="{{ asset('assets/images/user/12.jpg') }}" class="circle" alt="avatar" />
@@ -122,8 +108,8 @@
                                                 <p>Materialize admin is the responsive material admin template.</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="chat">
+                                        </div> --}}
+                                        {{-- <div class="chat">
                                             <div class="chat-avatar">
                                                 <a class="avatar">
                                                 <img src="{{ asset('assets/images/user/12.jpg') }}" class="circle" alt="avatar" />
@@ -140,8 +126,8 @@
                                                 <p>How can I purchase it?</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="chat chat-right">
+                                        </div> --}}
+                                        {{-- <div class="chat chat-right">
                                             <div class="chat-avatar">
                                                 <a class="avatar">
                                                 <img src="{{ asset('assets/images/user/12.jpg') }}" class="circle" alt="avatar" />
@@ -152,8 +138,8 @@
                                                 <p>Thanks, from ThemeForest.</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="chat">
+                                        </div> --}}
+                                        {{-- <div class="chat">
                                             <div class="chat-avatar">
                                                 <a class="avatar">
                                                 <img src="{{ asset('assets/images/user/12.jpg') }}" class="circle" alt="avatar" />
@@ -167,22 +153,8 @@
                                                 <p>Thanks.</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="chat chat-right">
-                                            <div class="chat-avatar">
-                                                <a class="avatar">
-                                                <img src="{{ asset('assets/images/user/12.jpg') }}" class="circle" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-text">
-                                                <p>Great, Feel free to get in touch on</p>
-                                                </div>
-                                                <div class="chat-text">
-                                                <p>https://pixinvent.ticksy.com/</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </div> --}}
+
                                     </div>
                                 </div>
                             </div>
@@ -190,9 +162,10 @@
     
                             <!-- Chat footer <-->
                             <div class="chat-footer">
-                                <form onsubmit="enter_chat();" action="javascript:void(0);" class="chat-input">
-                                <input type="text" placeholder="Type message here.." class="message">
-                                <a class="btn waves-effect waves-light send" onclick="enter_chat();">Send</a>
+                                <form id="form-diskusi" class="chat-input">
+                                    <input type="hidden" name="id_bimbingan" value="{{ $id_bimbingan }}">
+                                    <input type="text" name="pesan" placeholder="Type message here.." class="message">
+                                    <button type="submit" class="btn waves-effect waves-light send">Send</button>
                                 </form>
                             </div>
                             <!--/ Chat footer -->
@@ -206,30 +179,58 @@
             </div>
         </div>
     </div>
-    <div class="col s12 m4">
-            <div class="container">
-                <div class="card border-radius-6">
-                    <div class="card-content">
-                        <h5 class="m-0 sidebar-title"><i class="material-icons app-header-icon text-top">insert_drive_file</i> File Bimbingan </h5>
     
-                        <div class="file-bimbingan-content">
-                                <button type="submit" class="btn btn-flat"><i class="material-icons">file_download</i> DOWNLOAD FILE BIMBINGAN</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
     <div class="col s12 m4">
         <div class="container">
             <div class="card border-radius-6">
                 <div class="card-content">
-                    <h5 class="m-0 sidebar-title"><i class="material-icons app-header-icon text-top">create</i> Catatan Dari Dosen </h5>
-
-                    <div class="catatan-content">
-
+                    <div style="display: inline">
+                        <h5 class="m-0 sidebar-title"><i class="material-icons app-header-icon text-top">create</i> Catatan Dari Dosen </h5>
+                        <button type="submit" style="margin-top: -30px;" class="btn right btn__tambah__catatan">+</button>
+                    </div>
+                   
+                    <div class="catatan-content" style="margin-top: 50px;">
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<form id="form_add_catatan">
+<input type="hidden" name="id_bimbingan" value="{{ $id_bimbingan }}">
+<div id="modalAddCatatan" class="modal modal-fixed-footer" style="height: 400px;">
+    <div class="modal-content">
+        <h4 class="center-align">Tambah Catatan</h4>
+        <div>
+            <label>Catatan</label>
+            <textarea name="catatan" id="catatan" style="height: 100px;" class="materialize-textarea" cols="30" rows="10" required></textarea>
+        </div>
+
+        <p>
+            <label>
+            <input type="checkbox" id="show_field_file" />
+            <span class="text">Tambahkan File</span>
+            </label>
+        </p>
+
+        <div class="field-add-file">
+            {{-- <label> File</label>
+            <input type="file" name="file" > --}}
+        </div>
+    </div>
+   
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+        <button type="submit" class="btn">Submit</button>
+    </div>
+</div>
+</form>
+
+<script>
+    $(function() {
+        var ID = "{{ $id_bimbingan }}"
+        AktifitasController.detail( ID );
+    })
+</script>

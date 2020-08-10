@@ -20,4 +20,18 @@ class PhotoApi extends Controller
         $path = public_path().'/storage/foto/mahasiswa/'.$filename;
         return Response::download($path);
     }
+
+    public function file_bimbingan($nim, $filename)
+    {
+        $path = public_path().'/storage/file/'.$nim.'/'.$filename;
+        return Response::download($path);
+    }
+
+    public function catatan($nim, $filename)
+    {
+        $path = public_path().'/storage/file/'.$nim.'/catatan/'.$filename;
+        return Response::download($path);
+    }
+
+
 }
