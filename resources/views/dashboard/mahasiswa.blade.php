@@ -38,70 +38,127 @@
         </div>
     </div>
 
-    <div class="col s12">
-            <div class="col s12 m4">
-                <div class="card card-hover z-depth-1 card-border-gray">
-                    <a href="#/bab">
-                    <div class="card-content center-align">
-                        <h2><b>BAB 1</b></h2>
-                        <i class="material-icons red-text">bookmark</i>
-                        <p class="mb-2 black-text">2 total Bimbingan<br></p>
-                        <p class="mb-2 black-text"><br></p>
-                    </div>
-                    </a>
-                </div>
-            </div>
+    <div class="col s12 center-align">
+        <h4>Progress Bimbingan Kamu </h4>
+    </div>
 
-            <div class="col s12 m4">
-                <div class="card card-hover z-depth-1 card-border-gray">
-                    <a href="#/bab">
-                    <div class="card-content center-align">
-                        <h2><b>BAB 2</b></h2>
-                        <i class="material-icons red-text">bookmark</i>
-                        <p class="mb-2 black-text">12 total Bimbingan<br></p>
-                        <p class="mb-2 black-text">89% Plagiatisme<br></p>
-                    </div>
-                    </a>
+    <div class="col s12 m6 l6">
+           <div class="card border-radius-6">
+               <div class="card-content">
+                   <h4>Alex</h4>
+                   <h5>Pembimbing 1</h5>
+                   <h6>Status: Belum selasai ( Pembimbing belum mendatangai kartu bimbingan ) </h6>
+                   <table>
+                       <thead>
+                           <tr>
+                               <th>Tanggal Bimbingan</th>
+                               <th>BAB</th>
+                               <th>Revisi</th>
+                               <th>ACC</th>
+                               <th>Paraf</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr>
+                               <th>2020-09-01</th>
+                               <th>BAB 1</th>
+                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th> <i class="material-icons green-text">done</i> </th>
+                               <th></th>
+                           </tr>
+                           <tr>
+                               <th>2020-09-02</th>
+                               <th>BAB 2</th>
+                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th> <i class="material-icons green-text">done</i> </th>
+                               <th></th>
+                           </tr>
+                           <tr>
+                               <th>2020-09-02</th>
+                               <th>BAB 3</th>
+                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th> <i class="material-icons green-text">done</i> </th>
+                               <th></th>
+                           </tr>
+                           <tr>
+                               <th>2020-09-02</th>
+                               <th>BAB 4</th>
+                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th> <i class="material-icons green-text">done</i> </th>
+                               <th></th>
+                           </tr>
+                           <tr>
+                               <th>2020-09-02</th>
+                               <th>BAB 5</th>
+                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th> <i class="material-icons green-text">done</i> </th>
+                               <th></th>
+                           </tr>
+                           
+                       </tbody>
+                   </table>
                 </div>
-            </div>
+                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan</a>
+           </div>
+    </div>
 
-            <div class="col s12 m4">
-                <div class="card card-hover z-depth-1 card-border-gray">
-                    <a href="#/bab">
-                    <div class="card-content center-align">
-                        <h2><b>BAB 3</b></h2>
-                        <i class="material-icons red-text">bookmark</i>
-                        <p class="mb-2 black-text">12 total Bimbingan<br></p>
-                        <p class="mb-2 black-text">69% Plagiatisme<br></p>
-                    </div>
-                    </a>
-                </div>
-            </div>
 
-            <div class="col s12 m6">
-                <div class="card card-hover z-depth-1 card-border-gray">
-                    <a href="#/bab">
-                    <div class="card-content center-align">
-                        <h2><b>BAB 4</b></h2>
-                        <i class="material-icons red-text">bookmark</i>
-                        <p class="mb-2 black-text">12 total Bimbingan<br></p>
-                        <p class="mb-2 black-text">69% Plagiatisme<br></p>
-                    </div>
-                    </a>
+    <div class="col s12 m6 l6">
+            <div class="card border-radius-6">
+                <div class="card-content">
+                    <h4>Fauziah</h4>
+                    <h5>Pembimbing 2</h5>
+                    <h6>Status: Belum selasai ( Pembimbing belum mendatangai kartu bimbingan ) </h6>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tanggal Bimbingan</th>
+                                <th>BAB</th>
+                                <th>Revisi</th>
+                                <th>ACC</th>
+                                <th>Paraf</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <th>2020-09-01</th>
+                                    <th>BAB 1</th>
+                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th> <i class="material-icons green-text">done</i> </th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>2020-09-02</th>
+                                    <th>BAB 2</th>
+                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th> <i class="material-icons green-text">done</i> </th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>2020-09-02</th>
+                                    <th>BAB 3</th>
+                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th> <i class="material-icons green-text">done</i> </th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>2020-09-02</th>
+                                    <th>BAB 4</th>
+                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th> <i class="material-icons green-text">done</i> </th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>2020-09-02</th>
+                                    <th>BAB 5</th>
+                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th> <i class="material-icons green-text">done</i> </th>
+                                    <th></th>
+                                </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-
-            <div class="col s12 m6">
-                <div class="card card-hover z-depth-1 card-border-gray">
-                    <a href="#/bab">
-                    <div class="card-content center-align">
-                        <h2><b>BAB 5</b></h2>
-                        <i class="material-icons red-text">bookmark</i>
-                        <p class="mb-2 black-text">12 total Bimbingan<br></p>
-                        <p class="mb-2 black-text">69% Plagiatisme<br></p>
-                    </div>
-                    </a>
-                </div>
+                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan</a>
             </div>
     </div>
 

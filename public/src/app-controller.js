@@ -76,31 +76,13 @@ const MainController = ( (AJAX, UI, LIB) => {
          return i
     }
 
-    const getInitMahasiswa = () => {
-        AJAX.getRes(
-            `/api/verify`,
-            {},
-            null,
-            res => {
-
-                UI.displayMenuMahasiswa(res.data.pembimbing);
-                
-            },
-            err => {
-                console.log(err);
-            }
-        )
-    }
-
     return {
         init: () => {
             AJAX.placeHolderBigSize('.loader-sidebar', 2)
 
             setRoute();
             runningTime();
-            if(LEVEL === 'mahasiswa'){
-                getInitMahasiswa();
-            }
+            
         }
     }
 })(ajaxSetting, mainUI, libSettings);
@@ -1741,6 +1723,15 @@ const HistoryBimbinganController = ( (AJAX, LIB) => {
                         render: (data, type, row ) => {
                             return `<h6> ${row.get_mahasiswa.nama_lengkap} </h6>
                             <br> ${row.get_mahasiswa.nim} `
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `
+                                <h6> ${row.get_pembimbing.get_account.nama_lengkap} </h6><br> 
+                                    Pembimbing ${row.get_pembimbing.pembimbing_status}
+                            `;
                         }
                     },
                     {

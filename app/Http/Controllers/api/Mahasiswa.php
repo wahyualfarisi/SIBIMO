@@ -84,6 +84,8 @@ class Mahasiswa extends Controller
             'errors'   => $validate->errors()
         ], 422);
 
+        
+
         DB::beginTransaction();
 
         $check = MahasiswaModel::where('nim', $request->nim)->orWhere('email', $request->email)->first();
@@ -147,7 +149,7 @@ class Mahasiswa extends Controller
         try{
             $pembimbing_2 = new Pembimbing;
             $pembimbing_2->id_account = $request->pembimbing_2;
-            $pembimbing_1->pembimbing_status = '2';
+            $pembimbing_2->pembimbing_status = '2';
             $pembimbing_2->id_mahasiswa = $mahasiswa->id_mahasiswa;
             $pembimbing_2->save();
         }catch(\Exception $e){

@@ -16,6 +16,7 @@
                                                 <tr>
                                                     <th>Tanggal Bimbingan</th>
                                                     <th>Mahasiswa</th>
+                                                    <th>Pembimbing</th>
                                                     <th>BAB</th>
                                                     <th>Revisi</th>
                                                     <th>Acc</th>
@@ -29,6 +30,7 @@
                                                 <tr>
                                                     <th>Tanggal Bimbingan</th>
                                                     <th>Mahasiswa</th>
+                                                    <th>Pembimbing</th>
                                                     <th>BAB</th>
                                                     <th>Revisi</th>
                                                     <th>Acc</th>

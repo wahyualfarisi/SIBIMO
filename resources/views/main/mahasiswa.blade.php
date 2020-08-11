@@ -132,15 +132,16 @@
             </li>
 
             <li class="bold menu_sidebar">
-                <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Aktifitas</span></a>
+                <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Aktifitas Bimbingan</span></a>
             </li>
 
             <li class="navigation-header menu_sidebar">
-                    <a class="navigation-header-text">PEMBIMBING</a><i class="navigation-header-icon material-icons">more_horiz</i>
+                    <a class="navigation-header-text">Histori Bimbingan</a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-            <li class="bold menu_sidebar" id="list_pembimbing_menu">
-                
+            <li class="bold menu_sidebar">
+                <a class="waves-effect waves-cyan " href="#/history"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">History Bimbingan</span></a>
             </li>
+             
         </ul>
         <div class="navigation-background"></div>
         <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium indigo darken-1 waves-effect waves-light hide-on-large-only" href="javascript:void(0)" data-target="slide-out"><i class="material-icons">menu</i></a>
