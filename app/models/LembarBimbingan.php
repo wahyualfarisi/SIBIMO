@@ -16,4 +16,9 @@ class LembarBimbingan extends Model
         'acc',
         'paraf'
     ];
+
+    public function get_bimbingan()
+    {
+        return $this->hasOne('App\models\Bimbingan', 'id_bimbingan','id_bimbingan');
+    }
 }

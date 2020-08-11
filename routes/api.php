@@ -53,10 +53,10 @@ Route::get('bimbingan/{id_bimbingan}', 'api\Bimbingan@detail');
 Route::post('bimbingan/close', 'api\Bimbingan@tutup_bimbingan');
 
 //plagiatisme
-Route::get('plagiatisme/{id_mahasiswa}', 'api\Plagiatisme@index');
+Route::get('plagiatisme', 'api\Plagiatisme@index');
 Route::post('plagiatisme/create', 'api\Plagiatisme@store');
-Route::post('plagiatisme/update', 'api\Plagiatisme@update');
-Route::post('plagiatisme/delete', 'api\Plagiatisme@delete');
+Route::post('plagiatisme/update_data/{id_plagiatisme}', 'api\Plagiatisme@update_data');
+Route::delete('plagiatisme/delete/{id_plagiatisme}', 'api\Plagiatisme@delete');
 
 //Diskusi
 Route::post('diskusi/create', 'api\Diskusi@create');

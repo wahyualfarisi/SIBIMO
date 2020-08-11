@@ -42,14 +42,107 @@ const DashboardUI = ( () => {
         let src;
 
         if(data.foto) {
+            
             src = `/api/foto/mahasiswa/${data.foto}`
         }else{
+            
             src = `${BASE_URL}/images/default_user.png`;
         }
 
         $('#image_user').html(`
             <img src="${src}" width="100%;" alt="" class="circle z-depth-5">   
         `);
+    }
+
+    const displayHistoryPembimbing = (pem_status, data) => {
+        let image = '';
+        
+        $(`.nama_pembimbing_${pem_status}`).html(data.get_account.nama_lengkap);
+
+        if( data.get_account.foto ) {
+            image = `/api/foto/account/${data.get_account.foto}`;
+        }else{
+            image = `${BASE_URL}/images/default_user.png`;
+        }
+        let foto = `<img src="${image}" width="80px;" style="border-radius: 50%;" />`
+        $(`.display_image_pembimbing_${pem_status}`).html(foto);
+
+        let html = '', icon_acc = '', icon_revisi = '';
+        if(data.get_bimbingan.length > 0){
+            
+            data.get_bimbingan.forEach(item => {
+                if(item.get_lembar_bimbingan.acc === 'YA') {
+                    icon_acc = ` <i class="material-icons green-text">done</i> `
+                }else{
+                    icon_acc = ``
+                }
+
+                if(item.get_lembar_bimbingan.revisi === 'YA'){
+                    icon_revisi = '<i class="material-icons green-text">done</i>'
+                }else{
+                    icon_revisi = ''
+                }
+
+                html += `
+                    <tr> 
+                        <td> ${item.tanggal_bimbingan} </td>
+                        <td> ${item.bab} </td>
+                        <td> ${icon_revisi} </td>
+                        <td> ${icon_acc} </td>
+                        <td> paraf </td>
+                    </tr>
+                `;
+            })
+        }
+        $('#t_pembimbing_'+pem_status).html(html);
+    }
+
+    const displayHistoryBimbingan = (data , hasil_bimbingan) => {
+
+        const pembimbing1 = data.filter(item => +item.pembimbing_status  === 1 )[0]
+        const pembimbing2 = data.filter(item => +item.pembimbing_status  === 2 )[0]
+
+        displayHistoryPembimbing(1, pembimbing1);
+        displayHistoryPembimbing(2, pembimbing2);
+
+        //merge all bimbingan
+        allbimbingn = hasil_bimbingan;
+
+        //check total bimbingan
+        //jika belum ada sama sekali, bimbingan dimulai dari pembimbing 2
+        if(allbimbingn.length === 0){
+            console.log('bimbingan di mulai dari pem_2 dengan BAB 1');
+        }
+        let lastrecord = allbimbingn[allbimbingn.length - 1];
+
+        console.log(lastrecord);
+
+        const BAB = ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5','DEMO PROGRAM'];
+
+        
+        let text = '';
+        let pembimbing_active = '';
+
+        if(lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.acc === 'YA' ) {
+            pembimbing_active = '2';
+            text = `Silahkan bimbingan dengan pembimbing 2 , ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab) + 1]} `
+            
+        }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.revisi === 'YA'  ) {
+            pembimbing_active = '1';
+            text = `Silahkan bimbingan dengan pembimbing 1 , ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+            
+        }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.acc === 'YA' ) {
+            pembimbing_active = '1';
+            text = `bimbingan dengan pembimbing 1, ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+            
+        }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.revisi === 'YA') {
+            pembimbing_active = '2';
+            text = `bimbingan dengan pembimbing 2, ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+            
+        }
+
+        
+        
     }
 
 
@@ -87,6 +180,7 @@ const DashboardUI = ( () => {
 
                 case 'MAHASISWA':
                     displayFotoMahasiswa(res.info_user);
+                    displayHistoryBimbingan(res.history_bimbingan, res.hasil_bimbingan)
                 break;
             }
 

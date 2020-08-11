@@ -9,6 +9,7 @@ use App\models\Jurusan;
 use App\models\Mahasiswa;
 use App\models\Account;
 use App\models\Pembimbing;
+use App\models\LembarBimbingan;
 
 class Dashboard extends Controller
 {
@@ -16,11 +17,26 @@ class Dashboard extends Controller
     {
         if(auth('mahasiswa')->user() ){
             
+            $pembimbing = Pembimbing::with([
+                'get_bimbingan' => function($query) {
+                    $query->where('status', 'selesai')->orderBy('created_at', 'ASC');
+                },
+                'get_bimbingan.get_lembar_bimbingan',
+                'get_bimbingan.get_pembimbing',
+                'get_account'
+            ])->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa)->get();
+
+            $hasil_bimbingan = LembarBimbingan::with('get_bimbingan.get_pembimbing')->whereHas('get_bimbingan', function($query) {
+                $query->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa );
+            })->get();
+
             return response()->json([
                 'message' => 'Get Dashboard Mahasiswa',
                 'level'   => 'Mahasiswa',
                 'status'  => 200,
-                'info_user'    => auth('mahasiswa')->user()
+                'info_user'    => auth('mahasiswa')->user(),
+                'history_bimbingan' => $pembimbing,
+                'hasil_bimbingan' => $hasil_bimbingan
             ]);
 
         }else if(auth('account')->user() ){

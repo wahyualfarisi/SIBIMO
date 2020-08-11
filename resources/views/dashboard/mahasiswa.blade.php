@@ -44,10 +44,17 @@
 
     <div class="col s12 m6 l6">
            <div class="card border-radius-6">
-               <div class="card-content">
-                   <h4>Alex</h4>
-                   <h5>Pembimbing 1</h5>
-                   <h6>Status: Belum selasai ( Pembimbing belum mendatangai kartu bimbingan ) </h6>
+                <div class="card-content">
+                    <div class="display_image_pembimbing_1 left mr-5"></div>
+                    <h4 class="nama_pembimbing_1"></h4>
+                    <h5>Pembimbing 1</h5>
+                    
+                </div>
+                <div class="card-action center-align">
+                        <a href="javascript:void(0)">Mulai Bimbingan</a> 
+                </div>
+               <div class="card-content" style="height: 550px; overflow: auto;">
+                   
                    <table>
                        <thead>
                            <tr>
@@ -58,57 +65,34 @@
                                <th>Paraf</th>
                            </tr>
                        </thead>
-                       <tbody>
-                           <tr>
+                       <tbody id="t_pembimbing_1">
+                           {{-- <tr>
                                <th>2020-09-01</th>
                                <th>BAB 1</th>
                                <th>  </th>
                                <th> <i class="material-icons green-text">done</i> </th>
                                <th></th>
-                           </tr>
-                           <tr>
-                               <th>2020-09-02</th>
-                               <th>BAB 2</th>
-                               <th>  </th>
-                               <th> <i class="material-icons green-text">done</i> </th>
-                               <th></th>
-                           </tr>
-                           <tr>
-                               <th>2020-09-02</th>
-                               <th>BAB 3</th>
-                               <th>  </th>
-                               <th> <i class="material-icons green-text">done</i> </th>
-                               <th></th>
-                           </tr>
-                           <tr>
-                               <th>2020-09-02</th>
-                               <th>BAB 4</th>
-                               <th>  </th>
-                               <th> <i class="material-icons green-text">done</i> </th>
-                               <th></th>
-                           </tr>
-                           <tr>
-                               <th>2020-09-02</th>
-                               <th>BAB 5</th>
-                               <th>  </th>
-                               <th> <i class="material-icons green-text">done</i> </th>
-                               <th></th>
-                           </tr>
-                           
+                           </tr> --}}
                        </tbody>
                    </table>
                 </div>
-                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan <i style="font-size: 13px;" class="material-icons">arrow_forward</i></a>
+                
            </div>
     </div>
 
 
     <div class="col s12 m6 l6">
-            <div class="card border-radius-6">
+        <div class="card border-radius-6">
                 <div class="card-content">
-                    <h4>Fauziah</h4>
+                    <div class="display_image_pembimbing_2 left mr-5"></div>
+                    <h4 class="nama_pembimbing_2"></h4>
                     <h5>Pembimbing 2</h5>
-                    <h6>Status: Belum selasai ( Pembimbing belum mendatangai kartu bimbingan ) </h6>
+                </div>
+                <div class="card-action center-align">
+                        <a href="javascript:void(0)"></a> 
+                </div>
+                <div class="card-content" style="height: 550px; overflow: auto;">
+                    
                     <table>
                         <thead>
                             <tr>
@@ -119,46 +103,19 @@
                                 <th>Paraf</th>
                             </tr>
                         </thead>
-                        <tbody>
-                                <tr>
+                        <tbody id="t_pembimbing_2">
+                                {{-- <tr>
                                     <th>2020-09-01</th>
                                     <th>BAB 1</th>
                                     <th>  </th>
                                     <th> <i class="material-icons green-text">done</i> </th>
                                     <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2020-09-02</th>
-                                    <th>BAB 2</th>
-                                    <th>  </th>
-                                    <th> <i class="material-icons green-text">done</i> </th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2020-09-02</th>
-                                    <th>BAB 3</th>
-                                    <th>  </th>
-                                    <th> <i class="material-icons green-text">done</i> </th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2020-09-02</th>
-                                    <th>BAB 4</th>
-                                    <th>  </th>
-                                    <th> <i class="material-icons green-text">done</i> </th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th>2020-09-02</th>
-                                    <th>BAB 5</th>
-                                    <th>  </th>
-                                    <th> <i class="material-icons green-text">done</i> </th>
-                                    <th></th>
-                                </tr>
+                                </tr> --}}
                         </tbody>
                     </table>
+                    
                 </div>
-                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan <i style="font-size: 13px;" class="material-icons">arrow_forward</i> </a>
+                
             </div>
     </div>
 

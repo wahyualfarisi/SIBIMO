@@ -23,4 +23,9 @@ class Pembimbing extends Model
         return $this->belongsTo('App\models\Mahasiswa', 'id_mahasiswa', 'id_mahasiswa');
     }
 
+    public function get_bimbingan()
+    {
+        return $this->hasMany('App\models\Bimbingan', 'id_pembimbing','id_pembimbing');
+    }
+
 }
