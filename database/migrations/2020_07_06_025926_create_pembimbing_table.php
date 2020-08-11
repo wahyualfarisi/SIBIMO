@@ -36,14 +36,6 @@ class CreatePembimbingTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('pengujian_sistem', function(Blueprint $table) {
-            $table->increments('id_pengujian');
-
-            $table->date('tanggal');
-            $table->text('hasil_pengujian')->nullable();
-            $table->enum('status', ['oke','tidak'])->default('oke');
- 
-        });
     }
 
     /**
@@ -53,7 +45,6 @@ class CreatePembimbingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengujian_sistem');
         Schema::dropIfExists('pembimbing');
     }
 }
