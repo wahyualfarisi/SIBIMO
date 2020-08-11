@@ -27,7 +27,7 @@
                 </select>
             </div>
 
-            <div>
+            <div style="margin-top: 30px;">
                 <label> Pilih Bab </label>
                 <select name="bab" id="bab" class="browser-default" required>
                     <option value=""> -- Pilih -- </option>
@@ -39,16 +39,14 @@
                 </select>
             </div>
 
-            <div>
+            <div style="margin-top: 30px;">
                 <label>Upload File Bimbingan</label>
-                <input type="file" name="file" required/>
+                <input type="file" name="file" class="input-field" required/>
             </div>
 
-            <div>
+            <div style="margin-top: 30px;">
                 <label>Deskripsi (optional)</label>
-                <textarea class="materialize-textarea" name="deskripsi_bimbingan" id="deskripsi" cols="50" rows="50">
-
-                </textarea>
+                <input type="text" name="deskripsi_bimbingan">
             </div>
 
 

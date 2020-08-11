@@ -561,9 +561,10 @@ const AktifitasUI = ( () => {
             let html = '';
 
             if(data.length > 0) {
+                    html = `<option value=""> -- Pilih Pembimbing --- </option>`
                 data.forEach(item => {
                     html += `
-                        <option value="${item.id_pembimbing}"> ${item.get_account.nama_lengkap} </option>
+                        <option value="${item.id_pembimbing}"> ${item.get_account.nama_lengkap}  - Pembimbing ${item.pembimbing_status} </option>
                     `;
                 });
             }else{

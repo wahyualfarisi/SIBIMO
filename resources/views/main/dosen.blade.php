@@ -74,7 +74,6 @@
                     <ul class="dropdown-content" id="profile-dropdown">
                         <li class="divider"></li>
                         <li><a class="grey-text text-darken-1" href="#/me"><i class="material-icons green-text">verified_user</i> My Profile </a></li>
-                        <li><a class="grey-text text-darken-1" href="#/setting"><i class="material-icons blue-text">settings</i> Setting </a></li>
                         <li><a class="grey-text text-darken-1" href="/authorization_clear" id="logout"><i class="material-icons red-text">keyboard_tab</i> Logout</a></li>
                     </ul>
 

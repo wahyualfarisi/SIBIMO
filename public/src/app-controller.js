@@ -1606,14 +1606,16 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
  
             let form_data = new FormData();
             form_data.append('id_bimbingan', id);
-            form_data.append('status', $('[name=status]').val() )
+            form_data.append('status', $('input[name=status]:checked').val() )
             form_data.append('paraf', blob, replaceName);
 
+        
             AJAX.postBlobData(
                 `/api/bimbingan/close`,
                 form_data,
                 null,
                 res => {
+                   
                     $('#modalTutupBimbingan').modal('close');
                     signaturePad.clear();
                     $('#btn_close_bimbingan').hide()
@@ -1647,4 +1649,131 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
             onCloseBimbingan( id , signaturePad )
         }
     }
-})(ajaxSetting, libSettings, AktifitasUI)
+})(ajaxSetting, libSettings, AktifitasUI);
+
+const HistoryBimbinganController = ( (AJAX, LIB) => {
+    return {
+        data: () => {
+            const t_history = $('#t_history').DataTable({
+                processing: false,
+                language: AJAX.dtLanguage(),
+                dom: '<Bf<t>ip>',
+                pageLength: 50,
+                scrollY: 500,
+                scrollX: true,
+                buttons: {
+                    dom: {
+                        button: {
+                            tag: 'button',
+                            className: 'btn btn-floating btn-small red darken-3 my-action'
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: 'collection',
+                            text: '<i class="material-icons dp48">file_download</i> ',
+                            buttons: [
+                                {
+                                    extend: 'pdfHtml5',
+                                    text: 'PDF',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_MAHASISWA',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    text: 'Excel',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_MAHASISWA',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    text: 'CSV',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_MAHASISWA',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_MAHASISWA',
+                                    title: '<h4>Data Mahasiswa</h4>'
+                                },
+                            ]
+                        },
+                        {
+                            text: '<i class="material-icons dp48">autorenew</i>',
+                            action: function (e, dt, node, config) {
+                                dt.ajax.reload()
+                            },
+                        },
+                    ]
+                },
+                ajax: AJAX.dtSettingSrc(
+                    `/api/bimbingan/history`,
+                    {},
+                    res => {
+                        return res.results;
+                    },
+                    err => {
+                        console.log(err)
+                    }
+                ),
+                columns: [
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<h6> ${row.tanggal_bimbingan} </h6>` ;
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row ) => {
+                            return `<h6> ${row.get_mahasiswa.nama_lengkap} </h6>
+                            <br> ${row.get_mahasiswa.nim} `
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `<h6>${row.bab} </h6>` 
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return row.get_lembar_bimbingan.revisi
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return row.get_lembar_bimbingan.acc
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return `
+                            <a href="#/aktifitas/${row.id_bimbingan}" class="btn-floating btn-small mb-1 btn-flat waves-effect waves-light green white-text btn__edit">
+                                <i class="material-icons">arrow_forward</i>
+                            </a>
+                            `
+                        }
+                    }
+
+                ]
+            })
+        }
+    }
+})(ajaxSetting, libSettings)

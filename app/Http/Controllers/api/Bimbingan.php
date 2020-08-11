@@ -177,13 +177,17 @@ class Bimbingan extends Controller
                 'type' => 'Dospem',
                 'results' => $dospem
                             ->get_bimbingan()
+                            ->with('get_pembimbing','get_mahasiswa','get_lembar_bimbingan')
                             ->where('status', 'selesai')
                             ->get()
             ]);
         }
 
         if( auth('mahasiswa')->user() ) {
-            $bimbingan = BimbinganModel::where([
+            $bimbingan = BimbinganModel::with([
+                'get_pembimbing',
+                'get_mahasiswa'
+            ])->where([
                 ['status', 'selesai'],
                 ['id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa]
             ])->get();
@@ -277,6 +281,7 @@ class Bimbingan extends Controller
 
             $lembar_bimbingan->save();
 
+           
 
         }catch(\Exception $e){
             return response()->json([
