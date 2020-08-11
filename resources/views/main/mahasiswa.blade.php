@@ -127,6 +127,10 @@
                 <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
             </li>
 
+            <li class="bold menu_sidebar">
+                    <a class="waves-effect waves-cyan " href="#/plagiatisme"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Plagiatisme</span></a>
+            </li>
+
             <li class="navigation-header menu_sidebar">
                 <a class="navigation-header-text">BIMBINGAN</a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>

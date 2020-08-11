@@ -46,6 +46,8 @@ Route::group([
     Route::get('/notifikasi', 'NotificationController@index');
 
     Route::get('/me', 'MeController@index');
+
+    Route::get('/plagiatisme', 'PlagiatismeController@index');
 });
 //------------------------------END MAIN---------------------------------------------------
 

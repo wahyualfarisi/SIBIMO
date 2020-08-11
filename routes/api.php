@@ -52,8 +52,16 @@ Route::get('bimbingan/history', 'api\Bimbingan@history');
 Route::get('bimbingan/{id_bimbingan}', 'api\Bimbingan@detail');
 Route::post('bimbingan/close', 'api\Bimbingan@tutup_bimbingan');
 
+//plagiatisme
+Route::get('plagiatisme/{id_mahasiswa}', 'api\Plagiatisme@index');
+Route::post('plagiatisme/create', 'api\Plagiatisme@store');
+Route::post('plagiatisme/update', 'api\Plagiatisme@update');
+Route::post('plagiatisme/delete', 'api\Plagiatisme@delete');
+
 //Diskusi
 Route::post('diskusi/create', 'api\Diskusi@create');
 
+
+//catatan
 Route::post('catatan/create', 'api\Catatan@create');
 

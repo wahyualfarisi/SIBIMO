@@ -9,7 +9,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
         <div class="col s12">
             <div class="container">
                 <div class="section section-data-tables">

@@ -62,35 +62,35 @@
                            <tr>
                                <th>2020-09-01</th>
                                <th>BAB 1</th>
-                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th>  </th>
                                <th> <i class="material-icons green-text">done</i> </th>
                                <th></th>
                            </tr>
                            <tr>
                                <th>2020-09-02</th>
                                <th>BAB 2</th>
-                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th>  </th>
                                <th> <i class="material-icons green-text">done</i> </th>
                                <th></th>
                            </tr>
                            <tr>
                                <th>2020-09-02</th>
                                <th>BAB 3</th>
-                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th>  </th>
                                <th> <i class="material-icons green-text">done</i> </th>
                                <th></th>
                            </tr>
                            <tr>
                                <th>2020-09-02</th>
                                <th>BAB 4</th>
-                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th>  </th>
                                <th> <i class="material-icons green-text">done</i> </th>
                                <th></th>
                            </tr>
                            <tr>
                                <th>2020-09-02</th>
                                <th>BAB 5</th>
-                               <th> <i class="material-icons red-text">close</i> </th>
+                               <th>  </th>
                                <th> <i class="material-icons green-text">done</i> </th>
                                <th></th>
                            </tr>
@@ -98,7 +98,7 @@
                        </tbody>
                    </table>
                 </div>
-                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan</a>
+                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan <i style="font-size: 13px;" class="material-icons">arrow_forward</i></a>
            </div>
     </div>
 
@@ -123,42 +123,42 @@
                                 <tr>
                                     <th>2020-09-01</th>
                                     <th>BAB 1</th>
-                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th>  </th>
                                     <th> <i class="material-icons green-text">done</i> </th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th>2020-09-02</th>
                                     <th>BAB 2</th>
-                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th>  </th>
                                     <th> <i class="material-icons green-text">done</i> </th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th>2020-09-02</th>
                                     <th>BAB 3</th>
-                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th>  </th>
                                     <th> <i class="material-icons green-text">done</i> </th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th>2020-09-02</th>
                                     <th>BAB 4</th>
-                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th>  </th>
                                     <th> <i class="material-icons green-text">done</i> </th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th>2020-09-02</th>
                                     <th>BAB 5</th>
-                                    <th> <i class="material-icons red-text">close</i> </th>
+                                    <th>  </th>
                                     <th> <i class="material-icons green-text">done</i> </th>
                                     <th></th>
                                 </tr>
                         </tbody>
                     </table>
                 </div>
-                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan</a>
+                <a href="" class="btn red darken-3 col s12">Lihat Kartu Bimbingan <i style="font-size: 13px;" class="material-icons">arrow_forward</i> </a>
             </div>
     </div>
 
