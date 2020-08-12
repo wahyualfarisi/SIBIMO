@@ -33,5 +33,11 @@ class PhotoApi extends Controller
         return Response::download($path);
     }
 
+    public function tandatangan($filename)
+    {
+        $path = public_path().'/storage/ttd/'.$filename;
+        return Response::download($path);
+    }
+
 
 }

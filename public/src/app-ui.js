@@ -71,17 +71,23 @@ const DashboardUI = ( () => {
         if(data.get_bimbingan.length > 0){
             
             data.get_bimbingan.forEach(item => {
-                if(item.get_lembar_bimbingan.acc === 'YA') {
-                    icon_acc = ` <i class="material-icons green-text">done</i> `
-                }else{
-                    icon_acc = ``
+                console.log(data.get_bimbingan)
+
+                if(item.get_lembar_bimbingan){
+                    if(item.get_lembar_bimbingan.acc === 'YA') {
+                        icon_acc = ` <i class="material-icons green-text">done</i> `
+                    }else{
+                        icon_acc = ``
+                    }
+
+                    if(item.get_lembar_bimbingan.revisi === 'YA'){
+                        icon_revisi = '<i class="material-icons green-text">done</i>'
+                    }else{
+                        icon_revisi = ''
+                    }
+                    
                 }
 
-                if(item.get_lembar_bimbingan.revisi === 'YA'){
-                    icon_revisi = '<i class="material-icons green-text">done</i>'
-                }else{
-                    icon_revisi = ''
-                }
 
                 html += `
                     <tr> 
@@ -89,7 +95,7 @@ const DashboardUI = ( () => {
                         <td> ${item.bab} </td>
                         <td> ${icon_revisi} </td>
                         <td> ${icon_acc} </td>
-                        <td> paraf </td>
+                        <td> <img src="/api/ttd/${item.get_lembar_bimbingan.paraf}" width="60px;" />  </td>
                     </tr>
                 `;
             })
@@ -113,43 +119,50 @@ const DashboardUI = ( () => {
 
         let text = '';
         let pembimbing_active = '';
-        let id_pembimbing, nama_pembimbing;
+        let id_pembimbing, nama_pembimbing, bab;
         const BAB = ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5','DEMO PROGRAM'];
 
         if(allbimbingn.length === 0) {
             id_pembimbing   = pembimbing2.id_pembimbing;
             nama_pembimbing = pembimbing2.get_account.nama_lengkap;
-            text = 'BAB 1';
+            text = 'Mulai Bimbingan BAB 1';
+            bab  = 'BAB 1';
             pembimbing_active = '2';
         }
         let lastrecord = allbimbingn[allbimbingn.length - 1];
 
     
-
-        
-
         if(lastrecord){
             if(lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.acc === 'YA' ) {
                 pembimbing_active = '2';
-                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab) + 1]} `
+                bab = BAB[BAB.indexOf(lastrecord.get_bimbingan.bab) + 1];
+                text = `Mulai Bimbingan ${bab} `;
+
+                if(!bab){
+                    text = '';
+                }
+
                 id_pembimbing   = pembimbing2.id_pembimbing;
                 nama_pembimbing = pembimbing2.get_account.nama_lengkap;
                 
             }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.revisi === 'YA'  ) {
                 pembimbing_active = '1';
-                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+                bab  = BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)];
+                text = `Mulai Bimbingan ${bab}`
                 id_pembimbing   = pembimbing1.id_pembimbing;
                 nama_pembimbing = pembimbing1.get_account.nama_lengkap;
                 
             }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.acc === 'YA' ) {
                 pembimbing_active = '1';
-                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+                bab  = BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)];
+                text = `Mulai Bimbingan ${bab}`
                 id_pembimbing   = pembimbing1.id_pembimbing;
                 nama_pembimbing = pembimbing1.get_account.nama_lengkap;
                 
             }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.revisi === 'YA') {
                 pembimbing_active = '2';
-                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+                bab  = BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)];
+                text = `Mulai Bimbingan ${bab}`
                 id_pembimbing   = pembimbing2.id_pembimbing;
                 nama_pembimbing = pembimbing2.get_account.nama_lengkap;
             }
@@ -161,9 +174,9 @@ const DashboardUI = ( () => {
                     <a href="javascript:void(0)" 
                         data-id_pembimbing="${id_pembimbing}" 
                         data-nama_pembimbing="${nama_pembimbing}" 
-                        data-bab="${text}" 
+                        data-bab="${bab}" 
                         class="black-text btn__start__bimbingan"> 
-                        Mulai Bimbingan ${text}</a>
+                        ${text}</a>
                 </th>
             </tr>
         `)
@@ -563,6 +576,7 @@ const AktifitasUI = ( () => {
     }
 
     const displayDiskusi = ( { get_diskusi } ) => {
+        console.log(get_diskusi, 'diskusi')
         let class_chat = '', image = `` , html = '';
 
         if(get_diskusi.length > 0 ){
@@ -679,6 +693,7 @@ const AktifitasUI = ( () => {
         },
 
         renderDetailBimbingan: (data) => {
+            
             //cek status bimbingan
             if(data.status === 'progress'){
                 $('#btn_close_bimbingan').show();

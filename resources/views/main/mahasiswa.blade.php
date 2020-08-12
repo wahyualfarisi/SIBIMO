@@ -228,6 +228,7 @@
     <script src="{{asset('assets/vendors/fullcalendar/daygrid/main.js')}}"></script>
     <script src="{{asset('assets/js/custom/popper.min.js')}}" ></script>
     <script src="{{asset('assets/js/JIC.min.js')}}"></script>
+    <script src="{{asset('assets/js/signature.js')}}" ></script>
     <script src="{{asset('assets/js/printArea.js')}}"></script>
     <script src="{{asset('assets/js/pagination.js')}}" ></script>
     <script src="{{asset('assets/js/moment.js')}}" ></script>

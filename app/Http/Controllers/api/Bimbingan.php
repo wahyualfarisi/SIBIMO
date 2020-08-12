@@ -10,7 +10,7 @@ use Ramsey\Uuid\Uuid;
 use App\models\Bimbingan as BimbinganModel;
 use App\models\Pembimbing;
 use App\models\LembarBimbingan;
-
+use App\models\DiskusiBimbingan;
 
 class Bimbingan extends Controller
 {
@@ -25,7 +25,7 @@ class Bimbingan extends Controller
 
         $validated = Validator::make($request->all(), [
             'id_pembimbing' => 'required',
-            'bab'           => 'required|in:BAB 1,BAB 2,BAB 3,BAB 4,BAB 5',
+            'bab'           => 'required|in:BAB 1,BAB 2,BAB 3,BAB 4,BAB 5,DEMO PROGRAM',
             'file'          => 'required'
         ]);
 
@@ -145,7 +145,6 @@ class Bimbingan extends Controller
                 'get_mahasiswa'
             ])->where('id_bimbingan', $bimbingan->id_bimbingan)->first();
 
-
             return response()->json([
                 'status'   => true,
                 'message'  => 'Fetch detail bimbingan',
@@ -258,6 +257,7 @@ class Bimbingan extends Controller
             $bimbingan->status = 'selesai';
             $bimbingan->update();
         }catch(\Exception $e){
+            DB::rollback();
             return response()->json([
                 'status'   => false,
                 'message'  => $e->getMessage()
@@ -285,6 +285,7 @@ class Bimbingan extends Controller
            
 
         }catch(\Exception $e){
+            DB::rollback();
             return response()->json([
                 'status'   => false,
                 'message'  => $e->getMessage()

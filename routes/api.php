@@ -21,6 +21,9 @@ Route::get('foto/mahasiswa/{filename}', 'api\PhotoApi@mahasiswa_foto');
 Route::get('file/{nim}/{filename}', 'api\PhotoApi@file_bimbingan');
 Route::get('file/{nim}/catatan/{filename}', 'api\PhotoApi@catatan');
 
+//ttd 
+Route::get('ttd/{filename}', 'api\PhotoApi@tandatangan');
+
 //account api
 Route::apiResource('jurusan', 'api\Jurusan')->middleware('auth:account');
 Route::post('/jurusan/{id_jurusan}/update_kaprodi', 'api\Jurusan@updateKaprodi');

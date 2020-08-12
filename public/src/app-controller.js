@@ -204,7 +204,7 @@ const DashboardController = ( ( UI, AJAX ) => {
                         null,
                         res => {
                             $('#modalStartBimbingan').modal('close');
-                            
+                            location.hash = `#/aktifitas`;
                         },
                         err => {
                             console.log(err)
@@ -1662,7 +1662,7 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
 
             var canvas       = document.querySelector("canvas");
             var signaturePad = new SignaturePad(canvas);
-
+    
             onCloseBimbingan( id , signaturePad )
         }
     }
