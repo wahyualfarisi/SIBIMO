@@ -26,7 +26,7 @@ class Dashboard extends Controller
                 'get_account'
             ])->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa)->get();
 
-            $hasil_bimbingan = LembarBimbingan::with('get_bimbingan.get_pembimbing')->whereHas('get_bimbingan', function($query) {
+            $hasil_bimbingan = LembarBimbingan::with('get_bimbingan.get_pembimbing.get_account')->whereHas('get_bimbingan', function($query) {
                 $query->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa );
             })->get();
 

@@ -152,6 +152,20 @@ const ProfileController = ( ( AJAX, LIB, UI ) => {
 
 // dashboard controller 
 const DashboardController = ( ( UI, AJAX ) => {
+        const get_pembimbing = ( cb ) => {
+            AJAX.getRes(
+                `/api/verify`,
+                {},
+                null,
+                res => {
+                    cb(res)
+                },
+                err => {
+                    console.log(err)
+                }
+            )
+        }
+
         const load_dashboard = ( ) => {
             AJAX.getRes(
                 `/api/dashboard`,
@@ -165,9 +179,47 @@ const DashboardController = ( ( UI, AJAX ) => {
                 }
             )
         }
+
+        const EventListener = () => {
+            
+            $('table').on('click', '.btn__start__bimbingan',  function() {
+                let bab = $(this).data('bab');
+                let id_pembimbing = $(this).data('id_pembimbing');
+                let nama_pembimbing = $(this).data('nama_pembimbing');
+
+                $('[name=id_pembimbing]').val(id_pembimbing)
+                $('[name=nama_pembimbing]').val(nama_pembimbing);
+                $('.bab').val(bab)
+                $('.bab').text(bab)
+                $('#modalStartBimbingan').modal('open')
+            });
+
+            $('#form_start_bimbingan').on('submit', function(e) {
+                e.preventDefault();
+            }).validate({
+                submitHandler: (form) => {
+                    AJAX.postFormData(
+                        `/api/bimbingan/create`,
+                        form,
+                        null,
+                        res => {
+                            $('#modalStartBimbingan').modal('close');
+                            
+                        },
+                        err => {
+                            console.log(err)
+                        }
+                    )
+                }
+            })
+
+        }
+
     return {
         init: () => {
+            $('#modalStartBimbingan').modal()
             load_dashboard();
+            EventListener()
         }
     }
 })(DashboardUI, ajaxSetting);
@@ -1464,24 +1516,7 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
             });
         });
 
-        $('#form_start_bimbingan').on('submit', function(e) {
-            e.preventDefault();
-        }).validate({
-            submitHandler: (form) => {
-                AJAX.postFormData(
-                    `/api/bimbingan/create`,
-                    form,
-                    null,
-                    res => {
-                        $('#modalStartBimbingan').modal('close');
-                        load_aktifitas()
-                    },
-                    err => {
-                        console.log(err)
-                    }
-                )
-            }
-        })
+        
     }
 
     const load_detail_bimbingan = id => {

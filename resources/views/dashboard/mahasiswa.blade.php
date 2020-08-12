@@ -47,12 +47,10 @@
                 <div class="card-content">
                     <div class="display_image_pembimbing_1 left mr-5"></div>
                     <h4 class="nama_pembimbing_1"></h4>
+                    <a href="javascript:void(0)" class="black-text">Lihat Kartu Bimbingan</a>
                     <h5>Pembimbing 1</h5>
-                    
                 </div>
-                <div class="card-action center-align">
-                        <a href="javascript:void(0)">Mulai Bimbingan</a> 
-                </div>
+               
                <div class="card-content" style="height: 550px; overflow: auto;">
                    
                    <table>
@@ -86,10 +84,8 @@
                 <div class="card-content">
                     <div class="display_image_pembimbing_2 left mr-5"></div>
                     <h4 class="nama_pembimbing_2"></h4>
+                    <a href="javascript:void(0)" class="black-text">Lihat Kartu Bimbingan</a>
                     <h5>Pembimbing 2</h5>
-                </div>
-                <div class="card-action center-align">
-                        <a href="javascript:void(0)"></a> 
                 </div>
                 <div class="card-content" style="height: 550px; overflow: auto;">
                     
@@ -120,6 +116,41 @@
     </div>
 
 </div>
+
+<form id="form_start_bimbingan">
+    <div id="modalStartBimbingan" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4 class="center-align">Mulai Bimbingan <span class="bab"></span></h4>
+            
+            <div>
+                <label> Pembimbing </label>
+                <input type="hidden" name="id_pembimbing">
+                <input type="text" name="nama_pembimbing" readonly>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <label> Pilih Bab </label>
+                <input type="text" name="bab" class="bab"  readonly>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <label>Upload File Bimbingan</label><br>
+                <input type="file" name="file" class="input-field" required/>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <label>Deskripsi (optional)</label>
+                <input type="text" name="deskripsi_bimbingan">
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+            <button class="btn btn-flat" type="submit">Mulai</button>
+        </div>
+    </div>
+</form>
 
 <script>
     $(function() {

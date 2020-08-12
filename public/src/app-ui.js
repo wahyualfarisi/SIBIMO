@@ -110,38 +110,63 @@ const DashboardUI = ( () => {
 
         //check total bimbingan
         //jika belum ada sama sekali, bimbingan dimulai dari pembimbing 2
-        if(allbimbingn.length === 0){
-            console.log('bimbingan di mulai dari pem_2 dengan BAB 1');
+
+        let text = '';
+        let pembimbing_active = '';
+        let id_pembimbing, nama_pembimbing;
+        const BAB = ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5','DEMO PROGRAM'];
+
+        if(allbimbingn.length === 0) {
+            id_pembimbing   = pembimbing2.id_pembimbing;
+            nama_pembimbing = pembimbing2.get_account.nama_lengkap;
+            text = 'BAB 1';
+            pembimbing_active = '2';
         }
         let lastrecord = allbimbingn[allbimbingn.length - 1];
 
-        console.log(lastrecord);
-
-        const BAB = ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5','DEMO PROGRAM'];
+    
 
         
-        let text = '';
-        let pembimbing_active = '';
 
-        if(lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.acc === 'YA' ) {
-            pembimbing_active = '2';
-            text = `Silahkan bimbingan dengan pembimbing 2 , ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab) + 1]} `
-            
-        }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.revisi === 'YA'  ) {
-            pembimbing_active = '1';
-            text = `Silahkan bimbingan dengan pembimbing 1 , ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
-            
-        }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.acc === 'YA' ) {
-            pembimbing_active = '1';
-            text = `bimbingan dengan pembimbing 1, ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
-            
-        }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.revisi === 'YA') {
-            pembimbing_active = '2';
-            text = `bimbingan dengan pembimbing 2, ${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
-            
+        if(lastrecord){
+            if(lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.acc === 'YA' ) {
+                pembimbing_active = '2';
+                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab) + 1]} `
+                id_pembimbing   = pembimbing2.id_pembimbing;
+                nama_pembimbing = pembimbing2.get_account.nama_lengkap;
+                
+            }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.revisi === 'YA'  ) {
+                pembimbing_active = '1';
+                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+                id_pembimbing   = pembimbing1.id_pembimbing;
+                nama_pembimbing = pembimbing1.get_account.nama_lengkap;
+                
+            }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.acc === 'YA' ) {
+                pembimbing_active = '1';
+                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+                id_pembimbing   = pembimbing1.id_pembimbing;
+                nama_pembimbing = pembimbing1.get_account.nama_lengkap;
+                
+            }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.revisi === 'YA') {
+                pembimbing_active = '2';
+                text = `${BAB[BAB.indexOf(lastrecord.get_bimbingan.bab)]}`
+                id_pembimbing   = pembimbing2.id_pembimbing;
+                nama_pembimbing = pembimbing2.get_account.nama_lengkap;
+            }
         }
-
         
+        $(`#t_pembimbing_${pembimbing_active}`).append(`
+            <tr >
+                <th colspan="5" class="center-align"> 
+                    <a href="javascript:void(0)" 
+                        data-id_pembimbing="${id_pembimbing}" 
+                        data-nama_pembimbing="${nama_pembimbing}" 
+                        data-bab="${text}" 
+                        class="black-text btn__start__bimbingan"> 
+                        Mulai Bimbingan ${text}</a>
+                </th>
+            </tr>
+        `)
         
     }
 
