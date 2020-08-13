@@ -35,10 +35,10 @@ class Dashboard extends Controller
                 'level'   => 'Mahasiswa',
                 'status'  => 200,
                 'encrypt_id' => Encrypt(auth('mahasiswa')->user()->id_mahasiswa),
-                'info_user'    => auth('mahasiswa')->user()->with([
-                    'get_jurusan',
-                    'get_judul_skripsi'
-                ])->first(),
+                'info_user'    => Mahasiswa::with([
+                    'get_judul_skripsi',
+                    'get_jurusan'
+                ])->findOrFail( auth('mahasiswa')->user()->id_mahasiswa ),
                 'history_bimbingan' => $pembimbing,
                 'hasil_bimbingan' => $hasil_bimbingan
             ]);

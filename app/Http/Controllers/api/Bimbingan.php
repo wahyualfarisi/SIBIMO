@@ -41,6 +41,20 @@ class Bimbingan extends Controller
         
         $mahasiswa  = auth('mahasiswa')->user();
 
+        //check bimbingan
+        $check_bimbingan  = BimbinganModel::where([
+            'id_mahasiswa' => $mahasiswa->id_mahasiswa,
+            'status'       => 'progress'
+        ])->first();
+
+        if($check_bimbingan){
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Bimbingan sudah di mulai, Silahkan cek ke menu aktifitas'
+            ]);
+        }
+
+
         try{
             $file = $request->file('file');
 

@@ -203,8 +203,15 @@ const DashboardController = ( ( UI, AJAX ) => {
                         form,
                         null,
                         res => {
-                            $('#modalStartBimbingan').modal('close');
-                            location.hash = `#/aktifitas`;
+                            if(res.status){
+                                $('#modalStartBimbingan').modal('close');
+                                location.hash = `#/aktifitas`;
+                            }else{
+                                M.toast({
+                                    html: res.message
+                                })
+                            }
+                          
                         },
                         err => {
                             console.log(err)
