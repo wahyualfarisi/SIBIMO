@@ -73,7 +73,7 @@ class AuthController extends Controller
                          
  
                          //1. cek jika username ada
-                         if(!$user) return response()->json(['status' => false, 'message' => 'Account not found'], 404);
+                         if(!$user) return response()->json(['status' => false, 'message' => 'Cek kembali ID dan Password anda'], 404);
  
                          //2. cek jika password benar
                          if(!Hash::check($request->password , $user->password) ) 
@@ -116,7 +116,7 @@ class AuthController extends Controller
                        ])->first();
  
                        //1. cek jika username ada
-                       if(!$user) return response()->json(['status' => false, 'message' => 'Account not found'], 404);
+                       if(!$user) return response()->json(['status' => false, 'message' => 'Cek kembali ID dan Password anda'], 404);
  
                        //2. cek jika password benar
                        if(!Hash::check($request->password , $user->password) ) 
@@ -154,7 +154,7 @@ class AuthController extends Controller
                 default:
                     return response()->json([
                         'status'   => false,
-                        'message'  => 'Account not found'
+                        'message'  => 'Cek kembali ID dan Password anda'
                     ]);
                 break;
         }

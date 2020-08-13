@@ -117,6 +117,7 @@
     <script src="{{asset('assets/js/custom/custom-script.js')}}" type="text/javascript"></script>
     <script src="{{asset('assets/vendors/block-ui/jquery.blockUI.js')}}"></script>
     <script src="{{asset('assets/vendors/select2/dist/js/select2.full.min.js')}} " type="text/javascript"></script>
+    <script src="{{asset('assets/js/custom/popper.min.js')}}" ></script>
     <script src="{{asset('src/app-library.js')}}"></script>
     <!-- END THEME  JS-->
     <script>
@@ -139,11 +140,22 @@
                     this,
                     null ,
                     res => {
-                        console.log(res);
-                        location.href = 'main/';
+                        
+                        
+                        if(res.status){
+                            location.href = 'main/';
+                        }else{
+                            M.toast({
+                                html: res.message
+                            })
+                            console.log(res);
+                        }
                     },
                     err => {
                         console.log(err);
+                        M.toast({
+                            html: 'Silahkan cek kembali ID dan Password anda'
+                        })
                     },
                     null
                 );
