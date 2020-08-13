@@ -49,7 +49,7 @@
                         <input type="text" name="alamat" id="alamat">
                     </div>
 
-                    <button type="submit" class="btn red darken-1">UPDATE</button>
+                    <button type="button" class="btn red darken-1">UPDATE</button>
                 </form>
             </div>
         </div>

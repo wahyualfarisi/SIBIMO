@@ -719,6 +719,8 @@ const AktifitasUI = ( () => {
 })();
 
 const KartuUI = ( () => {
+    const PER_LEMBAR = 16;
+
     const displayCover = ( { info_user } ) => {
         console.log(info_user)
         $('.nama_mahasiswa').text(info_user.nama_lengkap)
@@ -743,6 +745,8 @@ const KartuUI = ( () => {
         //bimbingan 
         let html = '', no = 1;
         if(pembimbing1.get_bimbingan.length > 0 ){
+            
+
             pembimbing1.get_bimbingan.forEach(item => {
                 let icon_acc, icon_revisi
 
@@ -770,9 +774,17 @@ const KartuUI = ( () => {
                     </tr>
                 `;
             })
-        }
 
+            
+
+        }
+       
         $('#t_pembimbing_1').html(html);
+
+        let total_data = pembimbing1.get_bimbingan.length;
+        if(PER_LEMBAR > total_data){
+            $('#t_pembimbing_1').append( loopToN(PER_LEMBAR - total_data) )
+        }
     }
 
     const displayPembimbing2 = ( pembimbing2 , info_user ) => {
@@ -820,6 +832,31 @@ const KartuUI = ( () => {
         }
 
         $('#t_pembimbing_2').html(html);
+
+        let total_data = pembimbing2.get_bimbingan.length;
+        if(PER_LEMBAR > total_data){
+            $('#t_pembimbing_2').append( loopToN(PER_LEMBAR - total_data) )
+        }
+    }
+
+    const loopToN = (total) => {
+        let html = '';
+        if(total > 0 ){
+            for(var i = 0; i<total; i++){
+                html += `
+                    <tr>
+                        <td style="opacity: 0"> ${i}  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                    </tr>
+                `;
+            }
+            return html
+        }
+        return html
     }
 
 
