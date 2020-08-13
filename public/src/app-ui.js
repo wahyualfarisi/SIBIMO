@@ -662,17 +662,12 @@ const AktifitasUI = ( () => {
                 
             }else{
 
-                if(LEVEL === 'mahasiswa'){
-                    btn_start = '<a class="btn btn-flat waves-effect waves-light btn_start_bimbingan" href="javascript:void(0)">Mulai Bimbingan</a>';
-                }else{
-                    btn_start = '<a class="btn btn-flat waves-effect waves-light" href="javascript:void(0)"></a>'
-                }
 
                 html = `
                     <div id="aktifitas" class="col s12 center-align white" style="padding: 10px;">
                         <img width="30%" src="${BASE_URL}/images/todoList.svg" class="responsive-img maintenance-img" alt="">
                         <h4 class="error-code">Tidak ada aktifitas bimbingan</h4>
-                        ${btn_start}
+                        <a class="btn btn-flat waves-effect waves-light btn_start_bimbingan" href="javascript:void(0)"></a>
                     </div>
                 `;
             }
