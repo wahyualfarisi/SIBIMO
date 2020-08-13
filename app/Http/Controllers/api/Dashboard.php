@@ -37,7 +37,7 @@ class Dashboard extends Controller
                 'encrypt_id' => Encrypt(auth('mahasiswa')->user()->id_mahasiswa),
                 'info_user'    => Mahasiswa::with([
                     'get_judul_skripsi',
-                    'get_jurusan'
+                    'get_jurusan.get_kaprodi.get_account'
                 ])->findOrFail( auth('mahasiswa')->user()->id_mahasiswa ),
                 'history_bimbingan' => $pembimbing,
                 'hasil_bimbingan' => $hasil_bimbingan

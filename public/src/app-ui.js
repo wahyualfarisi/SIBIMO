@@ -74,6 +74,7 @@ const DashboardUI = ( () => {
                 console.log(data.get_bimbingan)
 
                 if(item.get_lembar_bimbingan){
+
                     if(item.get_lembar_bimbingan.acc === 'YA') {
                         icon_acc = ` <i class="material-icons green-text">done</i> `
                     }else{
@@ -221,7 +222,7 @@ const DashboardUI = ( () => {
                     displayFotoMahasiswa(res.info_user);
                     displayHistoryBimbingan(res.history_bimbingan, res.hasil_bimbingan)
                     $('.kartu_bimbingan_btn').html(`
-                        <a target="_blank" href="/kartu_bimbingan/${res.encrypt_id}" class="white-text">Lihat Kartu Bimbingan <i style="font-size: 14px;" class="material-icons">arrow_forward</i> </a> 
+                        <a target="_blank" href="/kartu_bimbingan/${res.info_user.nim}?token=${TOKEN}" class="white-text">Lihat Kartu Bimbingan <i style="font-size: 14px;" class="material-icons">arrow_forward</i> </a> 
                     `)
                 break;
             }
@@ -716,3 +717,122 @@ const AktifitasUI = ( () => {
         }
     }
 })();
+
+const KartuUI = ( () => {
+    const displayCover = ( { info_user } ) => {
+        console.log(info_user)
+        $('.nama_mahasiswa').text(info_user.nama_lengkap)
+        $('.nim_mahasiswa').text(info_user.nim)
+        $('.jurusan').text(info_user.get_jurusan.nama_jurusan)
+        $('.judul_skripsi_text').text(info_user.get_judul_skripsi.judul)
+    }
+
+    const displayPembimbing1 = ( pembimbing1, info_user ) => {
+       
+        $('.nama_pembimbing_1').text(pembimbing1.get_account.nama_lengkap)
+        $('.nama_kaprodi').text(info_user.get_jurusan.get_kaprodi.get_account.nama_lengkap);
+
+        let src;
+        if(info_user.foto) {
+            src = `/api/foto/mahasiswa/${info_user.foto}`;
+            $('.foto_mahasiswa').html(`
+                <img src="${src}" alt="mahasiswa" width="50%" />
+            `)
+        }
+
+        //bimbingan 
+        let html = '', no = 1;
+        if(pembimbing1.get_bimbingan.length > 0 ){
+            pembimbing1.get_bimbingan.forEach(item => {
+                let icon_acc, icon_revisi
+
+                if(item.get_lembar_bimbingan.acc === 'YA') {
+                    icon_acc = ` <i class="material-icons green-text">done</i> `
+                }else{
+                    icon_acc = ``
+                }
+
+                if(item.get_lembar_bimbingan.revisi === 'YA'){
+                    icon_revisi = '<i class="material-icons green-text">done</i>'
+                }else{
+                    icon_revisi = ''
+                }
+
+
+                html += `
+                    <tr>
+                        <td> ${no++} </td>
+                        <td> ${item.tanggal_bimbingan} </td>
+                        <td> ${item.bab} </td>
+                        <td> ${icon_revisi} </td>
+                        <td> ${icon_acc} </td>
+                        <td> <img src="/api/ttd/${item.get_lembar_bimbingan.paraf}" width="60px" /> </td>
+                    </tr>
+                `;
+            })
+        }
+
+        $('#t_pembimbing_1').html(html);
+    }
+
+    const displayPembimbing2 = ( pembimbing2 , info_user ) => {
+        $('.nama_pembimbing_2').text(pembimbing2.get_account.nama_lengkap)
+        $('.nama_kaprodi').text(info_user.get_jurusan.get_kaprodi.get_account.nama_lengkap);
+
+        let src;
+        if(info_user.foto) {
+            src = `/api/foto/mahasiswa/${info_user.foto}`;
+            $('.foto_mahasiswa').html(`
+                <img src="${src}" alt="mahasiswa" width="50%" />
+            `)
+        }
+
+        //bimbingan 
+        let html = '', no = 1;
+        if(pembimbing2.get_bimbingan.length > 0 ){
+            pembimbing2.get_bimbingan.forEach(item => {
+                let icon_acc, icon_revisi
+
+                if(item.get_lembar_bimbingan.acc === 'YA') {
+                    icon_acc = ` <i class="material-icons green-text">done</i> `
+                }else{
+                    icon_acc = ``
+                }
+
+                if(item.get_lembar_bimbingan.revisi === 'YA'){
+                    icon_revisi = '<i class="material-icons green-text">done</i>'
+                }else{
+                    icon_revisi = ''
+                }
+
+
+                html += `
+                    <tr>
+                        <td> ${no++} </td>
+                        <td> ${item.tanggal_bimbingan} </td>
+                        <td> ${item.bab} </td>
+                        <td> ${icon_revisi} </td>
+                        <td> ${icon_acc} </td>
+                        <td> <img src="/api/ttd/${item.get_lembar_bimbingan.paraf}" width="60px" /> </td>
+                    </tr>
+                `;
+            })
+        }
+
+        $('#t_pembimbing_2').html(html);
+    }
+
+    return {
+        display: ( data ) => {
+            console.log(data)
+            displayCover(data);
+
+            let pembimbing1 = data.history_bimbingan.filter(item => item.pembimbing_status === '1')[0]
+            let pembimbing2 = data.history_bimbingan.filter(item => item.pembimbing_status === '2')[0]
+
+            displayPembimbing1(pembimbing1, data.info_user)
+            displayPembimbing2(pembimbing2, data.info_user)
+
+        }
+    }
+})()

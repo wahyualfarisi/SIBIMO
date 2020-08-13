@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
-<link rel="stylesheet" href="{{ asset('assets/css/lembar_bimbingan.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/flag-icon/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lembar_bimbingan.css') }}">
     <title>Kartu Bimbingan</title>
+    <script>
+         var TOKEN = "{{ $_GET['token'] }}";
+    </script>
 </head>
 <body>
-
+    
     <!-- PAGE 1 -->
     <div class="container">
         <div class="page-1">
@@ -24,15 +29,15 @@
                     <table class="table_info_mahasiswa">
                         <tr>
                             <th>NAMA</th>
-                            <td>: WAHYU ALFARISI</td>
+                            <td class="nama_mahasiswa">: </td>
                         </tr>
                         <tr>
                             <th>NIM</th>
-                            <td>: 7201160111</td>
+                            <td class="nim_mahasiswa">: </td>
                         </tr>
                         <tr>
                             <th>PROGRAM STUDI</th>
-                            <td>: SISTEM INFORMASI</td>
+                            <td class="jurusan">: </td>
                         </tr>
                     </table>
                 </section>
@@ -42,7 +47,7 @@
                         <h3 class="center-text text-bold-4">JUDUL TUGAS AKHIR</h3>
         
                         <h4 class="center-text mt-30 judul_skripsi_text">
-                            SISTEM INFORMASI BIMBINGAN ONLINE
+                            
                         </h4>
                     </div>
                 </section>
@@ -111,135 +116,8 @@
                             <th>PARAF</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
+                    <tbody id="t_pembimbing_1">
+                       
                     </tbody>
                 </table>
                 
@@ -268,8 +146,9 @@
                             <div class="mt-100"></div>
                             <div class="mt-100"></div>
                             <hr>
+                            <h5 class="center-text nama_pembimbing_1"></h5>
                         </div>
-                        <div class="col-sm-4 center-text">
+                        <div class="col-sm-4 center-text foto_mahasiswa">
                             FOTO
                         </div>
                         <div class="col-sm-4 center-text">
@@ -278,6 +157,7 @@
                             <div class="mt-100"></div>
                             <div class="mt-100"></div>
                             <hr>
+                            <h5 class="center-text nama_kaprodi"></h5>
                         </div>
                     </div>
                 </div>
@@ -328,135 +208,8 @@
                                 <th>PARAF</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
+                        <tbody id="t_pembimbing_2">
+                           
                         </tbody>
                     </table>
                     
@@ -469,6 +222,7 @@
                                 <div class="mt-100"></div>
                                 <div class="mt-100"></div>
                                 <hr>
+                                <h5 class="center-text nama_pembimbing_2"></h5>
                             </div>
                             <div class="col-sm-6 center-text">
                                 <h5 class="text-bold-4">KAPRODI</h5>
@@ -476,6 +230,7 @@
                                 <div class="mt-100"></div>
                                 <div class="mt-100"></div>
                                 <hr>
+                                <h5 class="center-text nama_kaprodi"></h5>
                             </div>
                         </div>
                     </div>
@@ -490,5 +245,18 @@
                 PRINT
             </button>
         </div>
+
+        <script src="{{asset('assets/js/vendors.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('assets/js/printArea.js')}}"></script>
+        <script src="{{asset('src/app-library.js')}}"></script>
+        <script src="{{asset('src/app-ui.js')}}"></script>
+        <script src="{{asset('src/app-controller.js')}}"></script>
 </body>
 </html>
+
+<script>
+    $(function() {
+        
+        KartuBimbinganController.data()
+    })
+</script>

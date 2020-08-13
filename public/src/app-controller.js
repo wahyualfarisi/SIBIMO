@@ -2027,3 +2027,25 @@ const PlagiatismeController = ( ( AJAX, LIB ) => {
         }
     }
 })(ajaxSetting, libSettings)
+
+const KartuBimbinganController = ( ( AJAX , LIB, UI) => {
+    const load_data = () => {
+        AJAX.getRes(
+            `/api/dashboard`,
+            {},
+            null,
+            res => {
+                UI.display(res)
+            },
+            err => {
+                console.log(err)
+            }
+        )
+    }
+
+    return {
+        data: () => {
+            load_data()    
+        }
+    }
+})(ajaxSetting, libSettings, KartuUI)
