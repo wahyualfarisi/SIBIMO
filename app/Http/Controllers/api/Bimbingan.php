@@ -177,6 +177,7 @@ class Bimbingan extends Controller
                 'results' => $dospem
                             ->get_bimbingan()
                             ->with('get_pembimbing.get_account','get_mahasiswa','get_lembar_bimbingan')
+                            ->orderBy('created_at', 'ASC')
                             ->where('status', 'selesai')
                             ->get()
             ]);
@@ -190,7 +191,9 @@ class Bimbingan extends Controller
             ])->where([
                 ['status', 'selesai'],
                 ['id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa]
-            ])->get();
+            ])
+            ->orderBy('created_at', 'ASC')
+            ->get();
 
 
             return response()->json([

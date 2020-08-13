@@ -37,7 +37,7 @@
               <h4 class="card-title" id="info_user"></h4>
               <div id="card-stats" class="row">
 
-                <div class="col s12 m6 xl3">
+                <div class="col s12 m6 xl4">
                     <div class="card" style="border-radius: 10px;">
                       <div class="card-content  black-text">
                           <p class="card-stats-title"><i class="material-icons">trending_up</i> Jurusan</p>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="col s12 m6 xl3">
+                <div class="col s12 m6 xl4">
                     <div class="card" style="border-radius: 10px;">
                       <div class="card-content  black-text">
                           <p class="card-stats-title"><i class="material-icons">person_outline</i> Mahasiswa</p>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="col s12 m6 xl3">
+                <div class="col s12 m6 xl4">
                         <div class="card" style="border-radius: 10px;">
                           <div class="card-content black-text">
                               <p class="card-stats-title"><i class="material-icons">person_outline</i>Dosen</p>
@@ -91,23 +91,7 @@
                     </div>
                 </div>
 
-                <div class="col s12 m6 xl3">
-                    <div class="card" style="border-radius: 10px;">
-                      <div class="card-content black-text">
-                          <p class="card-stats-title"><i class="material-icons">notifications_none</i>Notifikasi</p>
-                          <h4 class="card-stats-number black-text total_notifikasi">0</h4>
-                          <p class="card-stats-compare">
-                            
-                            <span class="red-text date_from"></span>
-                          </p>
-                      </div>
-                      <div class="card-action green">
-                        <div id="clients-bar" class="center-align">
-                              <span class="white-text">Notifikasi </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                
 

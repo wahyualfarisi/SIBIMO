@@ -14,7 +14,7 @@ class JudulSkripsiSeeder extends Seeder
         DB::table('judul_skripsi')->insert([
             [
                 'id_mahasiswa' => 1,
-                'judul' => 'SISTEM INFORMASI PREVENTIVE MAINTENANCE',
+                'judul' => 'SISTEM INFORMASI BIMBINGAN ONLINE',
                 'deskripsi' => null,
                 'status' => 'active',
                 'created_at' => date('Y-m-d H:i:s')

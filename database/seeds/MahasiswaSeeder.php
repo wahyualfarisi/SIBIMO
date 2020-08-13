@@ -13,13 +13,13 @@ class MahasiswaSeeder extends Seeder
     {
         DB::table('mahasiswa')->insert([
             [
-                'nim' => '7201160111',
-                'nama_lengkap' => 'Wahyu Alfarisi',
-                'password' => bcrypt('7201160111'),
-                'email'  => 'wahyualfarisi30@gmail.com',
+                'nim' => '7201160115',
+                'nama_lengkap' => 'Zacky Ramadhan',
+                'password' => bcrypt('7201160115'),
+                'email'  => 'zacky@gmail.com',
                 'id_jurusan' => 1,
                 'no_telp' => '081317726873',
-                'angkatan' => '2015',
+                'angkatan' => '2016',
                 'created_at' => date('Y-m-d H:i:s')
             ]
         ]);
