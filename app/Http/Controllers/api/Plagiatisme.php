@@ -19,7 +19,7 @@ class Plagiatisme extends Controller
             'message'  => 'Permission denied'
         ], 401);
 
-        $plagiatisme = PlagiatismeModel::where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa)->get();
+        $plagiatisme = PlagiatismeModel::with('get_mahasiswa')->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa)->get();
 
         try{
             return response()->json([
@@ -65,6 +65,17 @@ class Plagiatisme extends Controller
 
         $mahasiswa = Mahasiswa::findOrFail( auth('mahasiswa')->user()->id_mahasiswa );
 
+        //check
+        $plagiatisme = PlagiatismeModel::where([
+            ['id_mahasiswa', $mahasiswa->id_mahasiswa],
+            ['bab', $request->bab]
+        ])->first();
+
+        if($plagiatisme)
+            return response()->json([
+                'status'   => false,
+                'message'  => $request->bab.' Sudah di input'
+            ]);
 
         try{
             $file = $request->file('foto');

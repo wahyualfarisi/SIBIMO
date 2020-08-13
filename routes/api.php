@@ -21,8 +21,10 @@ Route::get('foto/mahasiswa/{filename}', 'api\PhotoApi@mahasiswa_foto');
 Route::get('file/{nim}/{filename}', 'api\PhotoApi@file_bimbingan');
 Route::get('file/{nim}/catatan/{filename}', 'api\PhotoApi@catatan');
 
-//ttd 
+//foto ttd 
 Route::get('ttd/{filename}', 'api\PhotoApi@tandatangan');
+//foto plagiatisme
+Route::get('foto/plagiatisme/{filename}', 'api\PhotoApi@plagiatisme');
 
 //account api
 Route::apiResource('jurusan', 'api\Jurusan')->middleware('auth:account');

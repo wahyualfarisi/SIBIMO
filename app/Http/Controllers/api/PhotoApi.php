@@ -39,5 +39,11 @@ class PhotoApi extends Controller
         return Response::download($path);
     }
 
+    public function plagiatisme($filename)
+    {
+        $path = public_path().'/storage/file/plagiatisme/'.$filename;
+        return Response::download($path);
+    }
+
 
 }

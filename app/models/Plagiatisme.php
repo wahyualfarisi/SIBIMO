@@ -16,5 +16,10 @@ class Plagiatisme extends Model
     ];
 
     public $timestamps = false;
+
+    public function get_mahasiswa()
+    {
+        return $this->hasOne('App\models\Mahasiswa', 'id_mahasiswa', 'id_mahasiswa');
+    }
     
 }

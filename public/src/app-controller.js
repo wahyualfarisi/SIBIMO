@@ -224,7 +224,7 @@ const DashboardController = ( ( UI, AJAX ) => {
     }
 })(DashboardUI, ajaxSetting);
 
-//
+//Jurusan Controller
 const JurusanController = ( (AJAX, LIB) => {
 
     const EventListener = ( datatable ) => {
@@ -1800,6 +1800,223 @@ const HistoryBimbinganController = ( (AJAX, LIB) => {
 
                 ]
             })
+        }
+    }
+})(ajaxSetting, libSettings)
+
+const PlagiatismeController = ( ( AJAX, LIB ) => {
+    const EventListener = ( table ) => {
+
+        $('#btn_create_plagiatisme').on('click', function() {
+            $('#modalTambahPlagiatisme').modal('open');
+        });
+
+        $('#form_plagiatisme').on('submit', function(e) {
+            e.preventDefault();            
+        }).validate({
+            submitHandler: (form) => {
+                AJAX.postFormData(
+                    `/api/plagiatisme/create`,
+                    form,
+                    null,
+                    res => {
+                        if(res.status){
+                            $('#modalTambahPlagiatisme').modal('close');
+                            M.toast({
+                                html: 'Berhasil menambahkan nilai plagiatisme'
+                            })
+                            table.ajax.reload();
+                        }else{
+                            M.toast({
+                                html: res.message
+                            })
+                        }
+                    },
+                    err => {
+                        console.log(err)
+                    }
+                )
+            }
+        });
+
+        $('#t_plagiatisme').on('click', '.btn__hapus', function() {
+            let id = $(this).data('id');
+
+            $('#id_plagiatisme_delete').val(id);
+            $('#modalDelete').modal('open');
+        });
+
+        $('#form_delete').on('submit', function(e) {
+            e.preventDefault();
+            let id = $('#id_plagiatisme_delete').val();
+            AJAX.deleteRes(
+                `/api/plagiatisme/delete/${id}`,
+                null,
+                res => {
+                    $('#modalDelete').modal('close');
+                    table.ajax.reload()
+                },
+                err => {
+                    console.error(err)
+                }
+            );
+        });
+
+        $('#t_plagiatisme').on('click', '.btn__edit', function() {
+            let id = $(this).data('id');
+            let nilai = $(this).data('nilai');
+            let bab = $(this).data('bab');
+
+            $('#id_edit').val(id);
+            $('#bab_edit').val(bab);
+            $('#nilai_edit').val(nilai);
+
+            $('#modalEditPlagiatisme').modal('open');
+        });
+
+        $('#form_edit_plagiatisme').on('submit', function(e) {
+            e.preventDefault();
+            let id = $('#id_edit').val();
+            AJAX.postFormData(
+                `/api/plagiatisme/update_data/${id}`,
+                this,
+                null,
+                res => {
+                    $('#modalEditPlagiatisme').modal('close');
+                    table.ajax.reload();
+                },
+                err => {
+                    console.error(err)
+                }
+            )
+        })
+
+
+
+    }
+
+
+    return {
+        data: () => {
+            $('#modalTambahPlagiatisme').modal();
+            $('#modalDelete').modal();
+            $('#modalEditPlagiatisme').modal();
+            const T_plagiatisme = $('#t_plagiatisme').DataTable({
+                processing: false,
+                language: AJAX.dtLanguage(),
+                dom: '<Bf<t>ip>',
+                pageLength: 50,
+                scrollY: 350,
+                scrollX: true,
+                buttons: {
+                    dom: {
+                        button: {
+                            tag: 'button',
+                            className: 'btn btn-floating btn-small red darken-3 my-action'
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: 'collection',
+                            text: '<i class="material-icons dp48">file_download</i> ',
+                            buttons: [
+                                {
+                                    extend: 'pdfHtml5',
+                                    text: 'PDF',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_PLAGIATISME',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    text: 'Excel',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_PLAGIATISME',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    text: 'CSV',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_PLAGIATISME',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_PLAGIATISME',
+                                    title: '<h4>Data Mahasiswa</h4>'
+                                },
+                            ]
+                        },
+                        {
+                            text: '<i class="material-icons dp48">autorenew</i>',
+                            action: function (e, dt, node, config) {
+                                dt.ajax.reload()
+                            },
+                        },
+                    ]
+                },
+                ajax: AJAX.dtSettingSrc(
+                    `/api/plagiatisme`,
+                    {},
+                    res => {
+                        return res.results 
+                    },
+                    err => {
+                        console.log(err)
+                    }
+                ),
+                columns: [
+                    {
+                        data: null,
+                        render: ( data, type, row ) => {
+                            return `<h6> ${row.bab} </h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row ) => {
+                            if(row.foto) {
+                                return `
+                                <div style="display: grid;">
+                                    <img src="/api/foto/plagiatisme/${row.foto}" alt="sc_plagiatisme" width="100px;" />
+                                    <a class="black-text" href="/api/foto/plagiatisme/${row.foto}"> Lihat Foto </a>
+                                </div>
+                                `
+                            }
+                            return '-'
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row ) => {
+                            return `<h6> ${row.nilai_plagiatisme} % </h6>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row ) => {
+                            return `
+                                <a data-id="${row.id_plagiatisme}" data-bab="${row.bab}" data-nilai="${row.nilai_plagiatisme}" href="javascript:void(0)" class="green-text btn__edit"><i class="material-icons"> create </i> </a>
+                                <a data-id="${row.id_plagiatisme}" href="javascript:void(0)" class="red-text btn__hapus"> <i class="material-icons"> close </i> </a>
+                            
+                            `
+                        } 
+                    }
+                ]
+            });
+
+            EventListener( T_plagiatisme )
         }
     }
 })(ajaxSetting, libSettings)

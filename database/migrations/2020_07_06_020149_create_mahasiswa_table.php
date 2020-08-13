@@ -46,7 +46,7 @@ class CreateMahasiswaTable extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            $table->enum('bab', ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5']);
+            $table->enum('bab', ['BAB 1','BAB 2','BAB 3','BAB 4','BAB 5','ALL BAB']);
            
             $table->string('nilai_plagiatisme', 25);
             $table->text('foto');
