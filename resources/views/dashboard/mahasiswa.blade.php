@@ -58,7 +58,7 @@
                        <thead>
                            <tr>
                                <th>Tanggal Bimbingan</th>
-                               <th>BAB</th>
+                               <th>Permasalahan</th>
                                <th>Revisi</th>
                                <th>ACC</th>
                                <th>Paraf</th>
@@ -93,7 +93,7 @@
                         <thead>
                             <tr>
                                 <th>Tanggal Bimbingan</th>
-                                <th>BAB</th>
+                                <th>Permasalahan</th>
                                 <th>Revisi</th>
                                 <th>ACC</th>
                                 <th>Paraf</th>
