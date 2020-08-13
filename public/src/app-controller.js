@@ -2035,6 +2035,7 @@ const KartuBimbinganController = ( ( AJAX , LIB, UI) => {
             {},
             null,
             res => {
+                
                 UI.display(res)
             },
             err => {
@@ -2043,9 +2044,16 @@ const KartuBimbinganController = ( ( AJAX , LIB, UI) => {
         )
     }
 
+    const EventListener = () => {
+        $('.btn-print').on('click', function() {
+            window.print()
+        })
+    }
+
     return {
         data: () => {
-            load_data()    
+            load_data()  
+            EventListener()  
         }
     }
 })(ajaxSetting, libSettings, KartuUI)

@@ -822,6 +822,8 @@ const KartuUI = ( () => {
         $('#t_pembimbing_2').html(html);
     }
 
+
+
     return {
         display: ( data ) => {
             console.log(data)
@@ -833,6 +835,9 @@ const KartuUI = ( () => {
             displayPembimbing1(pembimbing1, data.info_user)
             displayPembimbing2(pembimbing2, data.info_user)
 
+            window.print()
+
+            
         }
     }
 })()
