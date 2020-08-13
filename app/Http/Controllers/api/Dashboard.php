@@ -38,7 +38,7 @@ class Dashboard extends Controller
                 'info_user'    => auth('mahasiswa')->user()->with([
                     'get_jurusan',
                     'get_judul_skripsi'
-                ])->get(),
+                ])->first(),
                 'history_bimbingan' => $pembimbing,
                 'hasil_bimbingan' => $hasil_bimbingan
             ]);

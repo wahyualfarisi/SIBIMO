@@ -186,7 +186,7 @@ const DashboardUI = ( () => {
 
     return {
         display: ( res) => {
-            console.log(res);
+            
             //hide loader container
             $('#loader_container').hide();
             $('#card-total-data').show();
@@ -217,6 +217,7 @@ const DashboardUI = ( () => {
                 break;
 
                 case 'MAHASISWA':
+                    console.log('mahasiswa')
                     displayFotoMahasiswa(res.info_user);
                     displayHistoryBimbingan(res.history_bimbingan, res.hasil_bimbingan)
                     $('.kartu_bimbingan_btn').html(`
