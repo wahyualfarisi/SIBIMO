@@ -219,6 +219,9 @@ const DashboardUI = ( () => {
                 case 'MAHASISWA':
                     displayFotoMahasiswa(res.info_user);
                     displayHistoryBimbingan(res.history_bimbingan, res.hasil_bimbingan)
+                    $('.kartu_bimbingan_btn').html(`
+                        <a target="_blank" href="/kartu_bimbingan/${res.encrypt_id}" class="white-text">Lihat Kartu Bimbingan <i style="font-size: 14px;" class="material-icons">arrow_forward</i> </a> 
+                    `)
                 break;
             }
 

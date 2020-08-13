@@ -67,7 +67,6 @@
                         </li> -->
                         <!-- <li><a class="waves-effect waves-block waves-light notification-button total__notification" id="notification_total" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons grey-text">notifications_none</i></a></li> -->
                         <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><i class="material-icons grey-text">person</i></a></li>
-                        <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light sidenav-trigger total__notif" href="javascript:void(0)" data-target="slide-out-right"><i class="material-icons grey-text">assignment </i></a></li>
                     </ul>
 
                     <!-- profile-dropdown-->
@@ -112,10 +111,7 @@
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons indigo-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
-          
-            <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/notifikasi"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Notifikasi</span></a>
-            </li>
+        
             <li class="bold">
                 <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Aktifitas Bimbingan</span></a>
             </li>
@@ -142,7 +138,7 @@
             </li>
           
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/laporan"><i class="material-icons white-text">content_paste</i><span class="menu-title" data-i18n="">Reports</span></a>
+                <a class="waves-effect waves-cyan " href="#/laporan"><i class="material-icons white-text">content_paste</i><span class="menu-title" data-i18n="">Mahasiswa Siap Bimbingan</span></a>
             </li>
             <li class="bold" style="margin-bottom: 40px;">
                 
@@ -158,54 +154,6 @@
     <!-- BEGIN: Page Main-->
     <div id="main"></div>
     <!-- END: Page Main-->
-
-    <aside id="right-sidebar-nav">
-        <div id="slide-out-right" class="slide-out-right-sidenav sidenav rightside-navigation">
-            <div class="row">
-                <div class="slide-out-right-title">
-                    <div class="col s12 border-bottom-1 pb-0 pt-1">
-                        <div class="row">
-                            <div class="col s2 pr-0 center">
-                                <i class="material-icons vertical-text-middle"><a href="javascript:void(0)" class="sidenav-close">clear</a></i>
-                            </div>
-                            <div class="col s10 pl-0">
-                                <ul class="tabs">
-                                    <li class="tab col s12 p-0">
-                                    <a href="#messages">
-                                        <span>Online</span>
-                                    </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide-out-right-body">
-                    <div id="messages" class="col s12">
-                        <div class="collection border-none">
-                            <ul class="collection p-0 users-online">
-                                <!-- <li class="collection-item sidenav-trigger display-flex avatar pl-5 pb-0">
-                                    <span class="">
-                                    <i class="material-icons" style="font-size: 50px;" >person</i>
-                                    <i></i>
-                                    </span>
-                                    <div class="user-content">
-                                    <h6 class="line-height-0">Elizabeth Elliott</h6>
-                                    <p class="medium-small blue-grey-text text-lighten-3 pt-3">STORE</p>
-                                    </div>
-                                </li> -->
-                            </ul>
-                        </div>
-                    </div>
- 
-                    <div id="logs" class="col s12">
-                   
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </aside>
 
 
     <footer class="page-footer footer footer-static footer-light navbar-border navbar-shadow">

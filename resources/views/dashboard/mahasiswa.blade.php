@@ -25,7 +25,8 @@
                         <h5 class="light" id="user_service"></h5>
                         <a href="#/me" class="btn-flat mb-1 waves-effect white-text">
                             <i class="material-icons right">arrow_forward</i> View Profile
-                    </a>
+                        </a>
+                        <h5 class="white-text kartu_bimbingan_btn"> </h5> 
                     </div> 
             </div>
             <h4 class="card-title" id="info_user"></h4>
@@ -40,6 +41,7 @@
 
     <div class="col s12 center-align">
         <h4>Progress Bimbingan Kamu </h4>
+       
     </div>
 
     <div class="col s12 m6 l6">
@@ -47,7 +49,6 @@
                 <div class="card-content">
                     <div class="display_image_pembimbing_1 left mr-5"></div>
                     <h4 class="nama_pembimbing_1"></h4>
-                    <a href="javascript:void(0)" class="black-text">Lihat Kartu Bimbingan</a>
                     <h5>Pembimbing 1</h5>
                 </div>
                
@@ -84,7 +85,6 @@
                 <div class="card-content">
                     <div class="display_image_pembimbing_2 left mr-5"></div>
                     <h4 class="nama_pembimbing_2"></h4>
-                    <a href="javascript:void(0)" class="black-text">Lihat Kartu Bimbingan</a>
                     <h5>Pembimbing 2</h5>
                 </div>
                 <div class="card-content" style="height: 550px; overflow: auto;">

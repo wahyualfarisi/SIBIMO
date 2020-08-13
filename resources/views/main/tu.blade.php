@@ -155,7 +155,7 @@
             </li>
           
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/laporan"><i class="material-icons white-text">content_paste</i><span class="menu-title" data-i18n="">Kartu Bimbingan</span></a>
+                <a class="waves-effect waves-cyan " href="#/laporan"><i class="material-icons white-text">content_paste</i><span class="menu-title" data-i18n="">Mahasiswa Siap Bimbingan</span></a>
             </li>
             <li class="bold" style="margin-bottom: 40px;"></li>
            

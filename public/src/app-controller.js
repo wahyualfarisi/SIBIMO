@@ -1889,7 +1889,7 @@ const PlagiatismeController = ( ( AJAX, LIB ) => {
                     console.error(err)
                 }
             )
-        })
+        });
 
 
 

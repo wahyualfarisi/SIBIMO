@@ -432,7 +432,7 @@ const ajaxSetting = (() => {
 				zeroRecords: function(){
                     return `
                         <div class="text-center">
-                            <img class="img-fluid" style="width: 5%;" src="${BASE_URL}/assets/image/empty-list-3.png">
+                            <img class="img-fluid" style="width: 5%;" src="${BASE_URL}/images/no_data.svg">
                             <p>No data </p>
                         </div>`
 				},

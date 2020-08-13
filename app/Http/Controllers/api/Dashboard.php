@@ -34,7 +34,11 @@ class Dashboard extends Controller
                 'message' => 'Get Dashboard Mahasiswa',
                 'level'   => 'Mahasiswa',
                 'status'  => 200,
-                'info_user'    => auth('mahasiswa')->user(),
+                'encrypt_id' => Encrypt(auth('mahasiswa')->user()->id_mahasiswa),
+                'info_user'    => auth('mahasiswa')->user()->with([
+                    'get_jurusan',
+                    'get_judul_skripsi'
+                ])->get(),
                 'history_bimbingan' => $pembimbing,
                 'hasil_bimbingan' => $hasil_bimbingan
             ]);

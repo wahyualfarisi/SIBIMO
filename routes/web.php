@@ -12,6 +12,8 @@ Route::post('/authorization_process', 'AuthController@authorizationProcess');
 Route::get('/authorization_clear', 'AuthController@authorizationClear');
 //-----------------------------------------------------------------------------------------
 
+Route::get('/kartu_bimbingan/{encrypt_id}','KartuBimbinganController@index');
+
 //------------------------------MAIN-------------------------------------------------------
 Route::group([
     'prefix' => 'main'
