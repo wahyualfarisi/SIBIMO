@@ -25,7 +25,7 @@ class Pembimbing extends Model
 
     public function get_bimbingan()
     {
-        return $this->hasMany('App\models\Bimbingan', 'id_pembimbing','id_pembimbing');
+        return $this->hasMany('App\models\Bimbingan', 'id_pembimbing','id_pembimbing')->orderBy('created_at', 'ASC');
     }
 
 }

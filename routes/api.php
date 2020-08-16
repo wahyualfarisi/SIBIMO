@@ -56,6 +56,7 @@ Route::get('bimbingan/current', 'api\Bimbingan@current_activity');
 Route::get('bimbingan/history', 'api\Bimbingan@history');
 Route::get('bimbingan/{id_bimbingan}', 'api\Bimbingan@detail');
 Route::post('bimbingan/close', 'api\Bimbingan@tutup_bimbingan');
+Route::get('bimbingan/sidang/siap', 'api\Bimbingan@siap_sidang');
 
 //plagiatisme
 Route::get('plagiatisme', 'api\Plagiatisme@index');

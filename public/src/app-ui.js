@@ -105,6 +105,7 @@ const DashboardUI = ( () => {
     }
 
     const displayHistoryBimbingan = (data , hasil_bimbingan) => {
+        console.log('hasil bimbingan', hasil_bimbingan)
 
         const pembimbing1 = data.filter(item => +item.pembimbing_status  === 1 )[0]
         const pembimbing2 = data.filter(item => +item.pembimbing_status  === 2 )[0]
@@ -131,13 +132,14 @@ const DashboardUI = ( () => {
             pembimbing_active = '2';
         }
         let lastrecord = allbimbingn[allbimbingn.length - 1];
-
+        console.log('lastrecorts: ', lastrecord)
     
         if(lastrecord){
             if(lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.acc === 'YA' ) {
+                
                 pembimbing_active = '2';
                 bab = BAB[BAB.indexOf(lastrecord.get_bimbingan.bab) + 1];
-                text = `Mulai Bimbingan ${bab} `;
+                text = `Mulai Bimbingan ${bab}`;
 
                 if(!bab){
                     text = '';
@@ -145,6 +147,8 @@ const DashboardUI = ( () => {
 
                 id_pembimbing   = pembimbing2.id_pembimbing;
                 nama_pembimbing = pembimbing2.get_account.nama_lengkap;
+
+                console.log(`bimbingan bab ${bab} kepada ${nama_pembimbing}`, lastrecord, 'hallo')
                 
             }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '1' && lastrecord.revisi === 'YA'  ) {
                 pembimbing_active = '1';
@@ -152,6 +156,8 @@ const DashboardUI = ( () => {
                 text = `Mulai Bimbingan ${bab}`
                 id_pembimbing   = pembimbing1.id_pembimbing;
                 nama_pembimbing = pembimbing1.get_account.nama_lengkap;
+
+                console.log(`bimbingan bab ${bab} kepada ${nama_pembimbing}`, lastrecord)
                 
             }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.acc === 'YA' ) {
                 pembimbing_active = '1';
@@ -159,6 +165,8 @@ const DashboardUI = ( () => {
                 text = `Mulai Bimbingan ${bab}`
                 id_pembimbing   = pembimbing1.id_pembimbing;
                 nama_pembimbing = pembimbing1.get_account.nama_lengkap;
+
+                console.log(`bimbingan bab ${bab} kepada ${nama_pembimbing}`)
                 
             }else if( lastrecord.get_bimbingan.get_pembimbing.pembimbing_status === '2' && lastrecord.revisi === 'YA') {
                 pembimbing_active = '2';
@@ -166,6 +174,8 @@ const DashboardUI = ( () => {
                 text = `Mulai Bimbingan ${bab}`
                 id_pembimbing   = pembimbing2.id_pembimbing;
                 nama_pembimbing = pembimbing2.get_account.nama_lengkap;
+
+                console.log(`bimbingan bab ${bab} kepada ${nama_pembimbing}`, lastrecord, 'hallo')
             }
         }
         

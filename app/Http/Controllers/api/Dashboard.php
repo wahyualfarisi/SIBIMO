@@ -28,7 +28,9 @@ class Dashboard extends Controller
 
             $hasil_bimbingan = LembarBimbingan::with('get_bimbingan.get_pembimbing.get_account')->whereHas('get_bimbingan', function($query) {
                 $query->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa );
-            })->get();
+            })
+            ->orderBy('created_at', 'ASC')
+            ->get();
 
             return response()->json([
                 'message' => 'Get Dashboard Mahasiswa',

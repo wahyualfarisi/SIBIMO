@@ -100,7 +100,7 @@
         <h1 class="logo-wrapper">
             <a class="brand-logo darken-1" href="#/dashboard">
                 <img src="{{ asset('images/logo2.png') }}" alt=""/>
-                <span class="logo-text hide-on-med-and-down">KAPRODI</span>
+                <span class="logo-text hide-on-med-and-down">DOSEN</span>
             </a>
             <a class="navbar-toggler" href="javascript:void(0)">
                 <i class="material-icons">radio_button_checked</i>

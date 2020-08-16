@@ -11,6 +11,7 @@ use App\models\Bimbingan as BimbinganModel;
 use App\models\Pembimbing;
 use App\models\LembarBimbingan;
 use App\models\DiskusiBimbingan;
+use App\models\Mahasiswa;
 
 class Bimbingan extends Controller
 {
@@ -314,6 +315,54 @@ class Bimbingan extends Controller
             'status'   => true,
             'message'  => 'Tutup bimbingan'
         ]);
+    }
+
+    public function siap_sidang(Request $request)
+    {
+        if(!auth('account')->user()) 
+        return response()->json([
+            'status'   => false,
+            'message'  => 'Permission denied'
+        ]);
+
+        $data = Mahasiswa::with('get_pembimbing.get_account')
+        ->whereHas('get_pembimbing.get_bimbingan.get_lembar_bimbingan', function($query) {
+            $query->where([
+                ['permasalahan', 'DEMO PROGRAM'],
+                ['acc', 'YA']
+            ]);
+        });
+       
+        try{
+            switch(auth('account')->user()->level)
+            {
+                case 'TU':
+                    return response()->json([
+                        'status'   => true,
+                        'message'  => 'Fetch mahasiswa siap sidang',
+                        'results'  => $data->get()
+                    ]);
+                break;
+
+                case 'KAPRODI':
+                    case 'DOSEN':
+                    return response()->json([
+                        'status'   => true,
+                        'message'  => 'Fetch Mahasiswa siap sidang (Kaprodi)',
+                        'results'  => $data->whereHas('get_pembimbing', function($query) {
+                            $query->where('id_account', auth('account')->user()->id_account);
+                        })->get()
+                    ]);
+
+                break;
+            }
+            
+        }catch(\Exception $e){
+            return response()->json([
+                'status'   => false,
+                'message'  => $e->getMessage()
+            ]. 500);
+        }
 
 
     }
