@@ -199,17 +199,21 @@ const DashboardUI = ( () => {
         if(data.length > 0){
             data.forEach(item => {
 
-                if(item.get_lembar_bimbingan.acc === 'YA') {
-                    icon_acc = ` <i class="material-icons green-text">done</i> `
-                }else{
-                    icon_acc = ``
+                if(item.get_lembar_bimbingan){
+                    if(item.get_lembar_bimbingan.acc === 'YA') {
+                        icon_acc = ` <i class="material-icons green-text">done</i> `
+                    }else{
+                        icon_acc = ``
+                    }
+
+                    if(item.get_lembar_bimbingan.revisi === 'YA'){
+                        icon_revisi = '<i class="material-icons green-text">done</i>'
+                    }else{
+                        icon_revisi = ''
+                    }
                 }
 
-                if(item.get_lembar_bimbingan.revisi === 'YA'){
-                    icon_revisi = '<i class="material-icons green-text">done</i>'
-                }else{
-                    icon_revisi = ''
-                }
+                
 
                 html += `
                     <tr>

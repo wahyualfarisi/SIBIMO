@@ -113,7 +113,11 @@
                 <a class="waves-effect waves-cyan " href="#/dashboard"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Aktifitas Bimbingan</span></a>
+                <a class="waves-effect waves-cyan " href="#/aktifitas">
+                    <i class="material-icons white-text">track_changes</i>
+                    <span class="menu-title" data-i18n="">Aktifitas Bimbingan</span>
+                    <span class="bimbingan_active"></span>
+                </a>
             </li>
 
             <li class="navigation-header">

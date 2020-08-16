@@ -59,17 +59,18 @@
                         <div class="col s12">
                             <a class="grey-text text-darken-2"><span class="material-icons icon-bg-circle red darken-3 medium right mb-3">label</span><p id="angkatan">2015</p></a>
                         </div>
-                        
-                        <div class="col s12 mt-2">
-                            <a href="javascript:void(0)" class="grey-text text-darken-2">
-                            <button class="btn green darken-1 col s12 btn_edit_mahasiswa"> EDIT MAHASISWA </button>
-                            </a>
-                        </div>
-                        <div class="col s12 mt-2 ">
-                            <a class="grey-text text-darken-2">
-                                <button class="btn indigo darken-1 col s12 btn__reset__password"> RESET PASSWORD </button>
-                            </a>
-                        </div>
+                        @if (session('level') == 'tu')
+                            <div class="col s12 mt-2">
+                                <a href="javascript:void(0)" class="grey-text text-darken-2">
+                                <button class="btn green darken-1 col s12 btn_edit_mahasiswa"> EDIT MAHASISWA </button>
+                                </a>
+                            </div>
+                            <div class="col s12 mt-2 ">
+                                <a class="grey-text text-darken-2">
+                                    <button class="btn indigo darken-1 col s12 btn__reset__password"> RESET PASSWORD </button>
+                                </a>
+                            </div>
+                        @endif
                         
                         
                         </div>
@@ -97,7 +98,9 @@
                         <div class="col s12">
                             <div class="card">
                                 <div class="card-content">
-                                    <button type="submit" class="btn right btn_add_judul indigo darken-1"> Tambah Judul </button>
+                                    @if (session('level') === 'tu')
+                                        <button type="submit" class="btn right btn_add_judul indigo darken-1"> Tambah Judul </button>
+                                    @endif
                                     <h6>Histori Judul Tugas Akhir</h6>
                                     <table id="table_data_judul">
                                         <thead>
