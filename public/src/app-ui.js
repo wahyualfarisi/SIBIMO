@@ -206,12 +206,13 @@ const DashboardUI = ( () => {
             
             //info user
             $('#info_user').html(`Hallo, ${res.info_user.nama_lengkap}  <i class="material-icons green-text">verified_user</i>`)
-            $('#user_position').text(level);
+            
 
             switch(level)
             {
                 case 'TU':
                     //display spesific cards
+                    $('#user_position').text(res.info_user.nip);
                     $('.total_jurusan').text(res.results.jurusan.length);
                     $('.total_mahasiswa').text(res.results.mahasiswa);
                     $('.total_dosen').text(res.results.dosen);
@@ -220,15 +221,17 @@ const DashboardUI = ( () => {
                 break;
 
                 case 'DOSEN':
+                    $('#user_position').text(res.info_user.nip);
                     displayFotoAccount(res.info_user)
                 break;
 
                 case 'KAPRODI':
+                    $('#user_position').text(res.info_user.nip);
                     displayFotoAccount(res.info_user)
                 break;
 
                 case 'MAHASISWA':
-                    console.log('mahasiswa')
+                    $('#user_position').text(res.info_user.nim);
                     displayFotoMahasiswa(res.info_user);
                     displayHistoryBimbingan(res.history_bimbingan, res.hasil_bimbingan)
                     $('.kartu_bimbingan_btn').html(`
