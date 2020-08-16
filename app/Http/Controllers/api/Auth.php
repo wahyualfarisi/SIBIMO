@@ -11,6 +11,7 @@ use Hash;
 use App\models\Account;
 use App\models\Mahasiswa;
 use App\models\Pembimbing;
+use App\models\Bimbingan;
 
 
 class Auth extends Controller
@@ -29,11 +30,15 @@ class Auth extends Controller
                 ]
             ]);
         }else if(auth('account')->user() ){
+            $pembimbing = auth('account')->user()->get_bimbingan()->where('status', 'progress')->get();
+
+
             return response()->json([
                 'message' => 'Token verified',
                 'status'  => 200,
                 'level'   => 'ACCOUNT',
-                'results'    => auth('account')->user()
+                'results'    => auth('account')->user(),
+                'bimbingan_active' => $pembimbing
             ]);
         }
     }

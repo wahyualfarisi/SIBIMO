@@ -47,6 +47,14 @@ class Dashboard extends Controller
 
         }else if(auth('account')->user() ){
 
+            $mahasiswa_siap_sidang = Mahasiswa::
+            whereHas('get_pembimbing.get_bimbingan.get_lembar_bimbingan', function($query) {
+                $query->where([
+                    ['permasalahan', 'DEMO PROGRAM'],
+                    ['acc', 'YA']
+                ]);
+            });
+
             switch(auth('account')->user()->level){
                 case 'TU':
                     $jurusan = Jurusan::all();
@@ -66,20 +74,54 @@ class Dashboard extends Controller
                 break;
 
                 case 'KAPRODI':
+                    $bimbingan = auth('account')->user()
+                                    ->get_bimbingan()
+                                    ->with('get_mahasiswa','get_lembar_bimbingan')
+                                    ->limit(5)
+                                    ->orderBy('created_at', 'DESC')
+                                    ->get();
+
+                    $mahasiswa_bimbingan = Mahasiswa::whereHas('get_pembimbing', function($query) {
+                        $query->where('id_account', auth('account')->user()->id_account);
+                    });
+
+                    
+
                     return response()->json([
                         'message' => 'Get Dashboard Mahasiswa',
                         'level'   => auth('account')->user()->level,
                         'status'  => 200,
-                        'info_user'    => auth('account')->user()
+                        'info_user'    => auth('account')->user(),
+                        'history_bimbingan' => $bimbingan,
+                        'mahasiswa_bimbingan' => $mahasiswa_bimbingan->count(),
+                        'siap_sidang' => $mahasiswa_siap_sidang->whereHas('get_pembimbing', function($query) {
+                            $query->where('id_account', auth('account')->user()->id_account);
+                        })->count()
                     ]);        
                 break;
 
                 case 'DOSEN':
+                    $bimbingan = auth('account')->user()
+                                    ->get_bimbingan()
+                                    ->with('get_mahasiswa','get_lembar_bimbingan')
+                                    ->limit(5)
+                                    ->orderBy('created_at', 'DESC')
+                                    ->get();
+
+                    $mahasiswa_bimbingan = Mahasiswa::whereHas('get_pembimbing', function($query) {
+                        $query->where('id_account', auth('account')->user()->id_account);
+                    });
+
                     return response()->json([
                         'message' => 'Get Dashboard Mahasiswa',
                         'level'   => auth('account')->user()->level,
                         'status'  => 200,
-                        'info_user'    => auth('account')->user()
+                        'info_user'    => auth('account')->user(),
+                        'history_bimbingan' => $bimbingan,
+                        'mahasiswa_bimbingan' => $mahasiswa_bimbingan->count(),
+                        'siap_sidang' => $mahasiswa_siap_sidang->whereHas('get_pembimbing', function($query) {
+                            $query->where('id_account', auth('account')->user()->id_account);
+                        })->count()
                     ]);
                 break;
             }

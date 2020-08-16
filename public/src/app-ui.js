@@ -194,9 +194,45 @@ const DashboardUI = ( () => {
         
     }
 
+    const displayRecentBimbingan = (data) => {
+        let html = '', icon_acc = '', icon_revisi = '';
+        if(data.length > 0){
+            data.forEach(item => {
+
+                if(item.get_lembar_bimbingan.acc === 'YA') {
+                    icon_acc = ` <i class="material-icons green-text">done</i> `
+                }else{
+                    icon_acc = ``
+                }
+
+                if(item.get_lembar_bimbingan.revisi === 'YA'){
+                    icon_revisi = '<i class="material-icons green-text">done</i>'
+                }else{
+                    icon_revisi = ''
+                }
+
+                html += `
+                    <tr>
+                        <td>${item.tanggal_bimbingan}</td>
+                        <td>${item.get_mahasiswa.nama_lengkap}</td>
+                        <td>${item.bab}</td>
+                        <td>${icon_revisi} </td>
+                        <td>${icon_acc} </td>
+                    </tr>
+                `;
+            })
+        }
+        $('.recent_bimbingan').html(html);
+    }
+
+    const displayCardCount = (msh_bimbingan, siap_sidang) => {
+        $('.total_mhs_bimbingan').text(msh_bimbingan);
+        $('.total_siap_sidang').text(siap_sidang);
+    }
 
     return {
         display: ( res) => {
+            console.log(res);
             
             //hide loader container
             $('#loader_container').hide();
@@ -223,11 +259,15 @@ const DashboardUI = ( () => {
                 case 'DOSEN':
                     $('#user_position').text(res.info_user.nip);
                     displayFotoAccount(res.info_user)
+                    displayRecentBimbingan(res.history_bimbingan);
+                    displayCardCount(res.mahasiswa_bimbingan, res.siap_sidang)
                 break;
 
                 case 'KAPRODI':
                     $('#user_position').text(res.info_user.nip);
                     displayFotoAccount(res.info_user)
+                    displayRecentBimbingan(res.history_bimbingan);
+                    displayCardCount(res.mahasiswa_bimbingan, res.siap_sidang)
                 break;
 
                 case 'MAHASISWA':
@@ -885,7 +925,9 @@ const KartuUI = ( () => {
             displayPembimbing1(pembimbing1, data.info_user)
             displayPembimbing2(pembimbing2, data.info_user)
 
-            window.print()
+            setTimeout(() => {
+                window.print()
+            }, 1500);
 
             
         }

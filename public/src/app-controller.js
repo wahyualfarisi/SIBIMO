@@ -76,13 +76,44 @@ const MainController = ( (AJAX, UI, LIB) => {
          return i
     }
 
+    const load_main_data = () => {
+        AJAX.getRes(
+            `/api/verify`,
+            {},
+            null,
+            res => {
+                if(res.bimbingan_active.length > 0){
+                    $('.bimbingan_active').addClass('badge badge pill pink accent-4 float-right mr-10').text(res.bimbingan_active.length)
+                }else{
+                    $('.bimbingan_active').removeClass('badge badge pill pink accent-4 float-right mr-10').text('')
+                }
+            },
+            err => {
+                console.log(err)
+            }
+        )
+    }
+
     return {
         init: () => {
             AJAX.placeHolderBigSize('.loader-sidebar', 2)
 
             setRoute();
             runningTime();
+
+            switch (LEVEL) {
+                case 'kaprodi':
+                    case 'dosen':
+                        load_main_data();
+                    break;
             
+                default:
+                    break;
+            }
+            
+        },
+        export_Load_main_data: () => {
+            return load_main_data();
         }
     }
 })(ajaxSetting, mainUI, libSettings);
@@ -1483,7 +1514,7 @@ const MeController = ( (AJAX, LIB) => {
     }
 })(ajaxSetting, libSettings);
 
-const AktifitasController = ( ( AJAX, LIB , UI) => {
+const AktifitasController = ( ( AJAX, LIB , UI , MAIN_CTRL) => {
 
     const load_aktifitas = () => {
         AJAX.getRes(
@@ -1643,6 +1674,9 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
                     $('#modalTutupBimbingan').modal('close');
                     signaturePad.clear();
                     $('#btn_close_bimbingan').hide()
+                    MAIN_CTRL.export_Load_main_data();
+                    location.hash = '#/aktifitas';
+
                 },
                 err => {
                     console.log(err)
@@ -1673,7 +1707,7 @@ const AktifitasController = ( ( AJAX, LIB , UI) => {
             onCloseBimbingan( id , signaturePad )
         }
     }
-})(ajaxSetting, libSettings, AktifitasUI);
+})(ajaxSetting, libSettings, AktifitasUI, MainController);
 
 const HistoryBimbinganController = ( (AJAX, LIB) => {
     return {

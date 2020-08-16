@@ -113,7 +113,13 @@
             </li>
         
             <li class="bold">
-                <a class="waves-effect waves-cyan " href="#/aktifitas"><i class="material-icons white-text">track_changes</i><span class="menu-title" data-i18n="">Aktifitas Bimbingan</span></a>
+                <a class="waves-effect waves-cyan " href="#/aktifitas">
+                    <i class="material-icons white-text">track_changes</i>
+                    <span class="menu-title" data-i18n="">Aktifitas Bimbingan</span>
+                    
+                        <span class="bimbingan_active"></span>
+                         {{-- class="badge new badge pill pink accent-4 float-right mr-10" --}}
+                </a>
             </li>
            
             
