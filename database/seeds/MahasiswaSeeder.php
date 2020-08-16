@@ -33,9 +33,9 @@ class MahasiswaSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
-                'nim' => '7201160117',
+                'nim' => '7201160119',
                 'nama_lengkap' => 'Moh. Fahmi Thorik ',
-                'password' => bcrypt('7201160117'),
+                'password' => bcrypt('7201160119'),
                 'email'  => 'rizky@gmail.com',
                 'id_jurusan' => 1,
                 'no_telp' => '081317726873',
