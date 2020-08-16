@@ -30,26 +30,24 @@
                 <form id="form_update_account">
                     <div>
                         <label>Nama Lengkap</label>
-                        <input type="text" name="nama_lengkap" id="nama_lengkap">
+                        <input type="text" name="nama_lengkap" id="nama_lengkap" disabled>
                     </div>
                     <div>
                         <label>Email</label>
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="email" id="email" disabled>
                     </div>
                     <div>
                         <label>No. Telp</label>
-                        <input type="text" name="no_telp" id="no_telp">
+                        <input type="text" name="no_telp" id="no_telp" disabled>
                     </div>
                     <div>
                         <label>Nip</label>
-                        <input type="text" name="nip" id="nip">
+                        <input type="text" name="nip" id="nip" disabled>
                     </div>
                     <div>
                         <label>Alamat</label>
-                        <input type="text" name="alamat" id="alamat">
+                        <input type="text" name="alamat" id="alamat" disabled>
                     </div>
-
-                    <button type="button" class="btn red darken-1">UPDATE</button>
                 </form>
             </div>
         </div>
