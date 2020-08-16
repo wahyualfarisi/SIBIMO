@@ -16,10 +16,10 @@ class AccountSeeder extends Seeder
 
         DB::table('account')->insert([
             [ //1
-                'nip'   => '7343201110'.$no++,
+                'nip'   => '032001111',
                 'email' => 'tu@test.com',
-                'nama_lengkap' => 'Tono Sutono S.KOM',
-                'password' => bcrypt('12345'),
+                'nama_lengkap' => 'Moh. Kartono S.H',
+                'password' => bcrypt('032001111'),
                 'no_telp' => null,
                 'alamat' => null,
                 'foto' => null,
@@ -27,10 +27,10 @@ class AccountSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [ //2
-                'nip'   => '72111210'.$no++,
+                'nip'   => '0320028902',
                 'email' => 'fauziah@test.com',
-                'nama_lengkap' => 'Fauziah S.KOM, M.KOM',
-                'password' => bcrypt('12345'),
+                'nama_lengkap' => 'Fauziah S.KOM, MMSi',
+                'password' => bcrypt('0320028902'),
                 'no_telp' => null,
                 'alamat' => null,
                 'foto' => null,
@@ -38,10 +38,10 @@ class AccountSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [ //3
-                'nip' => '720134110'.$no++,
+                'nip' => '032001112',
                 'email' => 'Jap@test.com',
-                'nama_lengkap' => 'JAP S.KOM, M.KOM',
-                'password' => bcrypt('12345'),
+                'nama_lengkap' => 'Jap Wie Tjhe, S.Kom., M.Kom',
+                'password' => bcrypt('032001112'),
                 'no_telp' => null,
                 'alamat' => null,
                 'foto' => null,
@@ -49,10 +49,10 @@ class AccountSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [ // 4
-                'nip' => '7201110345'.$no++,
+                'nip' => '1021098703',
                 'email' => 'joshep@test.com',
-                'nama_lengkap' => 'Joseph S.KOM, M.KOM',
-                'password' => bcrypt('12345'),
+                'nama_lengkap' => 'Joseph, S.Kom., MM',
+                'password' => bcrypt('1021098703'),
                 'no_telp' => null,
                 'alamat' => null,
                 'foto' => null,
@@ -60,10 +60,10 @@ class AccountSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [ // 5
-                'nip' => '7201110454'.$no++,
+                'nip' => '0308067601',
                 'email' => 'Gunawan@test.com',
-                'nama_lengkap' => 'Gunawan  M.KOM',
-                'password' => bcrypt('12345'),
+                'nama_lengkap' => 'Bernadus Gunawan Sudarsono, S.T, M.Kom',
+                'password' => bcrypt('0308067601'),
                 'no_telp' => null,
                 'alamat' => null,
                 'foto' => null,
@@ -71,10 +71,10 @@ class AccountSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [ //6
-                'nip' => '720110454'.$no++,
+                'nip' => '0310096701',
                 'email' => 'Syahri@test.com',
-                'nama_lengkap' => 'Syahrianto',
-                'password' => bcrypt('12345'),
+                'nama_lengkap' => 'Syahrianto, S.Kom., MM',
+                'password' => bcrypt('0310096701'),
                 'no_telp' => null,
                 'alamat' => null,
                 'foto' => null,
@@ -82,10 +82,10 @@ class AccountSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [ // 7
-                'nip' => '7201160111'.$no++,
+                'nip' => '0309087209',
                 'email' => 'alex@test.com',
-                'nama_lengkap' => 'Alex S.KOM, M.KOM',
-                'password' => bcrypt('12345'),
+                'nama_lengkap' => 'Alexius Ulan Bani, S.T., M.Kom',
+                'password' => bcrypt('0309087209'),
                 'no_telp' => null,
                 'alamat' => null,
                 'foto' => null ,
