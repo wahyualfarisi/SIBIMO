@@ -325,7 +325,11 @@ class Bimbingan extends Controller
             'message'  => 'Permission denied'
         ]);
 
-        $data = Mahasiswa::with('get_pembimbing.get_account')
+        $data = Mahasiswa::with([
+            'get_pembimbing.get_account',
+            'get_judul_skripsi',
+            'get_jurusan'
+        ])
         ->whereHas('get_pembimbing.get_bimbingan.get_lembar_bimbingan', function($query) {
             $query->where([
                 ['permasalahan', 'DEMO PROGRAM'],

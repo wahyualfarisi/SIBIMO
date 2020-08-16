@@ -2057,3 +2057,137 @@ const KartuBimbinganController = ( ( AJAX , LIB, UI) => {
         }
     }
 })(ajaxSetting, libSettings, KartuUI)
+
+const LaporanController = ( (AJAX, LIB) => {
+
+    return {
+        data: () => {
+            let t_mahasiswa = $('#t_mahasiswa').DataTable({
+                processing: false,
+                language: AJAX.dtLanguage(),
+                dom: '<Bf<t>ip>',
+                pageLength: 50,
+                scrollY: 350,
+                scrollX: true,
+                buttons: {
+                    dom: {
+                        button: {
+                            tag: 'button',
+                            className: 'btn btn-floating btn-small red darken-3 my-action'
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: 'collection',
+                            text: '<i class="material-icons dp48">file_download</i> ',
+                            buttons: [
+                                {
+                                    extend: 'pdfHtml5',
+                                    text: 'PDF',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_SIAP_SIDANG',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    text: 'Excel',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_SIAP_SIDANG',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    text: 'CSV',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_SIAP_SIDANG',
+                                    title: 'Data Mahasiswa'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print',
+                                    exportOptions: {
+                                        columns: [1, 2, 3, 4, 5]
+                                    },
+                                    filename: 'DATA_SIAP_SIDANG',
+                                    title: '<h4>Data Mahasiswa</h4>'
+                                },
+                            ]
+                        },
+                        {
+                            text: '<i class="material-icons dp48">autorenew</i>',
+                            action: function (e, dt, node, config) {
+                                dt.ajax.reload()
+                            },
+                        },
+                    ]
+                },
+                ajax: AJAX.dtSettingSrc(
+                    `/api/bimbingan/sidang/siap`,
+                    {},
+                    res => {
+                        return res.results
+                    },
+                    err => {
+                        console.log(err)
+                    }
+                ),
+                columns: [
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return row.nim
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            return row.nama_lengkap
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row ) => {
+                            if(row.get_jurusan){
+                                return row.get_jurusan.nama_jurusan
+                            }
+
+                            return ''
+                        }
+                    },
+                    {
+                        data: null,
+                        render: ( data, type, row) => {
+                            if(row.get_judul_skripsi){
+                                return row.get_judul_skripsi.judul
+                            }
+                            return '-'
+                        }
+                    },
+                    {
+                        data: null,
+                        render: (data, type, row) => {
+                            html = '';
+                            if(row.get_pembimbing){
+                                if(row.get_pembimbing.length > 0) {
+                                    row.get_pembimbing.forEach(item => {
+                                        html += `${item.get_account.nama_lengkap}, Pembimbing ${item.pembimbing_status} <br>`
+                                    })
+                                }
+                                
+                            }
+
+                            return html;
+                        }
+                    }
+                ]
+
+            })
+        }
+    }
+})(ajaxSetting, libSettings)
