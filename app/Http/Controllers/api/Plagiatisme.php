@@ -30,9 +30,14 @@ class Plagiatisme extends Controller
             }
         }
         else if(auth('account')->user() ) {
-            $plagiatisme = PlagiatismeModel::with('get_mahasiswa')->whereHas('get_mahasiswa.get_pembimbing', function($query) {
-                $query->where('id_account', auth('account')->user()->id_account);
-            })->get();
+
+            if( auth('account')->user()->level === 'TU' ){
+                $plagiatisme = PlagiatismeModel::with('get_mahasiswa')->get();
+            }else{
+                $plagiatisme = PlagiatismeModel::with('get_mahasiswa')->whereHas('get_mahasiswa.get_pembimbing', function($query) {
+                    $query->where('id_account', auth('account')->user()->id_account);
+                })->get();
+            }
 
             try{
                 return response()->json([
