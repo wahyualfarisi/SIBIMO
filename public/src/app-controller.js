@@ -2026,6 +2026,16 @@ const PlagiatismeController = ( ( AJAX, LIB ) => {
                     },
                     {
                         data: null,
+                        render: ( data, type, row) => {
+                            if(row.get_mahasiswa){
+                                return row.get_mahasiswa.nama_lengkap
+                            }else{
+                                return '-'
+                            }
+                        }
+                    },
+                    {
+                        data: null,
                         render: ( data, type, row ) => {
                             if(row.foto) {
                                 return `
@@ -2047,11 +2057,15 @@ const PlagiatismeController = ( ( AJAX, LIB ) => {
                     {
                         data: null,
                         render: ( data, type, row ) => {
-                            return `
-                                <a data-id="${row.id_plagiatisme}" data-bab="${row.bab}" data-nilai="${row.nilai_plagiatisme}" href="javascript:void(0)" class="green-text btn__edit"><i class="material-icons"> create </i> </a>
-                                <a data-id="${row.id_plagiatisme}" href="javascript:void(0)" class="red-text btn__hapus"> <i class="material-icons"> close </i> </a>
-                            
-                            `
+                            if(LEVEL === 'mahasiswa'){
+                                return `
+                                    <a data-id="${row.id_plagiatisme}" data-bab="${row.bab}" data-nilai="${row.nilai_plagiatisme}" href="javascript:void(0)" class="green-text btn__edit"><i class="material-icons"> create </i> </a>
+                                    <a data-id="${row.id_plagiatisme}" href="javascript:void(0)" class="red-text btn__hapus"> <i class="material-icons"> close </i> </a>
+                                
+                                `
+                            }else{
+                                return  ''
+                            }
                         } 
                     }
                 ]

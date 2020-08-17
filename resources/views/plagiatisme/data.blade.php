@@ -7,11 +7,13 @@
                             Plagiatisme
                         </h5>
                     </div>
-                    <div class="col s2 m6 l6">
-                            <a class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right" id="btn_create_plagiatisme" href="javascript:void(0)">
-                                <span class="hide-on-small-onl">Tambah</span>
-                            </a>
-                    </div>
+                    @if ( session('level') === 'mahasiswa' )
+                        <div class="col s2 m6 l6">
+                                <a class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right" id="btn_create_plagiatisme" href="javascript:void(0)">
+                                    <span class="hide-on-small-onl">Tambah</span>
+                                </a>
+                        </div>
+                    @endif
                 </div>
             </div>
     </div>
@@ -32,6 +34,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>BAB</th>
+                                                    <th>Mahasiswa</th>
                                                     <th>Foto</th>
                                                     <th>Nilai</th>
                                                     <th>#</th>
@@ -43,6 +46,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>BAB</th>
+                                                    <th>Mahasiswa</th>
                                                     <th>Foto</th>
                                                     <th>Nilai</th>
                                                     <th>#</th>

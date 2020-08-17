@@ -13,26 +13,45 @@ class Plagiatisme extends Controller
 {
     public function index(Request $request)
     {
-        if( !auth('mahasiswa')->user() )
-        return response()->json([
-            'status'   => false,
-            'message'  => 'Permission denied'
-        ], 401);
-
-        $plagiatisme = PlagiatismeModel::with('get_mahasiswa')->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa)->get();
-
-        try{
-            return response()->json([
-                'status'   => true,
-                'message'  => 'Fetch Plagiatisme',
-                'results'  => $plagiatisme
-            ]);
-        }catch(\Exception $e){
-            return response()->json([
-                'status'   => false,
-                'message'  => $e->getMessage()
-            ], 500);
+        if( auth('mahasiswa')->user() ){
+            $plagiatisme = PlagiatismeModel::with('get_mahasiswa')->where('id_mahasiswa', auth('mahasiswa')->user()->id_mahasiswa)->get();
+    
+            try{
+                return response()->json([
+                    'status'   => true,
+                    'message'  => 'Fetch Plagiatisme',
+                    'results'  => $plagiatisme
+                ]);
+            }catch(\Exception $e){
+                return response()->json([
+                    'status'   => false,
+                    'message'  => $e->getMessage()
+                ], 500);
+            }
         }
+        else if(auth('account')->user() ) {
+            $plagiatisme = PlagiatismeModel::with('get_mahasiswa')->whereHas('get_mahasiswa.get_pembimbing', function($query) {
+                $query->where('id_account', auth('account')->user()->id_account);
+            })->get();
+
+            try{
+                return response()->json([
+                    'status'   => true,
+                    'message'  => 'Fetch plagiatisme mahasiswa',
+                    'results'  => $plagiatisme
+                ]);
+            }catch(\Exception $e){
+                return response()->json([
+                    'status'   => false,
+                    'message'  => 'Something went wrong'
+                ], 500);
+            }
+
+
+        }
+
+
+
     }
 
     public function store(Request $request)

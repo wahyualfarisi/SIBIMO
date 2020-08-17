@@ -128,6 +128,10 @@
                 <a class="waves-effect waves-cyan " href="#/mahasiswa"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Mahasiswa</span></a>
             </li>
 
+            <li class="bold menu_sidebar">
+                <a class="waves-effect waves-cyan " href="#/plagiatisme"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">Plagiatisme</span></a>
+            </li>
+
             <li class="bold">
                     <a class="waves-effect waves-cyan " href="#/history"><i class="material-icons white-text">bookmark</i><span class="menu-title" data-i18n="">History Bimbingan</span></a>
             </li>
