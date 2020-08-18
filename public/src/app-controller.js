@@ -2133,7 +2133,7 @@ const LaporanController = ( (AJAX, LIB) => {
                                     extend: 'pdfHtml5',
                                     text: 'PDF',
                                     exportOptions: {
-                                        columns: [1, 2, 3, 4, 5]
+                                        columns: [0,1,2,3,4]
                                     },
                                     filename: 'DATA_SIAP_SIDANG',
                                     title: 'Data Mahasiswa'
@@ -2142,7 +2142,7 @@ const LaporanController = ( (AJAX, LIB) => {
                                     extend: 'excelHtml5',
                                     text: 'Excel',
                                     exportOptions: {
-                                        columns: [1, 2, 3, 4, 5]
+                                        columns: [0,1,2,3,4]
                                     },
                                     filename: 'DATA_SIAP_SIDANG',
                                     title: 'Data Mahasiswa'
@@ -2151,7 +2151,7 @@ const LaporanController = ( (AJAX, LIB) => {
                                     extend: 'csvHtml5',
                                     text: 'CSV',
                                     exportOptions: {
-                                        columns: [1, 2, 3, 4, 5]
+                                        columns: [0,1,2,3,4]
                                     },
                                     filename: 'DATA_SIAP_SIDANG',
                                     title: 'Data Mahasiswa'
@@ -2160,7 +2160,7 @@ const LaporanController = ( (AJAX, LIB) => {
                                     extend: 'print',
                                     text: 'Print',
                                     exportOptions: {
-                                        columns: [1, 2, 3, 4, 5]
+                                        columns: [0,1,2,3,4]
                                     },
                                     filename: 'DATA_SIAP_SIDANG',
                                     title: '<h4>Data Mahasiswa</h4>'
