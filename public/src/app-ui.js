@@ -71,20 +71,21 @@ const DashboardUI = ( () => {
         if(data.get_bimbingan.length > 0){
             
             data.get_bimbingan.forEach(item => {
-                console.log(data.get_bimbingan)
 
                 if(item.get_lembar_bimbingan){
 
-                    if(item.get_lembar_bimbingan.acc === 'YA') {
-                        icon_acc = ` <i class="material-icons green-text">done</i> `
-                    }else{
-                        icon_acc = ``
-                    }
+                    if(item.get_lembar_bimbingan){
+                        if(item.get_lembar_bimbingan.acc === 'YA') {
+                            icon_acc = ` <i class="material-icons green-text">done</i> `;
+                        }else{
+                            icon_acc = ``;
+                        }
 
-                    if(item.get_lembar_bimbingan.revisi === 'YA'){
-                        icon_revisi = '<i class="material-icons green-text">done</i>'
-                    }else{
-                        icon_revisi = ''
+                        if(item.get_lembar_bimbingan.revisi === 'YA'){
+                            icon_revisi = '<i class="material-icons green-text">done</i>'
+                        }else{
+                            icon_revisi = ''
+                        }
                     }
                     
                 }
@@ -236,8 +237,6 @@ const DashboardUI = ( () => {
 
     return {
         display: ( res) => {
-            console.log(res);
-            
             //hide loader container
             $('#loader_container').hide();
             $('#card-total-data').show();

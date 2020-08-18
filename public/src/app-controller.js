@@ -1819,13 +1819,21 @@ const HistoryBimbinganController = ( (AJAX, LIB) => {
                     {
                         data: null,
                         render: (data, type, row) => {
-                            return row.get_lembar_bimbingan.revisi
+                            if(row.get_lembar_bimbingan){
+                                return row.get_lembar_bimbingan.revisi
+                            }else{
+                                return '-'
+                            }
                         }
                     },
                     {
                         data: null,
                         render: (data, type, row) => {
-                            return row.get_lembar_bimbingan.acc
+                            if(row.get_lembar_bimbingan){
+                                return row.get_lembar_bimbingan.acc
+                            }else{
+                                return '-'
+                            }
                         }
                     },
                     {
